@@ -1,0 +1,1 @@
+-e "bin/\n.target/\nbuild/\n*.class\n*.jar\n*.war\n*.ear\n*.tmp\n*.bak\n*.swp\n*~.nib\nlocal.properties\n.settings/\n.loadpath\n.recommenders\n.DS_Store\n*.launch\n" 

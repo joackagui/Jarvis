@@ -1,0 +1,123 @@
+grammar edu.upb.lp.JarvisProject with org.eclipse.xtext.common.Terminals
+
+generate jarvisProject "http://www.upb.edu/lp/JarvisProject"
+
+Program:
+    name=ID
+    functions+=Function*
+    '>' eval+=Expression*;
+
+DataType:
+    'INT' | 'STRING' | 'BOOLEAN';
+
+Function:
+    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID 
+    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
+        statements+=Statement*
+        'RETURN' return=Expression
+    '}';
+
+TypedParam:
+    type=DataType name=ID;
+
+Statement:
+    Initialization | Assignment | Print | While | If | Ipp | Imm;
+
+Initialization:
+    'SET' type=DataType var=ID 'AS' value=Expression;
+
+Assignment:
+    'NOW' 'SET' var=ID 'AS' value=Expression;
+
+Print:
+    'SHOW' '(' printable=Expression ')';
+
+While:
+    'JARVIS,' 'LOOP' 'WHILE' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+
+If:
+    'JARVIS,' 'TRY' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+
+Ipp:
+    'BUMP' var=ID;
+
+Imm:
+    'DROP' var=ID;
+
+// Value types
+IntValue:
+    val=INT;
+
+StringValue:
+    val=STRING;
+
+BooleanValue:
+    val ?= 'TRUE' | {BooleanValue} 'FALSE';
+
+// Expressions hierarchy
+Expression returns Expression:
+    BooleanExpression;
+
+BooleanExpression returns Expression:
+    BooleanOrExpression;
+
+BooleanOrExpression returns Expression:
+    BooleanAndExpression ({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*;
+
+BooleanAndExpression returns Expression:
+    BooleanEqualityExpression ({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*;
+
+BooleanEqualityExpression returns Expression:
+    BooleanComparisonExpression ({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*;
+
+BooleanComparisonExpression returns Expression:
+    IntComparisonExpression
+    | NonComparativeBooleanExpression;
+
+IntComparisonExpression returns Expression:
+    left=IntExpression op=('<' | '>' | '<=' | '>=') right=IntExpression;
+
+NonComparativeBooleanExpression returns Expression:
+    IntExpression
+    | StringExpression
+    | FunctionCall
+    | VariableRef
+    | '(' BooleanExpression ')'
+    | BooleanValue;
+
+IntExpression returns Expression:
+    IntAdditiveExpression;
+
+IntAdditiveExpression returns Expression:
+    IntMultiplicativeExpression ({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*;
+
+IntMultiplicativeExpression returns Expression:
+    IntPowerExpression ({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*;
+
+IntPowerExpression returns Expression:
+    IntPrimaryExpression ({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*;
+
+IntPrimaryExpression returns Expression:
+    IntValue
+    | FunctionCall
+    | VariableRef
+    | '(' IntExpression ')';
+
+StringExpression returns Expression:
+    StringConcatExpression;
+
+StringConcatExpression returns Expression:
+    StringPrimaryExpression ({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*;
+
+StringPrimaryExpression returns Expression:
+    StringValue
+    | FunctionCall
+    | VariableRef
+    | '(' StringExpression ')';
+
+VariableRef returns Expression:
+    {VariableRef} var=ID;
+
+FunctionCall returns Expression:
+    'JARVIS,' 'RUN' function=[Function] 
+    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
