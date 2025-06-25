@@ -13,7 +13,7 @@ package edu.upb.lp.jarvisProject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.BooleanValue#isVal <em>Val</em>}</li>
+ *   <li>{@link edu.upb.lp.jarvisProject.BooleanValue#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getBooleanValue()
@@ -27,21 +27,21 @@ public interface BooleanValue extends Expression
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' attribute.
-   * @see #setVal(boolean)
+   * @see #setVal(String)
    * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getBooleanValue_Val()
    * @model
    * @generated
    */
-  boolean isVal();
+  String getVal();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.jarvisProject.BooleanValue#isVal <em>Val</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.jarvisProject.BooleanValue#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Val</em>' attribute.
-   * @see #isVal()
+   * @see #getVal()
    * @generated
    */
-  void setVal(boolean value);
+  void setVal(String value);
 
 } // BooleanValue

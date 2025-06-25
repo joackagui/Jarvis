@@ -80,13 +80,12 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
       case JarvisProjectPackage.STRING_VALUE: return createStringValue();
       case JarvisProjectPackage.BOOLEAN_VALUE: return createBooleanValue();
       case JarvisProjectPackage.EXPRESSION: return createExpression();
-      case JarvisProjectPackage.BOOLEAN_OR_EXPRESSION: return createBooleanOrExpression();
-      case JarvisProjectPackage.BOOLEAN_AND_EXPRESSION: return createBooleanAndExpression();
-      case JarvisProjectPackage.BOOLEAN_EQUALITY_EXPRESSION: return createBooleanEqualityExpression();
-      case JarvisProjectPackage.INT_ADDITIVE_EXPRESSION: return createIntAdditiveExpression();
-      case JarvisProjectPackage.INT_MULTIPLICATIVE_EXPRESSION: return createIntMultiplicativeExpression();
-      case JarvisProjectPackage.INT_POWER_EXPRESSION: return createIntPowerExpression();
-      case JarvisProjectPackage.STRING_CONCAT_EXPRESSION: return createStringConcatExpression();
+      case JarvisProjectPackage.OR_EXPRESSION: return createOrExpression();
+      case JarvisProjectPackage.AND_EXPRESSION: return createAndExpression();
+      case JarvisProjectPackage.EQUALITY_EXPRESSION: return createEqualityExpression();
+      case JarvisProjectPackage.COMPARISON_EXPRESSION: return createComparisonExpression();
+      case JarvisProjectPackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
+      case JarvisProjectPackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
       case JarvisProjectPackage.VARIABLE_REF: return createVariableRef();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -279,10 +278,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public BooleanOrExpression createBooleanOrExpression()
+  public OrExpression createOrExpression()
   {
-    BooleanOrExpressionImpl booleanOrExpression = new BooleanOrExpressionImpl();
-    return booleanOrExpression;
+    OrExpressionImpl orExpression = new OrExpressionImpl();
+    return orExpression;
   }
 
   /**
@@ -291,10 +290,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public BooleanAndExpression createBooleanAndExpression()
+  public AndExpression createAndExpression()
   {
-    BooleanAndExpressionImpl booleanAndExpression = new BooleanAndExpressionImpl();
-    return booleanAndExpression;
+    AndExpressionImpl andExpression = new AndExpressionImpl();
+    return andExpression;
   }
 
   /**
@@ -303,10 +302,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public BooleanEqualityExpression createBooleanEqualityExpression()
+  public EqualityExpression createEqualityExpression()
   {
-    BooleanEqualityExpressionImpl booleanEqualityExpression = new BooleanEqualityExpressionImpl();
-    return booleanEqualityExpression;
+    EqualityExpressionImpl equalityExpression = new EqualityExpressionImpl();
+    return equalityExpression;
   }
 
   /**
@@ -315,10 +314,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public IntAdditiveExpression createIntAdditiveExpression()
+  public ComparisonExpression createComparisonExpression()
   {
-    IntAdditiveExpressionImpl intAdditiveExpression = new IntAdditiveExpressionImpl();
-    return intAdditiveExpression;
+    ComparisonExpressionImpl comparisonExpression = new ComparisonExpressionImpl();
+    return comparisonExpression;
   }
 
   /**
@@ -327,10 +326,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public IntMultiplicativeExpression createIntMultiplicativeExpression()
+  public AdditiveExpression createAdditiveExpression()
   {
-    IntMultiplicativeExpressionImpl intMultiplicativeExpression = new IntMultiplicativeExpressionImpl();
-    return intMultiplicativeExpression;
+    AdditiveExpressionImpl additiveExpression = new AdditiveExpressionImpl();
+    return additiveExpression;
   }
 
   /**
@@ -339,22 +338,10 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
    * @generated
    */
   @Override
-  public IntPowerExpression createIntPowerExpression()
+  public MultiplicativeExpression createMultiplicativeExpression()
   {
-    IntPowerExpressionImpl intPowerExpression = new IntPowerExpressionImpl();
-    return intPowerExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public StringConcatExpression createStringConcatExpression()
-  {
-    StringConcatExpressionImpl stringConcatExpression = new StringConcatExpressionImpl();
-    return stringConcatExpression;
+    MultiplicativeExpressionImpl multiplicativeExpression = new MultiplicativeExpressionImpl();
+    return multiplicativeExpression;
   }
 
   /**

@@ -16,9 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.Expression#getLeft <em>Left</em>}</li>
- *   <li>{@link edu.upb.lp.jarvisProject.Expression#getOp <em>Op</em>}</li>
- *   <li>{@link edu.upb.lp.jarvisProject.Expression#getRight <em>Right</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.Expression#getFunction <em>Function</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.Expression#getArgs <em>Args</em>}</li>
  * </ul>
@@ -29,72 +26,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Expression extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(Expression)
-   * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression_Left()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getLeft();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.jarvisProject.Expression#getLeft <em>Left</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Left</em>' containment reference.
-   * @see #getLeft()
-   * @generated
-   */
-  void setLeft(Expression value);
-
-  /**
-   * Returns the value of the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Op</em>' attribute.
-   * @see #setOp(String)
-   * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression_Op()
-   * @model
-   * @generated
-   */
-  String getOp();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.jarvisProject.Expression#getOp <em>Op</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Op</em>' attribute.
-   * @see #getOp()
-   * @generated
-   */
-  void setOp(String value);
-
-  /**
-   * Returns the value of the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Expression)
-   * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression_Right()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getRight();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.jarvisProject.Expression#getRight <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' containment reference.
-   * @see #getRight()
-   * @generated
-   */
-  void setRight(Expression value);
-
   /**
    * Returns the value of the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->

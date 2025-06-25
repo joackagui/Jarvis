@@ -29,6 +29,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Initialization/value"/>
     </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//Assignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Assignment/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Assignment/var"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Assignment/value"/>
     </genClasses>
@@ -59,19 +60,37 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//BooleanValue/val"/>
     </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//Expression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/left"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Expression/op"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/right"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/function"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/args"/>
     </genClasses>
-    <genClasses ecoreClass="JarvisProject.ecore#//BooleanOrExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//BooleanAndExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//BooleanEqualityExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//IntAdditiveExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//IntMultiplicativeExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//IntPowerExpression"/>
-    <genClasses ecoreClass="JarvisProject.ecore#//StringConcatExpression"/>
+    <genClasses ecoreClass="JarvisProject.ecore#//OrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//OrExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//OrExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//AndExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//AndExpression/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//AndExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//EqualityExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//EqualityExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//EqualityExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//EqualityExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//ComparisonExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//ComparisonExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//ComparisonExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//ComparisonExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//AdditiveExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//AdditiveExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//AdditiveExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//AdditiveExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//MultiplicativeExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//MultiplicativeExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//MultiplicativeExpression/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//MultiplicativeExpression/right"/>
+    </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//VariableRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//VariableRef/var"/>
     </genClasses>

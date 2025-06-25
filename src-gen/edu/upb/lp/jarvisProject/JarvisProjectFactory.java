@@ -159,67 +159,58 @@ public interface JarvisProjectFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Boolean Or Expression</em>'.
+   * Returns a new object of class '<em>Or Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Or Expression</em>'.
+   * @return a new object of class '<em>Or Expression</em>'.
    * @generated
    */
-  BooleanOrExpression createBooleanOrExpression();
+  OrExpression createOrExpression();
 
   /**
-   * Returns a new object of class '<em>Boolean And Expression</em>'.
+   * Returns a new object of class '<em>And Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean And Expression</em>'.
+   * @return a new object of class '<em>And Expression</em>'.
    * @generated
    */
-  BooleanAndExpression createBooleanAndExpression();
+  AndExpression createAndExpression();
 
   /**
-   * Returns a new object of class '<em>Boolean Equality Expression</em>'.
+   * Returns a new object of class '<em>Equality Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Equality Expression</em>'.
+   * @return a new object of class '<em>Equality Expression</em>'.
    * @generated
    */
-  BooleanEqualityExpression createBooleanEqualityExpression();
+  EqualityExpression createEqualityExpression();
 
   /**
-   * Returns a new object of class '<em>Int Additive Expression</em>'.
+   * Returns a new object of class '<em>Comparison Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Additive Expression</em>'.
+   * @return a new object of class '<em>Comparison Expression</em>'.
    * @generated
    */
-  IntAdditiveExpression createIntAdditiveExpression();
+  ComparisonExpression createComparisonExpression();
 
   /**
-   * Returns a new object of class '<em>Int Multiplicative Expression</em>'.
+   * Returns a new object of class '<em>Additive Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Multiplicative Expression</em>'.
+   * @return a new object of class '<em>Additive Expression</em>'.
    * @generated
    */
-  IntMultiplicativeExpression createIntMultiplicativeExpression();
+  AdditiveExpression createAdditiveExpression();
 
   /**
-   * Returns a new object of class '<em>Int Power Expression</em>'.
+   * Returns a new object of class '<em>Multiplicative Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Power Expression</em>'.
+   * @return a new object of class '<em>Multiplicative Expression</em>'.
    * @generated
    */
-  IntPowerExpression createIntPowerExpression();
-
-  /**
-   * Returns a new object of class '<em>String Concat Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Concat Expression</em>'.
-   * @generated
-   */
-  StringConcatExpression createStringConcatExpression();
+  MultiplicativeExpression createMultiplicativeExpression();
 
   /**
    * Returns a new object of class '<em>Variable Ref</em>'.

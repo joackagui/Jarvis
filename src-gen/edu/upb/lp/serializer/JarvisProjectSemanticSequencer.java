@@ -4,25 +4,24 @@
 package edu.upb.lp.serializer;
 
 import com.google.inject.Inject;
+import edu.upb.lp.jarvisProject.AdditiveExpression;
+import edu.upb.lp.jarvisProject.AndExpression;
 import edu.upb.lp.jarvisProject.Assignment;
-import edu.upb.lp.jarvisProject.BooleanAndExpression;
-import edu.upb.lp.jarvisProject.BooleanEqualityExpression;
-import edu.upb.lp.jarvisProject.BooleanOrExpression;
 import edu.upb.lp.jarvisProject.BooleanValue;
+import edu.upb.lp.jarvisProject.ComparisonExpression;
+import edu.upb.lp.jarvisProject.EqualityExpression;
 import edu.upb.lp.jarvisProject.Expression;
 import edu.upb.lp.jarvisProject.Function;
 import edu.upb.lp.jarvisProject.If;
 import edu.upb.lp.jarvisProject.Imm;
 import edu.upb.lp.jarvisProject.Initialization;
-import edu.upb.lp.jarvisProject.IntAdditiveExpression;
-import edu.upb.lp.jarvisProject.IntMultiplicativeExpression;
-import edu.upb.lp.jarvisProject.IntPowerExpression;
 import edu.upb.lp.jarvisProject.IntValue;
 import edu.upb.lp.jarvisProject.Ipp;
 import edu.upb.lp.jarvisProject.JarvisProjectPackage;
+import edu.upb.lp.jarvisProject.MultiplicativeExpression;
+import edu.upb.lp.jarvisProject.OrExpression;
 import edu.upb.lp.jarvisProject.Print;
 import edu.upb.lp.jarvisProject.Program;
-import edu.upb.lp.jarvisProject.StringConcatExpression;
 import edu.upb.lp.jarvisProject.StringValue;
 import edu.upb.lp.jarvisProject.TypedParam;
 import edu.upb.lp.jarvisProject.VariableRef;
@@ -53,56 +52,27 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == JarvisProjectPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case JarvisProjectPackage.ADDITIVE_EXPRESSION:
+				sequence_AdditiveExpression(context, (AdditiveExpression) semanticObject); 
+				return; 
+			case JarvisProjectPackage.AND_EXPRESSION:
+				sequence_AndExpression(context, (AndExpression) semanticObject); 
+				return; 
 			case JarvisProjectPackage.ASSIGNMENT:
 				sequence_Assignment(context, (Assignment) semanticObject); 
-				return; 
-			case JarvisProjectPackage.BOOLEAN_AND_EXPRESSION:
-				sequence_BooleanAndExpression(context, (BooleanAndExpression) semanticObject); 
-				return; 
-			case JarvisProjectPackage.BOOLEAN_EQUALITY_EXPRESSION:
-				sequence_BooleanEqualityExpression(context, (BooleanEqualityExpression) semanticObject); 
-				return; 
-			case JarvisProjectPackage.BOOLEAN_OR_EXPRESSION:
-				sequence_BooleanOrExpression(context, (BooleanOrExpression) semanticObject); 
 				return; 
 			case JarvisProjectPackage.BOOLEAN_VALUE:
 				sequence_BooleanValue(context, (BooleanValue) semanticObject); 
 				return; 
+			case JarvisProjectPackage.COMPARISON_EXPRESSION:
+				sequence_ComparisonExpression(context, (ComparisonExpression) semanticObject); 
+				return; 
+			case JarvisProjectPackage.EQUALITY_EXPRESSION:
+				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
+				return; 
 			case JarvisProjectPackage.EXPRESSION:
-				if (rule == grammarAccess.getIntExpressionRule()
-						|| rule == grammarAccess.getIntAdditiveExpressionRule()
-						|| action == grammarAccess.getIntAdditiveExpressionAccess().getIntAdditiveExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getIntMultiplicativeExpressionRule()
-						|| action == grammarAccess.getIntMultiplicativeExpressionAccess().getIntMultiplicativeExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getIntPowerExpressionRule()
-						|| action == grammarAccess.getIntPowerExpressionAccess().getIntPowerExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getIntPrimaryExpressionRule()
-						|| rule == grammarAccess.getStringExpressionRule()
-						|| rule == grammarAccess.getStringConcatExpressionRule()
-						|| action == grammarAccess.getStringConcatExpressionAccess().getStringConcatExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getStringPrimaryExpressionRule()
-						|| rule == grammarAccess.getFunctionCallRule()) {
-					sequence_FunctionCall(context, (Expression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getBooleanExpressionRule()
-						|| rule == grammarAccess.getBooleanOrExpressionRule()
-						|| action == grammarAccess.getBooleanOrExpressionAccess().getBooleanOrExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getBooleanAndExpressionRule()
-						|| action == grammarAccess.getBooleanAndExpressionAccess().getBooleanAndExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getBooleanEqualityExpressionRule()
-						|| action == grammarAccess.getBooleanEqualityExpressionAccess().getBooleanEqualityExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getBooleanComparisonExpressionRule()
-						|| rule == grammarAccess.getNonComparativeBooleanExpressionRule()) {
-					sequence_FunctionCall_IntComparisonExpression(context, (Expression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getIntComparisonExpressionRule()) {
-					sequence_IntComparisonExpression(context, (Expression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_FunctionCall(context, (Expression) semanticObject); 
+				return; 
 			case JarvisProjectPackage.FUNCTION:
 				sequence_Function(context, (Function) semanticObject); 
 				return; 
@@ -115,29 +85,23 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 			case JarvisProjectPackage.INITIALIZATION:
 				sequence_Initialization(context, (Initialization) semanticObject); 
 				return; 
-			case JarvisProjectPackage.INT_ADDITIVE_EXPRESSION:
-				sequence_IntAdditiveExpression(context, (IntAdditiveExpression) semanticObject); 
-				return; 
-			case JarvisProjectPackage.INT_MULTIPLICATIVE_EXPRESSION:
-				sequence_IntMultiplicativeExpression(context, (IntMultiplicativeExpression) semanticObject); 
-				return; 
-			case JarvisProjectPackage.INT_POWER_EXPRESSION:
-				sequence_IntPowerExpression(context, (IntPowerExpression) semanticObject); 
-				return; 
 			case JarvisProjectPackage.INT_VALUE:
 				sequence_IntValue(context, (IntValue) semanticObject); 
 				return; 
 			case JarvisProjectPackage.IPP:
 				sequence_Ipp(context, (Ipp) semanticObject); 
 				return; 
+			case JarvisProjectPackage.MULTIPLICATIVE_EXPRESSION:
+				sequence_MultiplicativeExpression(context, (MultiplicativeExpression) semanticObject); 
+				return; 
+			case JarvisProjectPackage.OR_EXPRESSION:
+				sequence_OrExpression(context, (OrExpression) semanticObject); 
+				return; 
 			case JarvisProjectPackage.PRINT:
 				sequence_Print(context, (Print) semanticObject); 
 				return; 
 			case JarvisProjectPackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
-				return; 
-			case JarvisProjectPackage.STRING_CONCAT_EXPRESSION:
-				sequence_StringConcatExpression(context, (StringConcatExpression) semanticObject); 
 				return; 
 			case JarvisProjectPackage.STRING_VALUE:
 				sequence_StringValue(context, (StringValue) semanticObject); 
@@ -159,78 +123,26 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Statement returns Assignment
-	 *     Assignment returns Assignment
+	 *     Expression returns AdditiveExpression
+	 *     OrExpression returns AdditiveExpression
+	 *     OrExpression.OrExpression_1_0 returns AdditiveExpression
+	 *     AndExpression returns AdditiveExpression
+	 *     AndExpression.AndExpression_1_0 returns AdditiveExpression
+	 *     EqualityExpression returns AdditiveExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns AdditiveExpression
+	 *     ComparisonExpression returns AdditiveExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns AdditiveExpression
+	 *     AdditiveExpression returns AdditiveExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns AdditiveExpression
+	 *     MultiplicativeExpression returns AdditiveExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AdditiveExpression
+	 *     PrimaryExpression returns AdditiveExpression
 	 *
 	 * Constraint:
-	 *     (var=ID value=Expression)
+	 *     (left=AdditiveExpression_AdditiveExpression_1_0 (op='+' | op='-') right=MultiplicativeExpression)
 	 * </pre>
 	 */
-	protected void sequence_Assignment(ISerializationContext context, Assignment semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR));
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAssignmentAccess().getVarIDTerminalRuleCall_2_0(), semanticObject.getVar());
-		feeder.accept(grammarAccess.getAssignmentAccess().getValueExpressionParserRuleCall_4_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns BooleanAndExpression
-	 *     BooleanExpression returns BooleanAndExpression
-	 *     BooleanOrExpression returns BooleanAndExpression
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns BooleanAndExpression
-	 *     BooleanAndExpression returns BooleanAndExpression
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns BooleanAndExpression
-	 *     BooleanEqualityExpression returns BooleanAndExpression
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns BooleanAndExpression
-	 *     BooleanComparisonExpression returns BooleanAndExpression
-	 *     NonComparativeBooleanExpression returns BooleanAndExpression
-	 *
-	 * Constraint:
-	 *     (left=BooleanAndExpression_BooleanAndExpression_1_0 right=BooleanEqualityExpression)
-	 * </pre>
-	 */
-	protected void sequence_BooleanAndExpression(ISerializationContext context, BooleanAndExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBooleanAndExpressionAccess().getBooleanAndExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getBooleanAndExpressionAccess().getRightBooleanEqualityExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns BooleanEqualityExpression
-	 *     BooleanExpression returns BooleanEqualityExpression
-	 *     BooleanOrExpression returns BooleanEqualityExpression
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns BooleanEqualityExpression
-	 *     BooleanAndExpression returns BooleanEqualityExpression
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns BooleanEqualityExpression
-	 *     BooleanEqualityExpression returns BooleanEqualityExpression
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns BooleanEqualityExpression
-	 *     BooleanComparisonExpression returns BooleanEqualityExpression
-	 *     NonComparativeBooleanExpression returns BooleanEqualityExpression
-	 *
-	 * Constraint:
-	 *     (left=BooleanEqualityExpression_BooleanEqualityExpression_1_0 (op='=' | op='!=') right=BooleanComparisonExpression)
-	 * </pre>
-	 */
-	protected void sequence_BooleanEqualityExpression(ISerializationContext context, BooleanEqualityExpression semanticObject) {
+	protected void sequence_AdditiveExpression(ISerializationContext context, AdditiveExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -238,31 +150,62 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns BooleanOrExpression
-	 *     BooleanExpression returns BooleanOrExpression
-	 *     BooleanOrExpression returns BooleanOrExpression
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns BooleanOrExpression
-	 *     BooleanAndExpression returns BooleanOrExpression
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns BooleanOrExpression
-	 *     BooleanEqualityExpression returns BooleanOrExpression
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns BooleanOrExpression
-	 *     BooleanComparisonExpression returns BooleanOrExpression
-	 *     NonComparativeBooleanExpression returns BooleanOrExpression
+	 *     Expression returns AndExpression
+	 *     OrExpression returns AndExpression
+	 *     OrExpression.OrExpression_1_0 returns AndExpression
+	 *     AndExpression returns AndExpression
+	 *     AndExpression.AndExpression_1_0 returns AndExpression
+	 *     EqualityExpression returns AndExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns AndExpression
+	 *     ComparisonExpression returns AndExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns AndExpression
+	 *     AdditiveExpression returns AndExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns AndExpression
+	 *     MultiplicativeExpression returns AndExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns AndExpression
+	 *     PrimaryExpression returns AndExpression
 	 *
 	 * Constraint:
-	 *     (left=BooleanOrExpression_BooleanOrExpression_1_0 right=BooleanAndExpression)
+	 *     (left=AndExpression_AndExpression_1_0 right=EqualityExpression)
 	 * </pre>
 	 */
-	protected void sequence_BooleanOrExpression(ISerializationContext context, BooleanOrExpression semanticObject) {
+	protected void sequence_AndExpression(ISerializationContext context, AndExpression semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT));
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.AND_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.AND_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.AND_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.AND_EXPRESSION__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getBooleanOrExpressionAccess().getBooleanOrExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getBooleanOrExpressionAccess().getRightBooleanAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getAndExpressionAccess().getAndExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAndExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Statement returns Assignment
+	 *     Assignment returns Assignment
+	 *
+	 * Constraint:
+	 *     (type=DataType var=ID value=Expression)
+	 * </pre>
+	 */
+	protected void sequence_Assignment(ISerializationContext context, Assignment semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__TYPE));
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR));
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAssignmentAccess().getTypeDataTypeParserRuleCall_2_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getAssignmentAccess().getVarIDTerminalRuleCall_3_0(), semanticObject.getVar());
+		feeder.accept(grammarAccess.getAssignmentAccess().getValueExpressionParserRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -272,18 +215,22 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 * Contexts:
 	 *     BooleanValue returns BooleanValue
 	 *     Expression returns BooleanValue
-	 *     BooleanExpression returns BooleanValue
-	 *     BooleanOrExpression returns BooleanValue
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns BooleanValue
-	 *     BooleanAndExpression returns BooleanValue
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns BooleanValue
-	 *     BooleanEqualityExpression returns BooleanValue
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns BooleanValue
-	 *     BooleanComparisonExpression returns BooleanValue
-	 *     NonComparativeBooleanExpression returns BooleanValue
+	 *     OrExpression returns BooleanValue
+	 *     OrExpression.OrExpression_1_0 returns BooleanValue
+	 *     AndExpression returns BooleanValue
+	 *     AndExpression.AndExpression_1_0 returns BooleanValue
+	 *     EqualityExpression returns BooleanValue
+	 *     EqualityExpression.EqualityExpression_1_0 returns BooleanValue
+	 *     ComparisonExpression returns BooleanValue
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns BooleanValue
+	 *     AdditiveExpression returns BooleanValue
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns BooleanValue
+	 *     MultiplicativeExpression returns BooleanValue
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns BooleanValue
+	 *     PrimaryExpression returns BooleanValue
 	 *
 	 * Constraint:
-	 *     val?='TRUE'?
+	 *     (val='TRUE' | val='FALSE')
 	 * </pre>
 	 */
 	protected void sequence_BooleanValue(ISerializationContext context, BooleanValue semanticObject) {
@@ -294,25 +241,53 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IntExpression returns Expression
-	 *     IntAdditiveExpression returns Expression
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns Expression
-	 *     IntMultiplicativeExpression returns Expression
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns Expression
-	 *     IntPowerExpression returns Expression
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns Expression
-	 *     IntPrimaryExpression returns Expression
-	 *     StringExpression returns Expression
-	 *     StringConcatExpression returns Expression
-	 *     StringConcatExpression.StringConcatExpression_1_0 returns Expression
-	 *     StringPrimaryExpression returns Expression
-	 *     FunctionCall returns Expression
+	 *     Expression returns ComparisonExpression
+	 *     OrExpression returns ComparisonExpression
+	 *     OrExpression.OrExpression_1_0 returns ComparisonExpression
+	 *     AndExpression returns ComparisonExpression
+	 *     AndExpression.AndExpression_1_0 returns ComparisonExpression
+	 *     EqualityExpression returns ComparisonExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns ComparisonExpression
+	 *     ComparisonExpression returns ComparisonExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns ComparisonExpression
+	 *     AdditiveExpression returns ComparisonExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns ComparisonExpression
+	 *     MultiplicativeExpression returns ComparisonExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns ComparisonExpression
+	 *     PrimaryExpression returns ComparisonExpression
 	 *
 	 * Constraint:
-	 *     (function=[Function|ID] (args+=Expression args+=Expression*)?)
+	 *     (left=ComparisonExpression_ComparisonExpression_1_0 (op='&lt;' | op='&gt;' | op='&lt;=' | op='&gt;=') right=AdditiveExpression)
 	 * </pre>
 	 */
-	protected void sequence_FunctionCall(ISerializationContext context, Expression semanticObject) {
+	protected void sequence_ComparisonExpression(ISerializationContext context, ComparisonExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns EqualityExpression
+	 *     OrExpression returns EqualityExpression
+	 *     OrExpression.OrExpression_1_0 returns EqualityExpression
+	 *     AndExpression returns EqualityExpression
+	 *     AndExpression.AndExpression_1_0 returns EqualityExpression
+	 *     EqualityExpression returns EqualityExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns EqualityExpression
+	 *     ComparisonExpression returns EqualityExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns EqualityExpression
+	 *     AdditiveExpression returns EqualityExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns EqualityExpression
+	 *     MultiplicativeExpression returns EqualityExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns EqualityExpression
+	 *     PrimaryExpression returns EqualityExpression
+	 *
+	 * Constraint:
+	 *     (left=EqualityExpression_EqualityExpression_1_0 (op='=' | op='!=') right=ComparisonExpression)
+	 * </pre>
+	 */
+	protected void sequence_EqualityExpression(ISerializationContext context, EqualityExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -321,21 +296,26 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 * <pre>
 	 * Contexts:
 	 *     Expression returns Expression
-	 *     BooleanExpression returns Expression
-	 *     BooleanOrExpression returns Expression
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns Expression
-	 *     BooleanAndExpression returns Expression
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns Expression
-	 *     BooleanEqualityExpression returns Expression
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns Expression
-	 *     BooleanComparisonExpression returns Expression
-	 *     NonComparativeBooleanExpression returns Expression
+	 *     OrExpression returns Expression
+	 *     OrExpression.OrExpression_1_0 returns Expression
+	 *     AndExpression returns Expression
+	 *     AndExpression.AndExpression_1_0 returns Expression
+	 *     EqualityExpression returns Expression
+	 *     EqualityExpression.EqualityExpression_1_0 returns Expression
+	 *     ComparisonExpression returns Expression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns Expression
+	 *     AdditiveExpression returns Expression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns Expression
+	 *     MultiplicativeExpression returns Expression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns Expression
+	 *     PrimaryExpression returns Expression
+	 *     FunctionCall returns Expression
 	 *
 	 * Constraint:
-	 *     ((left=IntExpression (op='&lt;' | op='&gt;' | op='&lt;=' | op='&gt;=') right=IntExpression) | (function=[Function|ID] (args+=Expression args+=Expression*)?))
+	 *     (function=[Function|ID] (args+=Expression args+=Expression*)?)
 	 * </pre>
 	 */
-	protected void sequence_FunctionCall_IntComparisonExpression(ISerializationContext context, Expression semanticObject) {
+	protected void sequence_FunctionCall(ISerializationContext context, Expression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -361,7 +341,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     If returns If
 	 *
 	 * Constraint:
-	 *     (condition=BooleanExpression statements+=Statement+)
+	 *     (condition=Expression statements+=Statement+)
 	 * </pre>
 	 */
 	protected void sequence_If(ISerializationContext context, If semanticObject) {
@@ -420,101 +400,21 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     IntExpression returns IntAdditiveExpression
-	 *     IntAdditiveExpression returns IntAdditiveExpression
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns IntAdditiveExpression
-	 *     IntMultiplicativeExpression returns IntAdditiveExpression
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns IntAdditiveExpression
-	 *     IntPowerExpression returns IntAdditiveExpression
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns IntAdditiveExpression
-	 *     IntPrimaryExpression returns IntAdditiveExpression
-	 *
-	 * Constraint:
-	 *     (left=IntAdditiveExpression_IntAdditiveExpression_1_0 (op='+' | op='-') right=IntMultiplicativeExpression)
-	 * </pre>
-	 */
-	protected void sequence_IntAdditiveExpression(ISerializationContext context, IntAdditiveExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IntComparisonExpression returns Expression
-	 *
-	 * Constraint:
-	 *     (left=IntExpression (op='&lt;' | op='&gt;' | op='&lt;=' | op='&gt;=') right=IntExpression)
-	 * </pre>
-	 */
-	protected void sequence_IntComparisonExpression(ISerializationContext context, Expression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IntExpression returns IntMultiplicativeExpression
-	 *     IntAdditiveExpression returns IntMultiplicativeExpression
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns IntMultiplicativeExpression
-	 *     IntMultiplicativeExpression returns IntMultiplicativeExpression
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns IntMultiplicativeExpression
-	 *     IntPowerExpression returns IntMultiplicativeExpression
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns IntMultiplicativeExpression
-	 *     IntPrimaryExpression returns IntMultiplicativeExpression
-	 *
-	 * Constraint:
-	 *     (left=IntMultiplicativeExpression_IntMultiplicativeExpression_1_0 (op='*' | op='/' | op='%') right=IntPowerExpression)
-	 * </pre>
-	 */
-	protected void sequence_IntMultiplicativeExpression(ISerializationContext context, IntMultiplicativeExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     IntExpression returns IntPowerExpression
-	 *     IntAdditiveExpression returns IntPowerExpression
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns IntPowerExpression
-	 *     IntMultiplicativeExpression returns IntPowerExpression
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns IntPowerExpression
-	 *     IntPowerExpression returns IntPowerExpression
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns IntPowerExpression
-	 *     IntPrimaryExpression returns IntPowerExpression
-	 *
-	 * Constraint:
-	 *     (left=IntPowerExpression_IntPowerExpression_1_0 right=IntPrimaryExpression)
-	 * </pre>
-	 */
-	protected void sequence_IntPowerExpression(ISerializationContext context, IntPowerExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getIntPowerExpressionAccess().getIntPowerExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getIntPowerExpressionAccess().getRightIntPrimaryExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     IntValue returns IntValue
-	 *     IntExpression returns IntValue
-	 *     IntAdditiveExpression returns IntValue
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns IntValue
-	 *     IntMultiplicativeExpression returns IntValue
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns IntValue
-	 *     IntPowerExpression returns IntValue
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns IntValue
-	 *     IntPrimaryExpression returns IntValue
+	 *     Expression returns IntValue
+	 *     OrExpression returns IntValue
+	 *     OrExpression.OrExpression_1_0 returns IntValue
+	 *     AndExpression returns IntValue
+	 *     AndExpression.AndExpression_1_0 returns IntValue
+	 *     EqualityExpression returns IntValue
+	 *     EqualityExpression.EqualityExpression_1_0 returns IntValue
+	 *     ComparisonExpression returns IntValue
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns IntValue
+	 *     AdditiveExpression returns IntValue
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns IntValue
+	 *     MultiplicativeExpression returns IntValue
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns IntValue
+	 *     PrimaryExpression returns IntValue
 	 *
 	 * Constraint:
 	 *     val=INT
@@ -548,6 +448,69 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getIppAccess().getVarIDTerminalRuleCall_1_0(), semanticObject.getVar());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns MultiplicativeExpression
+	 *     OrExpression returns MultiplicativeExpression
+	 *     OrExpression.OrExpression_1_0 returns MultiplicativeExpression
+	 *     AndExpression returns MultiplicativeExpression
+	 *     AndExpression.AndExpression_1_0 returns MultiplicativeExpression
+	 *     EqualityExpression returns MultiplicativeExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns MultiplicativeExpression
+	 *     ComparisonExpression returns MultiplicativeExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns MultiplicativeExpression
+	 *     AdditiveExpression returns MultiplicativeExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns MultiplicativeExpression
+	 *     MultiplicativeExpression returns MultiplicativeExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns MultiplicativeExpression
+	 *     PrimaryExpression returns MultiplicativeExpression
+	 *
+	 * Constraint:
+	 *     (left=MultiplicativeExpression_MultiplicativeExpression_1_0 (op='*' | op='/' | op='%') right=PrimaryExpression)
+	 * </pre>
+	 */
+	protected void sequence_MultiplicativeExpression(ISerializationContext context, MultiplicativeExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns OrExpression
+	 *     OrExpression returns OrExpression
+	 *     OrExpression.OrExpression_1_0 returns OrExpression
+	 *     AndExpression returns OrExpression
+	 *     AndExpression.AndExpression_1_0 returns OrExpression
+	 *     EqualityExpression returns OrExpression
+	 *     EqualityExpression.EqualityExpression_1_0 returns OrExpression
+	 *     ComparisonExpression returns OrExpression
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns OrExpression
+	 *     AdditiveExpression returns OrExpression
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns OrExpression
+	 *     MultiplicativeExpression returns OrExpression
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns OrExpression
+	 *     PrimaryExpression returns OrExpression
+	 *
+	 * Constraint:
+	 *     (left=OrExpression_OrExpression_1_0 right=AndExpression)
+	 * </pre>
+	 */
+	protected void sequence_OrExpression(ISerializationContext context, OrExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.OR_EXPRESSION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.OR_EXPRESSION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.OR_EXPRESSION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.OR_EXPRESSION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOrExpressionAccess().getOrExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getOrExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -590,57 +553,21 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns StringConcatExpression
-	 *     BooleanExpression returns StringConcatExpression
-	 *     BooleanOrExpression returns StringConcatExpression
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns StringConcatExpression
-	 *     BooleanAndExpression returns StringConcatExpression
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns StringConcatExpression
-	 *     BooleanEqualityExpression returns StringConcatExpression
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns StringConcatExpression
-	 *     BooleanComparisonExpression returns StringConcatExpression
-	 *     NonComparativeBooleanExpression returns StringConcatExpression
-	 *     StringExpression returns StringConcatExpression
-	 *     StringConcatExpression returns StringConcatExpression
-	 *     StringConcatExpression.StringConcatExpression_1_0 returns StringConcatExpression
-	 *     StringPrimaryExpression returns StringConcatExpression
-	 *
-	 * Constraint:
-	 *     (left=StringConcatExpression_StringConcatExpression_1_0 right=StringPrimaryExpression)
-	 * </pre>
-	 */
-	protected void sequence_StringConcatExpression(ISerializationContext context, StringConcatExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.EXPRESSION__RIGHT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStringConcatExpressionAccess().getStringConcatExpressionLeftAction_1_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getStringConcatExpressionAccess().getRightStringPrimaryExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     StringValue returns StringValue
 	 *     Expression returns StringValue
-	 *     BooleanExpression returns StringValue
-	 *     BooleanOrExpression returns StringValue
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns StringValue
-	 *     BooleanAndExpression returns StringValue
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns StringValue
-	 *     BooleanEqualityExpression returns StringValue
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns StringValue
-	 *     BooleanComparisonExpression returns StringValue
-	 *     NonComparativeBooleanExpression returns StringValue
-	 *     StringExpression returns StringValue
-	 *     StringConcatExpression returns StringValue
-	 *     StringConcatExpression.StringConcatExpression_1_0 returns StringValue
-	 *     StringPrimaryExpression returns StringValue
+	 *     OrExpression returns StringValue
+	 *     OrExpression.OrExpression_1_0 returns StringValue
+	 *     AndExpression returns StringValue
+	 *     AndExpression.AndExpression_1_0 returns StringValue
+	 *     EqualityExpression returns StringValue
+	 *     EqualityExpression.EqualityExpression_1_0 returns StringValue
+	 *     ComparisonExpression returns StringValue
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns StringValue
+	 *     AdditiveExpression returns StringValue
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns StringValue
+	 *     MultiplicativeExpression returns StringValue
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns StringValue
+	 *     PrimaryExpression returns StringValue
 	 *
 	 * Constraint:
 	 *     val=STRING
@@ -684,27 +611,19 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 * <pre>
 	 * Contexts:
 	 *     Expression returns VariableRef
-	 *     BooleanExpression returns VariableRef
-	 *     BooleanOrExpression returns VariableRef
-	 *     BooleanOrExpression.BooleanOrExpression_1_0 returns VariableRef
-	 *     BooleanAndExpression returns VariableRef
-	 *     BooleanAndExpression.BooleanAndExpression_1_0 returns VariableRef
-	 *     BooleanEqualityExpression returns VariableRef
-	 *     BooleanEqualityExpression.BooleanEqualityExpression_1_0 returns VariableRef
-	 *     BooleanComparisonExpression returns VariableRef
-	 *     NonComparativeBooleanExpression returns VariableRef
-	 *     IntExpression returns VariableRef
-	 *     IntAdditiveExpression returns VariableRef
-	 *     IntAdditiveExpression.IntAdditiveExpression_1_0 returns VariableRef
-	 *     IntMultiplicativeExpression returns VariableRef
-	 *     IntMultiplicativeExpression.IntMultiplicativeExpression_1_0 returns VariableRef
-	 *     IntPowerExpression returns VariableRef
-	 *     IntPowerExpression.IntPowerExpression_1_0 returns VariableRef
-	 *     IntPrimaryExpression returns VariableRef
-	 *     StringExpression returns VariableRef
-	 *     StringConcatExpression returns VariableRef
-	 *     StringConcatExpression.StringConcatExpression_1_0 returns VariableRef
-	 *     StringPrimaryExpression returns VariableRef
+	 *     OrExpression returns VariableRef
+	 *     OrExpression.OrExpression_1_0 returns VariableRef
+	 *     AndExpression returns VariableRef
+	 *     AndExpression.AndExpression_1_0 returns VariableRef
+	 *     EqualityExpression returns VariableRef
+	 *     EqualityExpression.EqualityExpression_1_0 returns VariableRef
+	 *     ComparisonExpression returns VariableRef
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns VariableRef
+	 *     AdditiveExpression returns VariableRef
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns VariableRef
+	 *     MultiplicativeExpression returns VariableRef
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns VariableRef
+	 *     PrimaryExpression returns VariableRef
 	 *     VariableRef returns VariableRef
 	 *
 	 * Constraint:
@@ -729,7 +648,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     While returns While
 	 *
 	 * Constraint:
-	 *     (condition=BooleanExpression statements+=Statement+)
+	 *     (condition=Expression statements+=Statement+)
 	 * </pre>
 	 */
 	protected void sequence_While(ISerializationContext context, While semanticObject) {

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.impl.BooleanValueImpl#isVal <em>Val</em>}</li>
+ *   <li>{@link edu.upb.lp.jarvisProject.impl.BooleanValueImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
@@ -28,24 +28,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
 {
   /**
-   * The default value of the '{@link #isVal() <em>Val</em>}' attribute.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isVal()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected static final boolean VAL_EDEFAULT = false;
+  protected static final String VAL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #isVal() <em>Val</em>}' attribute.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isVal()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected boolean val = VAL_EDEFAULT;
+  protected String val = VAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
    * @generated
    */
   @Override
-  public boolean isVal()
+  public String getVal()
   {
     return val;
   }
@@ -85,9 +85,9 @@ public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
    * @generated
    */
   @Override
-  public void setVal(boolean newVal)
+  public void setVal(String newVal)
   {
-    boolean oldVal = val;
+    String oldVal = val;
     val = newVal;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, JarvisProjectPackage.BOOLEAN_VALUE__VAL, oldVal, val));
@@ -104,7 +104,7 @@ public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
     switch (featureID)
     {
       case JarvisProjectPackage.BOOLEAN_VALUE__VAL:
-        return isVal();
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,7 +120,7 @@ public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
     switch (featureID)
     {
       case JarvisProjectPackage.BOOLEAN_VALUE__VAL:
-        setVal((Boolean)newValue);
+        setVal((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -154,7 +154,7 @@ public class BooleanValueImpl extends ExpressionImpl implements BooleanValue
     switch (featureID)
     {
       case JarvisProjectPackage.BOOLEAN_VALUE__VAL:
-        return val != VAL_EDEFAULT;
+        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
   }

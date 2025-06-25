@@ -20,22 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JarvisProjectGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_a;
-	protected AbstractElementAlias match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_p;
-	protected AbstractElementAlias match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_a;
-	protected AbstractElementAlias match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_p;
-	protected AbstractElementAlias match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_a;
-	protected AbstractElementAlias match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_p;
+	protected AbstractElementAlias match_PrimaryExpression_LeftParenthesisKeyword_5_0_a;
+	protected AbstractElementAlias match_PrimaryExpression_LeftParenthesisKeyword_5_0_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (JarvisProjectGrammarAccess) access;
-		match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_a = new TokenAlias(true, true, grammarAccess.getIntPrimaryExpressionAccess().getLeftParenthesisKeyword_3_0());
-		match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_p = new TokenAlias(true, false, grammarAccess.getIntPrimaryExpressionAccess().getLeftParenthesisKeyword_3_0());
-		match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_a = new TokenAlias(true, true, grammarAccess.getNonComparativeBooleanExpressionAccess().getLeftParenthesisKeyword_3_0());
-		match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_p = new TokenAlias(true, false, grammarAccess.getNonComparativeBooleanExpressionAccess().getLeftParenthesisKeyword_3_0());
-		match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_a = new TokenAlias(true, true, grammarAccess.getStringPrimaryExpressionAccess().getLeftParenthesisKeyword_3_0());
-		match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_p = new TokenAlias(true, false, grammarAccess.getStringPrimaryExpressionAccess().getLeftParenthesisKeyword_3_0());
+		match_PrimaryExpression_LeftParenthesisKeyword_5_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_0());
+		match_PrimaryExpression_LeftParenthesisKeyword_5_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_0());
 	}
 	
 	@Override
@@ -50,18 +42,10 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_a.equals(syntax))
-				emit_IntPrimaryExpression_LeftParenthesisKeyword_3_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_IntPrimaryExpression_LeftParenthesisKeyword_3_0_p.equals(syntax))
-				emit_IntPrimaryExpression_LeftParenthesisKeyword_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_a.equals(syntax))
-				emit_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_p.equals(syntax))
-				emit_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_a.equals(syntax))
-				emit_StringPrimaryExpression_LeftParenthesisKeyword_3_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_StringPrimaryExpression_LeftParenthesisKeyword_3_0_p.equals(syntax))
-				emit_StringPrimaryExpression_LeftParenthesisKeyword_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_PrimaryExpression_LeftParenthesisKeyword_5_0_a.equals(syntax))
+				emit_PrimaryExpression_LeftParenthesisKeyword_5_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PrimaryExpression_LeftParenthesisKeyword_5_0_p.equals(syntax))
+				emit_PrimaryExpression_LeftParenthesisKeyword_5_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -72,93 +56,22 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'JARVIS,' 'RUN' function=[Function|ID]
+	 *     (rule start) (ambiguity) 'JARVIS,' 'RUN' 'PROTOCOL' function=[Function|ID]
+	 *     (rule start) (ambiguity) val='FALSE'
+	 *     (rule start) (ambiguity) val='TRUE'
 	 *     (rule start) (ambiguity) val=INT
-	 *     (rule start) (ambiguity) var=ID
-	 *     (rule start) (ambiguity) {IntAdditiveExpression.left=}
-	 *     (rule start) (ambiguity) {IntMultiplicativeExpression.left=}
-	 *     (rule start) (ambiguity) {IntPowerExpression.left=}
-	 
-	 * </pre>
-	 */
-	protected void emit_IntPrimaryExpression_LeftParenthesisKeyword_3_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     '('+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) {IntAdditiveExpression.left=}
-	 *     (rule start) (ambiguity) {IntMultiplicativeExpression.left=}
-	 *     (rule start) (ambiguity) {IntPowerExpression.left=}
-	 
-	 * </pre>
-	 */
-	protected void emit_IntPrimaryExpression_LeftParenthesisKeyword_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     '('*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) '('* 'JARVIS,' 'RUN' function=[Function|ID]
-	 *     (rule start) (ambiguity) '('* val=STRING
-	 *     (rule start) (ambiguity) '('* var=ID
-	 *     (rule start) (ambiguity) '('* {StringConcatExpression.left=}
-	 *     (rule start) (ambiguity) 'FALSE' (rule start)
-	 *     (rule start) (ambiguity) left=IntExpression
-	 *     (rule start) (ambiguity) val?='TRUE'
-	 *     (rule start) (ambiguity) {BooleanAndExpression.left=}
-	 *     (rule start) (ambiguity) {BooleanEqualityExpression.left=}
-	 *     (rule start) (ambiguity) {BooleanOrExpression.left=}
-	 
-	 * </pre>
-	 */
-	protected void emit_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     '('+
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) left=IntExpression
-	 *     (rule start) (ambiguity) {BooleanAndExpression.left=}
-	 *     (rule start) (ambiguity) {BooleanEqualityExpression.left=}
-	 *     (rule start) (ambiguity) {BooleanOrExpression.left=}
-	 
-	 * </pre>
-	 */
-	protected void emit_NonComparativeBooleanExpression_LeftParenthesisKeyword_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     '('*
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) '('* (ambiguity) 'JARVIS,' 'RUN' function=[Function|ID]
-	 *     (rule start) '('* (ambiguity) val=STRING
-	 *     (rule start) '('* (ambiguity) var=ID
-	 *     (rule start) '('* (ambiguity) {StringConcatExpression.left=}
-	 *     (rule start) (ambiguity) 'JARVIS,' 'RUN' function=[Function|ID]
 	 *     (rule start) (ambiguity) val=STRING
 	 *     (rule start) (ambiguity) var=ID
-	 *     (rule start) (ambiguity) {StringConcatExpression.left=}
+	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
+	 *     (rule start) (ambiguity) {AndExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
+	 *     (rule start) (ambiguity) {EqualityExpression.left=}
+	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
+	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 
 	 * </pre>
 	 */
-	protected void emit_StringPrimaryExpression_LeftParenthesisKeyword_3_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_PrimaryExpression_LeftParenthesisKeyword_5_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -168,11 +81,16 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     '('+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) {StringConcatExpression.left=}
+	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
+	 *     (rule start) (ambiguity) {AndExpression.left=}
+	 *     (rule start) (ambiguity) {ComparisonExpression.left=}
+	 *     (rule start) (ambiguity) {EqualityExpression.left=}
+	 *     (rule start) (ambiguity) {MultiplicativeExpression.left=}
+	 *     (rule start) (ambiguity) {OrExpression.left=}
 	 
 	 * </pre>
 	 */
-	protected void emit_StringPrimaryExpression_LeftParenthesisKeyword_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_PrimaryExpression_LeftParenthesisKeyword_5_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

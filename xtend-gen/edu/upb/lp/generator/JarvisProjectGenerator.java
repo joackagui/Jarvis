@@ -3,17 +3,40 @@
  */
 package edu.upb.lp.generator;
 
+import edu.upb.lp.jarvisProject.AdditiveExpression;
+import edu.upb.lp.jarvisProject.AndExpression;
+import edu.upb.lp.jarvisProject.Assignment;
+import edu.upb.lp.jarvisProject.BooleanValue;
+import edu.upb.lp.jarvisProject.ComparisonExpression;
+import edu.upb.lp.jarvisProject.EqualityExpression;
+import edu.upb.lp.jarvisProject.Expression;
 import edu.upb.lp.jarvisProject.Function;
+import edu.upb.lp.jarvisProject.If;
+import edu.upb.lp.jarvisProject.Imm;
+import edu.upb.lp.jarvisProject.Initialization;
 import edu.upb.lp.jarvisProject.IntValue;
+import edu.upb.lp.jarvisProject.Ipp;
+import edu.upb.lp.jarvisProject.MultiplicativeExpression;
+import edu.upb.lp.jarvisProject.OrExpression;
+import edu.upb.lp.jarvisProject.Print;
 import edu.upb.lp.jarvisProject.Program;
+import edu.upb.lp.jarvisProject.Statement;
+import edu.upb.lp.jarvisProject.StringValue;
+import edu.upb.lp.jarvisProject.TypedParam;
+import edu.upb.lp.jarvisProject.VariableRef;
+import edu.upb.lp.jarvisProject.While;
 import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 
 /**
@@ -33,39 +56,380 @@ public class JarvisProjectGenerator extends AbstractGenerator {
   }
 
   public CharSequence generateProgram(final Program program) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from EList<Expression> to IntValue");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("public class ");
+    String _name = program.getName();
+    _builder.append(_name, "\t");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Function> _functions = program.getFunctions();
+      for(final Function function : _functions) {
+        _builder.append("\t\t");
+        CharSequence _generateFunction = this.generateFunction(function);
+        _builder.append(_generateFunction, "\t\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("public static void main(String[] args) {");
+    _builder.newLine();
+    {
+      EList<Expression> _eval = program.getEval();
+      for(final Expression expr : _eval) {
+        _builder.append("\t\t\t");
+        CharSequence _generateExpression = this.generateExpression(expr);
+        _builder.append(_generateExpression, "\t\t\t");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
 
   public CharSequence generateFunction(final Function function) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Expression to IntValue");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public static ");
+    String _javaType = this.toJavaType(function.getType());
+    _builder.append(_javaType);
+    _builder.append(" ");
+    String _name = function.getName();
+    _builder.append(_name);
+    _builder.append("(");
+    final Function1<TypedParam, String> _function = (TypedParam it) -> {
+      String _javaType_1 = this.toJavaType(it.getType());
+      String _plus = (_javaType_1 + " ");
+      String _name_1 = it.getName();
+      return (_plus + _name_1);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<TypedParam, String>map(function.getParams(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statement> _statements = function.getStatements();
+      for(final Statement stmt : _statements) {
+        _builder.append("\t");
+        CharSequence _generateStatement = this.generateStatement(stmt);
+        _builder.append(_generateStatement, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("return ");
+    CharSequence _generateExpression = this.generateExpression(function.getReturn());
+    _builder.append(_generateExpression, "\t");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
 
-  protected CharSequence _generateExpression(final IntValue i) {
+  protected CharSequence _generateStatement(final Initialization stmt) {
     StringConcatenation _builder = new StringConcatenation();
-    int _val = i.getVal();
-    _builder.append(_val);
+    _builder.append("public ");
+    String _javaType = this.toJavaType(stmt.getType());
+    _builder.append(_javaType);
+    _builder.append(" ");
+    String _var = stmt.getVar();
+    _builder.append(_var);
+    _builder.append(" = ");
+    CharSequence _generateExpression = this.generateExpression(stmt.getValue());
+    _builder.append(_generateExpression);
+    _builder.append(";");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
 
-  protected String _generateExpression(final /* FunctionCall */Object f) {
+  protected CharSequence _generateStatement(final Assignment stmt) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\t");
+    String _javaType = this.toJavaType(stmt.getType());
+    _builder.append(_javaType);
+    _builder.append(" ");
+    String _var = stmt.getVar();
+    _builder.append(_var);
+    _builder.append(" = ");
+    CharSequence _generateExpression = this.generateExpression(stmt.getValue());
+    _builder.append(_generateExpression);
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateStatement(final Print stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("System.out.println(");
+    CharSequence _generateExpression = this.generateExpression(stmt.getPrintable());
+    _builder.append(_generateExpression);
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateStatement(final While stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("while (");
+    CharSequence _generateExpression = this.generateExpression(stmt.getCondition());
+    _builder.append(_generateExpression);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statement> _statements = stmt.getStatements();
+      for(final Statement s : _statements) {
+        _builder.append("\t");
+        Object _generateStatement = this.generateStatement(s);
+        _builder.append(_generateStatement, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
     _builder.newLine();
-    return _builder.toString();
+    return _builder;
+  }
+
+  protected CharSequence _generateStatement(final If stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if (");
+    CharSequence _generateExpression = this.generateExpression(stmt.getCondition());
+    _builder.append(_generateExpression);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statement> _statements = stmt.getStatements();
+      for(final Statement s : _statements) {
+        _builder.append("\t");
+        Object _generateStatement = this.generateStatement(s);
+        _builder.append(_generateStatement, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+
+  protected CharSequence _generateStatement(final Ipp stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _var = stmt.getVar();
+    _builder.append(_var);
+    _builder.append("++;");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateStatement(final Imm stmt) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _var = stmt.getVar();
+    _builder.append(_var);
+    _builder.append("--;");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final IntValue expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    int _val = expr.getVal();
+    _builder.append(_val);
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final StringValue expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\"");
+    String _val = expr.getVal();
+    _builder.append(_val);
+    _builder.append("\"");
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final BooleanValue expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _val = expr.getVal();
+    _builder.append(_val);
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final VariableRef expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _var = expr.getVar();
+    _builder.append(_var);
+    return _builder;
+  }
+
+  /**
+   * def dispatch generateExpression(FunctionCall expr) '''
+   * «expr.function.name»(«expr.args.map[generateExpression].join(', ')»)
+   * '''
+   */
+  protected CharSequence _generateExpression(final OrExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" || ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final AndExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" && ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final EqualityExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" ");
+    String _op = expr.getOp();
+    _builder.append(_op);
+    _builder.append(" ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final ComparisonExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" ");
+    String _op = expr.getOp();
+    _builder.append(_op);
+    _builder.append(" ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final AdditiveExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" ");
+    String _op = expr.getOp();
+    _builder.append(_op);
+    _builder.append(" ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateExpression(final MultiplicativeExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    Object _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" ");
+    String _op = expr.getOp();
+    _builder.append(_op);
+    _builder.append(" ");
+    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  public String toJavaType(final String type) {
+    String _switchResult = null;
+    if (type != null) {
+      switch (type) {
+        case "INT":
+          _switchResult = "int";
+          break;
+        case "STRING":
+          _switchResult = "String";
+          break;
+        case "BOOLEAN":
+          _switchResult = "boolean";
+          break;
+        default:
+          _switchResult = "Object";
+          break;
+      }
+    } else {
+      _switchResult = "Object";
+    }
+    return _switchResult;
   }
 
   @XbaseGenerated
-  public CharSequence generateExpression(final IntValue i) {
-    if (i != null) {
-      return _generateExpression(i);
-    } else if (i != null) {
-      return _generateExpression(i);
+  public CharSequence generateStatement(final Statement stmt) {
+    if (stmt instanceof Assignment) {
+      return _generateStatement((Assignment)stmt);
+    } else if (stmt instanceof If) {
+      return _generateStatement((If)stmt);
+    } else if (stmt instanceof Imm) {
+      return _generateStatement((Imm)stmt);
+    } else if (stmt instanceof Initialization) {
+      return _generateStatement((Initialization)stmt);
+    } else if (stmt instanceof Ipp) {
+      return _generateStatement((Ipp)stmt);
+    } else if (stmt instanceof Print) {
+      return _generateStatement((Print)stmt);
+    } else if (stmt instanceof While) {
+      return _generateStatement((While)stmt);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(i).toString());
+        Arrays.<Object>asList(stmt).toString());
+    }
+  }
+
+  @XbaseGenerated
+  public CharSequence generateExpression(final Expression expr) {
+    if (expr instanceof AdditiveExpression) {
+      return _generateExpression((AdditiveExpression)expr);
+    } else if (expr instanceof AndExpression) {
+      return _generateExpression((AndExpression)expr);
+    } else if (expr instanceof BooleanValue) {
+      return _generateExpression((BooleanValue)expr);
+    } else if (expr instanceof ComparisonExpression) {
+      return _generateExpression((ComparisonExpression)expr);
+    } else if (expr instanceof EqualityExpression) {
+      return _generateExpression((EqualityExpression)expr);
+    } else if (expr instanceof IntValue) {
+      return _generateExpression((IntValue)expr);
+    } else if (expr instanceof MultiplicativeExpression) {
+      return _generateExpression((MultiplicativeExpression)expr);
+    } else if (expr instanceof OrExpression) {
+      return _generateExpression((OrExpression)expr);
+    } else if (expr instanceof StringValue) {
+      return _generateExpression((StringValue)expr);
+    } else if (expr instanceof VariableRef) {
+      return _generateExpression((VariableRef)expr);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(expr).toString());
     }
   }
 }

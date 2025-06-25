@@ -151,39 +151,34 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
-      public Adapter caseBooleanOrExpression(BooleanOrExpression object)
+      public Adapter caseOrExpression(OrExpression object)
       {
-        return createBooleanOrExpressionAdapter();
+        return createOrExpressionAdapter();
       }
       @Override
-      public Adapter caseBooleanAndExpression(BooleanAndExpression object)
+      public Adapter caseAndExpression(AndExpression object)
       {
-        return createBooleanAndExpressionAdapter();
+        return createAndExpressionAdapter();
       }
       @Override
-      public Adapter caseBooleanEqualityExpression(BooleanEqualityExpression object)
+      public Adapter caseEqualityExpression(EqualityExpression object)
       {
-        return createBooleanEqualityExpressionAdapter();
+        return createEqualityExpressionAdapter();
       }
       @Override
-      public Adapter caseIntAdditiveExpression(IntAdditiveExpression object)
+      public Adapter caseComparisonExpression(ComparisonExpression object)
       {
-        return createIntAdditiveExpressionAdapter();
+        return createComparisonExpressionAdapter();
       }
       @Override
-      public Adapter caseIntMultiplicativeExpression(IntMultiplicativeExpression object)
+      public Adapter caseAdditiveExpression(AdditiveExpression object)
       {
-        return createIntMultiplicativeExpressionAdapter();
+        return createAdditiveExpressionAdapter();
       }
       @Override
-      public Adapter caseIntPowerExpression(IntPowerExpression object)
+      public Adapter caseMultiplicativeExpression(MultiplicativeExpression object)
       {
-        return createIntPowerExpressionAdapter();
-      }
-      @Override
-      public Adapter caseStringConcatExpression(StringConcatExpression object)
-      {
-        return createStringConcatExpressionAdapter();
+        return createMultiplicativeExpressionAdapter();
       }
       @Override
       public Adapter caseVariableRef(VariableRef object)
@@ -438,106 +433,91 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.BooleanOrExpression <em>Boolean Or Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.OrExpression <em>Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.BooleanOrExpression
+   * @see edu.upb.lp.jarvisProject.OrExpression
    * @generated
    */
-  public Adapter createBooleanOrExpressionAdapter()
+  public Adapter createOrExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.BooleanAndExpression <em>Boolean And Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.AndExpression <em>And Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.BooleanAndExpression
+   * @see edu.upb.lp.jarvisProject.AndExpression
    * @generated
    */
-  public Adapter createBooleanAndExpressionAdapter()
+  public Adapter createAndExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.BooleanEqualityExpression <em>Boolean Equality Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.EqualityExpression <em>Equality Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.BooleanEqualityExpression
+   * @see edu.upb.lp.jarvisProject.EqualityExpression
    * @generated
    */
-  public Adapter createBooleanEqualityExpressionAdapter()
+  public Adapter createEqualityExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.IntAdditiveExpression <em>Int Additive Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.ComparisonExpression <em>Comparison Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.IntAdditiveExpression
+   * @see edu.upb.lp.jarvisProject.ComparisonExpression
    * @generated
    */
-  public Adapter createIntAdditiveExpressionAdapter()
+  public Adapter createComparisonExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.IntMultiplicativeExpression <em>Int Multiplicative Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.AdditiveExpression <em>Additive Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.IntMultiplicativeExpression
+   * @see edu.upb.lp.jarvisProject.AdditiveExpression
    * @generated
    */
-  public Adapter createIntMultiplicativeExpressionAdapter()
+  public Adapter createAdditiveExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.IntPowerExpression <em>Int Power Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.MultiplicativeExpression <em>Multiplicative Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.IntPowerExpression
+   * @see edu.upb.lp.jarvisProject.MultiplicativeExpression
    * @generated
    */
-  public Adapter createIntPowerExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.StringConcatExpression <em>String Concat Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see edu.upb.lp.jarvisProject.StringConcatExpression
-   * @generated
-   */
-  public Adapter createStringConcatExpressionAdapter()
+  public Adapter createMultiplicativeExpressionAdapter()
   {
     return null;
   }

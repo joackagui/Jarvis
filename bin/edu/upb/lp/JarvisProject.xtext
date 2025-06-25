@@ -3,121 +3,88 @@ grammar edu.upb.lp.JarvisProject with org.eclipse.xtext.common.Terminals
 generate jarvisProject "http://www.upb.edu/lp/JarvisProject"
 
 Program:
-    name=ID
-    functions+=Function*
-    '>' eval+=Expression*;
+	name=ID
+	functions+=Function*
+	'>' eval+=Expression*;
 
 DataType:
-    'INT' | 'STRING' | 'BOOLEAN';
+	'INT' | 'STRING' | 'BOOLEAN';
 
 Function:
-    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID 
-    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
-        statements+=Statement*
-        'RETURN' return=Expression
-    '}';
+	'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID 'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
+	statements+=Statement*
+	'RETURN' return=Expression
+	'}';
 
 TypedParam:
-    type=DataType name=ID;
+	type=DataType name=ID;
 
 Statement:
-    Initialization | Assignment | Print | While | If | Ipp | Imm;
+	Initialization | Assignment | Print | While | If | Ipp | Imm;
 
 Initialization:
-    'SET' type=DataType var=ID 'AS' value=Expression;
+	'SET' type=DataType var=ID 'AS' value=Expression;
 
 Assignment:
-    'NOW' 'SET' var=ID 'AS' value=Expression;
+	'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
 
 Print:
-    'SHOW' '(' printable=Expression ')';
+	'SHOW' '(' printable=Expression ')';
 
 While:
-    'JARVIS,' 'LOOP' 'WHILE' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+	'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 
 If:
-    'JARVIS,' 'TRY' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+	'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 
 Ipp:
-    'BUMP' var=ID;
+	'BUMP' var=ID;
 
 Imm:
-    'DROP' var=ID;
+	'DROP' var=ID;
 
 // Value types
 IntValue:
-    val=INT;
+	val=INT;
 
 StringValue:
-    val=STRING;
+	val=STRING;
 
 BooleanValue:
-    val ?= 'TRUE' | {BooleanValue} 'FALSE';
+	val=('TRUE' | 'FALSE');
 
-// Expressions hierarchy
+// Simplified Expressions hierarchy
 Expression returns Expression:
-    BooleanExpression;
+	OrExpression;
 
-BooleanExpression returns Expression:
-    BooleanOrExpression;
+OrExpression returns Expression:
+	AndExpression ({OrExpression.left=current} 'OR' right=AndExpression)*;
 
-BooleanOrExpression returns Expression:
-    BooleanAndExpression ({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*;
+AndExpression returns Expression:
+	EqualityExpression ({AndExpression.left=current} 'AND' right=EqualityExpression)*;
 
-BooleanAndExpression returns Expression:
-    BooleanEqualityExpression ({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*;
+EqualityExpression returns Expression:
+	ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
 
-BooleanEqualityExpression returns Expression:
-    BooleanComparisonExpression ({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*;
+ComparisonExpression returns Expression:
+	AdditiveExpression ({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*;
 
-BooleanComparisonExpression returns Expression:
-    IntComparisonExpression
-    | NonComparativeBooleanExpression;
+AdditiveExpression returns Expression:
+	MultiplicativeExpression ({AdditiveExpression.left=current} op=('+' | '-') right=MultiplicativeExpression)*;
 
-IntComparisonExpression returns Expression:
-    left=IntExpression op=('<' | '>' | '<=' | '>=') right=IntExpression;
+MultiplicativeExpression returns Expression:
+	PrimaryExpression ({MultiplicativeExpression.left=current} op=('*' | '/' | '%') right=PrimaryExpression)*;
 
-NonComparativeBooleanExpression returns Expression:
-    IntExpression
-    | StringExpression
-    | FunctionCall
-    | VariableRef
-    | '(' BooleanExpression ')'
-    | BooleanValue;
-
-IntExpression returns Expression:
-    IntAdditiveExpression;
-
-IntAdditiveExpression returns Expression:
-    IntMultiplicativeExpression ({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*;
-
-IntMultiplicativeExpression returns Expression:
-    IntPowerExpression ({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*;
-
-IntPowerExpression returns Expression:
-    IntPrimaryExpression ({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*;
-
-IntPrimaryExpression returns Expression:
-    IntValue
-    | FunctionCall
-    | VariableRef
-    | '(' IntExpression ')';
-
-StringExpression returns Expression:
-    StringConcatExpression;
-
-StringConcatExpression returns Expression:
-    StringPrimaryExpression ({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*;
-
-StringPrimaryExpression returns Expression:
-    StringValue
-    | FunctionCall
-    | VariableRef
-    | '(' StringExpression ')';
+PrimaryExpression returns Expression:
+	IntValue
+	| StringValue
+	| BooleanValue
+	| FunctionCall
+	| VariableRef
+	| '(' Expression ')';
 
 VariableRef returns Expression:
-    {VariableRef} var=ID;
+	{VariableRef} var=ID;
 
 FunctionCall returns Expression:
-    'JARVIS,' 'RUN' function=[Function] 
-    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
+	'JARVIS,' 'RUN' 'PROTOCOL' function=[Function] 'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';

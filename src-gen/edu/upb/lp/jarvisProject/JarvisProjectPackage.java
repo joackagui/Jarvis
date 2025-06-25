@@ -280,13 +280,22 @@ public interface JarvisProjectPackage extends EPackage
   int ASSIGNMENT = 5;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT__TYPE = STATEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__VAR = STATEMENT_FEATURE_COUNT + 0;
+  int ASSIGNMENT__VAR = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -295,7 +304,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__VALUE = STATEMENT_FEATURE_COUNT + 1;
+  int ASSIGNMENT__VALUE = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Assignment</em>' class.
@@ -304,7 +313,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
+  int ASSIGNMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.PrintImpl <em>Print</em>}' class.
@@ -475,40 +484,13 @@ public interface JarvisProjectPackage extends EPackage
   int EXPRESSION = 14;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__LEFT = 0;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__OP = 1;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__RIGHT = 2;
-
-  /**
    * The feature id for the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EXPRESSION__FUNCTION = 3;
+  int EXPRESSION__FUNCTION = 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -517,7 +499,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION__ARGS = 4;
+  int EXPRESSION__ARGS = 1;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -526,7 +508,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 5;
+  int EXPRESSION_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.IntValueImpl <em>Int Value</em>}' class.
@@ -537,33 +519,6 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    */
   int INT_VALUE = 11;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_VALUE__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_VALUE__OP = EXPRESSION__OP;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_VALUE__RIGHT = EXPRESSION__RIGHT;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -612,33 +567,6 @@ public interface JarvisProjectPackage extends EPackage
   int STRING_VALUE = 12;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VALUE__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VALUE__OP = EXPRESSION__OP;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VALUE__RIGHT = EXPRESSION__RIGHT;
-
-  /**
    * The feature id for the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -685,33 +613,6 @@ public interface JarvisProjectPackage extends EPackage
   int BOOLEAN_VALUE = 13;
 
   /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_VALUE__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_VALUE__OP = EXPRESSION__OP;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_VALUE__RIGHT = EXPRESSION__RIGHT;
-
-  /**
    * The feature id for the '<em><b>Function</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -748,41 +649,14 @@ public interface JarvisProjectPackage extends EPackage
   int BOOLEAN_VALUE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.BooleanOrExpressionImpl <em>Boolean Or Expression</em>}' class.
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.OrExpressionImpl <em>Or Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.BooleanOrExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanOrExpression()
+   * @see edu.upb.lp.jarvisProject.impl.OrExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getOrExpression()
    * @generated
    */
-  int BOOLEAN_OR_EXPRESSION = 15;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_OR_EXPRESSION__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_OR_EXPRESSION__OP = EXPRESSION__OP;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_OR_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int OR_EXPRESSION = 15;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -791,7 +665,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_OR_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int OR_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -800,26 +674,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_OR_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Boolean Or Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.BooleanAndExpressionImpl <em>Boolean And Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.BooleanAndExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanAndExpression()
-   * @generated
-   */
-  int BOOLEAN_AND_EXPRESSION = 16;
+  int OR_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -828,16 +683,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_AND_EXPRESSION__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_AND_EXPRESSION__OP = EXPRESSION__OP;
+  int OR_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -846,7 +692,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_AND_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int OR_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Or Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.AndExpressionImpl <em>And Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.AndExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAndExpression()
+   * @generated
+   */
+  int AND_EXPRESSION = 16;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -855,7 +720,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_AND_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int AND_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -864,26 +729,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_AND_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Boolean And Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.BooleanEqualityExpressionImpl <em>Boolean Equality Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.BooleanEqualityExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanEqualityExpression()
-   * @generated
-   */
-  int BOOLEAN_EQUALITY_EXPRESSION = 17;
+  int AND_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -892,16 +738,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_EQUALITY_EXPRESSION__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_EQUALITY_EXPRESSION__OP = EXPRESSION__OP;
+  int AND_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -910,7 +747,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_EQUALITY_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int AND_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>And Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.EqualityExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getEqualityExpression()
+   * @generated
+   */
+  int EQUALITY_EXPRESSION = 17;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -919,7 +775,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_EQUALITY_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int EQUALITY_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -928,26 +784,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_EQUALITY_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Boolean Equality Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_EQUALITY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.IntAdditiveExpressionImpl <em>Int Additive Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.IntAdditiveExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntAdditiveExpression()
-   * @generated
-   */
-  int INT_ADDITIVE_EXPRESSION = 18;
+  int EQUALITY_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -956,7 +793,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_ADDITIVE_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int EQUALITY_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -965,7 +802,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_ADDITIVE_EXPRESSION__OP = EXPRESSION__OP;
+  int EQUALITY_EXPRESSION__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -974,7 +811,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_ADDITIVE_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int EQUALITY_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Equality Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.ComparisonExpressionImpl <em>Comparison Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.ComparisonExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getComparisonExpression()
+   * @generated
+   */
+  int COMPARISON_EXPRESSION = 18;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -983,7 +839,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_ADDITIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int COMPARISON_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -992,26 +848,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_ADDITIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Int Additive Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_ADDITIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.IntMultiplicativeExpressionImpl <em>Int Multiplicative Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.IntMultiplicativeExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntMultiplicativeExpression()
-   * @generated
-   */
-  int INT_MULTIPLICATIVE_EXPRESSION = 19;
+  int COMPARISON_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1020,7 +857,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_MULTIPLICATIVE_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int COMPARISON_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -1029,7 +866,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_MULTIPLICATIVE_EXPRESSION__OP = EXPRESSION__OP;
+  int COMPARISON_EXPRESSION__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1038,7 +875,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_MULTIPLICATIVE_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int COMPARISON_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Comparison Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPARISON_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.AdditiveExpressionImpl <em>Additive Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.AdditiveExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAdditiveExpression()
+   * @generated
+   */
+  int ADDITIVE_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -1047,7 +903,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_MULTIPLICATIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int ADDITIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -1056,26 +912,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_MULTIPLICATIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Int Multiplicative Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_MULTIPLICATIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.IntPowerExpressionImpl <em>Int Power Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.IntPowerExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntPowerExpression()
-   * @generated
-   */
-  int INT_POWER_EXPRESSION = 20;
+  int ADDITIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1084,7 +921,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_POWER_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int ADDITIVE_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -1093,7 +930,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_POWER_EXPRESSION__OP = EXPRESSION__OP;
+  int ADDITIVE_EXPRESSION__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1102,7 +939,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_POWER_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int ADDITIVE_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Additive Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.MultiplicativeExpressionImpl <em>Multiplicative Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.MultiplicativeExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getMultiplicativeExpression()
+   * @generated
+   */
+  int MULTIPLICATIVE_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -1111,7 +967,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_POWER_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int MULTIPLICATIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -1120,26 +976,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INT_POWER_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>Int Power Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_POWER_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.StringConcatExpressionImpl <em>String Concat Expression</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.StringConcatExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getStringConcatExpression()
-   * @generated
-   */
-  int STRING_CONCAT_EXPRESSION = 21;
+  int MULTIPLICATIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1148,7 +985,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_CONCAT_EXPRESSION__LEFT = EXPRESSION__LEFT;
+  int MULTIPLICATIVE_EXPRESSION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -1157,7 +994,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_CONCAT_EXPRESSION__OP = EXPRESSION__OP;
+  int MULTIPLICATIVE_EXPRESSION__OP = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1166,34 +1003,16 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_CONCAT_EXPRESSION__RIGHT = EXPRESSION__RIGHT;
+  int MULTIPLICATIVE_EXPRESSION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
+   * The number of structural features of the '<em>Multiplicative Expression</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRING_CONCAT_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_CONCAT_EXPRESSION__ARGS = EXPRESSION__ARGS;
-
-  /**
-   * The number of structural features of the '<em>String Concat Expression</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_CONCAT_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+  int MULTIPLICATIVE_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.VariableRefImpl <em>Variable Ref</em>}' class.
@@ -1203,34 +1022,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getVariableRef()
    * @generated
    */
-  int VARIABLE_REF = 22;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_REF__LEFT = EXPRESSION__LEFT;
-
-  /**
-   * The feature id for the '<em><b>Op</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_REF__OP = EXPRESSION__OP;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_REF__RIGHT = EXPRESSION__RIGHT;
+  int VARIABLE_REF = 21;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -1473,6 +1265,17 @@ public interface JarvisProjectPackage extends EPackage
   EClass getAssignment();
 
   /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Assignment#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see edu.upb.lp.jarvisProject.Assignment#getType()
+   * @see #getAssignment()
+   * @generated
+   */
+  EAttribute getAssignment_Type();
+
+  /**
    * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Assignment#getVar <em>Var</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1674,11 +1477,11 @@ public interface JarvisProjectPackage extends EPackage
   EClass getBooleanValue();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.BooleanValue#isVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.BooleanValue#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Val</em>'.
-   * @see edu.upb.lp.jarvisProject.BooleanValue#isVal()
+   * @see edu.upb.lp.jarvisProject.BooleanValue#getVal()
    * @see #getBooleanValue()
    * @generated
    */
@@ -1693,39 +1496,6 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    */
   EClass getExpression();
-
-  /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.Expression#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see edu.upb.lp.jarvisProject.Expression#getLeft()
-   * @see #getExpression()
-   * @generated
-   */
-  EReference getExpression_Left();
-
-  /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Expression#getOp <em>Op</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Op</em>'.
-   * @see edu.upb.lp.jarvisProject.Expression#getOp()
-   * @see #getExpression()
-   * @generated
-   */
-  EAttribute getExpression_Op();
-
-  /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.Expression#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see edu.upb.lp.jarvisProject.Expression#getRight()
-   * @see #getExpression()
-   * @generated
-   */
-  EReference getExpression_Right();
 
   /**
    * Returns the meta object for the reference '{@link edu.upb.lp.jarvisProject.Expression#getFunction <em>Function</em>}'.
@@ -1750,74 +1520,240 @@ public interface JarvisProjectPackage extends EPackage
   EReference getExpression_Args();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.BooleanOrExpression <em>Boolean Or Expression</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.OrExpression <em>Or Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Or Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.BooleanOrExpression
+   * @return the meta object for class '<em>Or Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.OrExpression
    * @generated
    */
-  EClass getBooleanOrExpression();
+  EClass getOrExpression();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.BooleanAndExpression <em>Boolean And Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.OrExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean And Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.BooleanAndExpression
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.OrExpression#getLeft()
+   * @see #getOrExpression()
    * @generated
    */
-  EClass getBooleanAndExpression();
+  EReference getOrExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.BooleanEqualityExpression <em>Boolean Equality Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.OrExpression#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Equality Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.BooleanEqualityExpression
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.OrExpression#getRight()
+   * @see #getOrExpression()
    * @generated
    */
-  EClass getBooleanEqualityExpression();
+  EReference getOrExpression_Right();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.IntAdditiveExpression <em>Int Additive Expression</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.AndExpression <em>And Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Additive Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.IntAdditiveExpression
+   * @return the meta object for class '<em>And Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.AndExpression
    * @generated
    */
-  EClass getIntAdditiveExpression();
+  EClass getAndExpression();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.IntMultiplicativeExpression <em>Int Multiplicative Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.AndExpression#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Multiplicative Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.IntMultiplicativeExpression
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.AndExpression#getLeft()
+   * @see #getAndExpression()
    * @generated
    */
-  EClass getIntMultiplicativeExpression();
+  EReference getAndExpression_Left();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.IntPowerExpression <em>Int Power Expression</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.AndExpression#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Power Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.IntPowerExpression
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.AndExpression#getRight()
+   * @see #getAndExpression()
    * @generated
    */
-  EClass getIntPowerExpression();
+  EReference getAndExpression_Right();
 
   /**
-   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.StringConcatExpression <em>String Concat Expression</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.EqualityExpression <em>Equality Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Concat Expression</em>'.
-   * @see edu.upb.lp.jarvisProject.StringConcatExpression
+   * @return the meta object for class '<em>Equality Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.EqualityExpression
    * @generated
    */
-  EClass getStringConcatExpression();
+  EClass getEqualityExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.EqualityExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.EqualityExpression#getLeft()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EReference getEqualityExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.EqualityExpression#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see edu.upb.lp.jarvisProject.EqualityExpression#getOp()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EAttribute getEqualityExpression_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.EqualityExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.EqualityExpression#getRight()
+   * @see #getEqualityExpression()
+   * @generated
+   */
+  EReference getEqualityExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.ComparisonExpression <em>Comparison Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Comparison Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.ComparisonExpression
+   * @generated
+   */
+  EClass getComparisonExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.ComparisonExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.ComparisonExpression#getLeft()
+   * @see #getComparisonExpression()
+   * @generated
+   */
+  EReference getComparisonExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.ComparisonExpression#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see edu.upb.lp.jarvisProject.ComparisonExpression#getOp()
+   * @see #getComparisonExpression()
+   * @generated
+   */
+  EAttribute getComparisonExpression_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.ComparisonExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.ComparisonExpression#getRight()
+   * @see #getComparisonExpression()
+   * @generated
+   */
+  EReference getComparisonExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.AdditiveExpression <em>Additive Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Additive Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.AdditiveExpression
+   * @generated
+   */
+  EClass getAdditiveExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.AdditiveExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.AdditiveExpression#getLeft()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EReference getAdditiveExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.AdditiveExpression#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see edu.upb.lp.jarvisProject.AdditiveExpression#getOp()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EAttribute getAdditiveExpression_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.AdditiveExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.AdditiveExpression#getRight()
+   * @see #getAdditiveExpression()
+   * @generated
+   */
+  EReference getAdditiveExpression_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.MultiplicativeExpression <em>Multiplicative Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multiplicative Expression</em>'.
+   * @see edu.upb.lp.jarvisProject.MultiplicativeExpression
+   * @generated
+   */
+  EClass getMultiplicativeExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.MultiplicativeExpression#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.jarvisProject.MultiplicativeExpression#getLeft()
+   * @see #getMultiplicativeExpression()
+   * @generated
+   */
+  EReference getMultiplicativeExpression_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.MultiplicativeExpression#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see edu.upb.lp.jarvisProject.MultiplicativeExpression#getOp()
+   * @see #getMultiplicativeExpression()
+   * @generated
+   */
+  EAttribute getMultiplicativeExpression_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.jarvisProject.MultiplicativeExpression#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.jarvisProject.MultiplicativeExpression#getRight()
+   * @see #getMultiplicativeExpression()
+   * @generated
+   */
+  EReference getMultiplicativeExpression_Right();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.VariableRef <em>Variable Ref</em>}'.
@@ -2028,6 +1964,14 @@ public interface JarvisProjectPackage extends EPackage
     EClass ASSIGNMENT = eINSTANCE.getAssignment();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ASSIGNMENT__TYPE = eINSTANCE.getAssignment_Type();
+
+    /**
      * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2214,30 +2158,6 @@ public interface JarvisProjectPackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__LEFT = eINSTANCE.getExpression_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute EXPRESSION__OP = eINSTANCE.getExpression_Op();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference EXPRESSION__RIGHT = eINSTANCE.getExpression_Right();
-
-    /**
      * The meta object literal for the '<em><b>Function</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2254,74 +2174,192 @@ public interface JarvisProjectPackage extends EPackage
     EReference EXPRESSION__ARGS = eINSTANCE.getExpression_Args();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.BooleanOrExpressionImpl <em>Boolean Or Expression</em>}' class.
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.OrExpressionImpl <em>Or Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.BooleanOrExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanOrExpression()
+     * @see edu.upb.lp.jarvisProject.impl.OrExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getOrExpression()
      * @generated
      */
-    EClass BOOLEAN_OR_EXPRESSION = eINSTANCE.getBooleanOrExpression();
+    EClass OR_EXPRESSION = eINSTANCE.getOrExpression();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.BooleanAndExpressionImpl <em>Boolean And Expression</em>}' class.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.BooleanAndExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanAndExpression()
      * @generated
      */
-    EClass BOOLEAN_AND_EXPRESSION = eINSTANCE.getBooleanAndExpression();
+    EReference OR_EXPRESSION__LEFT = eINSTANCE.getOrExpression_Left();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.BooleanEqualityExpressionImpl <em>Boolean Equality Expression</em>}' class.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.BooleanEqualityExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanEqualityExpression()
      * @generated
      */
-    EClass BOOLEAN_EQUALITY_EXPRESSION = eINSTANCE.getBooleanEqualityExpression();
+    EReference OR_EXPRESSION__RIGHT = eINSTANCE.getOrExpression_Right();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.IntAdditiveExpressionImpl <em>Int Additive Expression</em>}' class.
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.AndExpressionImpl <em>And Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.IntAdditiveExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntAdditiveExpression()
+     * @see edu.upb.lp.jarvisProject.impl.AndExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAndExpression()
      * @generated
      */
-    EClass INT_ADDITIVE_EXPRESSION = eINSTANCE.getIntAdditiveExpression();
+    EClass AND_EXPRESSION = eINSTANCE.getAndExpression();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.IntMultiplicativeExpressionImpl <em>Int Multiplicative Expression</em>}' class.
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.IntMultiplicativeExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntMultiplicativeExpression()
      * @generated
      */
-    EClass INT_MULTIPLICATIVE_EXPRESSION = eINSTANCE.getIntMultiplicativeExpression();
+    EReference AND_EXPRESSION__LEFT = eINSTANCE.getAndExpression_Left();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.IntPowerExpressionImpl <em>Int Power Expression</em>}' class.
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.IntPowerExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntPowerExpression()
      * @generated
      */
-    EClass INT_POWER_EXPRESSION = eINSTANCE.getIntPowerExpression();
+    EReference AND_EXPRESSION__RIGHT = eINSTANCE.getAndExpression_Right();
 
     /**
-     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.StringConcatExpressionImpl <em>String Concat Expression</em>}' class.
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.EqualityExpressionImpl <em>Equality Expression</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see edu.upb.lp.jarvisProject.impl.StringConcatExpressionImpl
-     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getStringConcatExpression()
+     * @see edu.upb.lp.jarvisProject.impl.EqualityExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getEqualityExpression()
      * @generated
      */
-    EClass STRING_CONCAT_EXPRESSION = eINSTANCE.getStringConcatExpression();
+    EClass EQUALITY_EXPRESSION = eINSTANCE.getEqualityExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPRESSION__LEFT = eINSTANCE.getEqualityExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EQUALITY_EXPRESSION__OP = eINSTANCE.getEqualityExpression_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPRESSION__RIGHT = eINSTANCE.getEqualityExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.ComparisonExpressionImpl <em>Comparison Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.ComparisonExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getComparisonExpression()
+     * @generated
+     */
+    EClass COMPARISON_EXPRESSION = eINSTANCE.getComparisonExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPARISON_EXPRESSION__LEFT = eINSTANCE.getComparisonExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPARISON_EXPRESSION__OP = eINSTANCE.getComparisonExpression_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COMPARISON_EXPRESSION__RIGHT = eINSTANCE.getComparisonExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.AdditiveExpressionImpl <em>Additive Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.AdditiveExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAdditiveExpression()
+     * @generated
+     */
+    EClass ADDITIVE_EXPRESSION = eINSTANCE.getAdditiveExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPRESSION__LEFT = eINSTANCE.getAdditiveExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ADDITIVE_EXPRESSION__OP = eINSTANCE.getAdditiveExpression_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPRESSION__RIGHT = eINSTANCE.getAdditiveExpression_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.MultiplicativeExpressionImpl <em>Multiplicative Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.MultiplicativeExpressionImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getMultiplicativeExpression()
+     * @generated
+     */
+    EClass MULTIPLICATIVE_EXPRESSION = eINSTANCE.getMultiplicativeExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTIPLICATIVE_EXPRESSION__LEFT = eINSTANCE.getMultiplicativeExpression_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MULTIPLICATIVE_EXPRESSION__OP = eINSTANCE.getMultiplicativeExpression_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTIPLICATIVE_EXPRESSION__RIGHT = eINSTANCE.getMultiplicativeExpression_Right();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.VariableRefImpl <em>Variable Ref</em>}' class.

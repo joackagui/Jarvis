@@ -121,15 +121,15 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Function:
 		//    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
 		//    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
-		//        statements+=Statement*
-		//        'RETURN' return=Expression
+		//    statements+=Statement*
+		//    'RETURN' return=Expression
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
 		//'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
-		//    statements+=Statement*
-		//    'RETURN' return=Expression
+		//statements+=Statement*
+		//'RETURN' return=Expression
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -319,17 +319,19 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cNOWKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cSETKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cVarIDTerminalRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
-		private final Keyword cASKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValueExpressionParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeDataTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cVarAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cVarIDTerminalRuleCall_3_0 = (RuleCall)cVarAssignment_3.eContents().get(0);
+		private final Keyword cASKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueExpressionParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
 		
 		//Assignment:
-		//    'NOW' 'SET' var=ID 'AS' value=Expression;
+		//    'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'NOW' 'SET' var=ID 'AS' value=Expression
+		//'NOW' 'SET' type=DataType var=ID 'AS' value=Expression
 		public Group getGroup() { return cGroup; }
 		
 		//'NOW'
@@ -338,20 +340,26 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'SET'
 		public Keyword getSETKeyword_1() { return cSETKeyword_1; }
 		
+		//type=DataType
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		
+		//DataType
+		public RuleCall getTypeDataTypeParserRuleCall_2_0() { return cTypeDataTypeParserRuleCall_2_0; }
+		
 		//var=ID
-		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
+		public Assignment getVarAssignment_3() { return cVarAssignment_3; }
 		
 		//ID
-		public RuleCall getVarIDTerminalRuleCall_2_0() { return cVarIDTerminalRuleCall_2_0; }
+		public RuleCall getVarIDTerminalRuleCall_3_0() { return cVarIDTerminalRuleCall_3_0; }
 		
 		//'AS'
-		public Keyword getASKeyword_3() { return cASKeyword_3; }
+		public Keyword getASKeyword_4() { return cASKeyword_4; }
 		
 		//value=Expression
-		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
 		
 		//Expression
-		public RuleCall getValueExpressionParserRuleCall_4_0() { return cValueExpressionParserRuleCall_4_0; }
+		public RuleCall getValueExpressionParserRuleCall_5_0() { return cValueExpressionParserRuleCall_5_0; }
 	}
 	public class PrintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Print");
@@ -392,7 +400,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cWHILEKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cConditionAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cConditionBooleanExpressionParserRuleCall_4_0 = (RuleCall)cConditionAssignment_4.eContents().get(0);
+		private final RuleCall cConditionExpressionParserRuleCall_4_0 = (RuleCall)cConditionAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cLeftCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cStatementsAssignment_7 = (Assignment)cGroup.eContents().get(7);
@@ -400,10 +408,10 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//While:
-		//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+		//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'LOOP' 'WHILE' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}'
+		//'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'JARVIS,'
@@ -418,11 +426,11 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'('
 		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
 		
-		//condition=BooleanExpression
+		//condition=Expression
 		public Assignment getConditionAssignment_4() { return cConditionAssignment_4; }
 		
-		//BooleanExpression
-		public RuleCall getConditionBooleanExpressionParserRuleCall_4_0() { return cConditionBooleanExpressionParserRuleCall_4_0; }
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_4_0() { return cConditionExpressionParserRuleCall_4_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
@@ -446,7 +454,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cTRYKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cConditionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cConditionBooleanExpressionParserRuleCall_3_0 = (RuleCall)cConditionAssignment_3.eContents().get(0);
+		private final RuleCall cConditionExpressionParserRuleCall_3_0 = (RuleCall)cConditionAssignment_3.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Assignment cStatementsAssignment_6 = (Assignment)cGroup.eContents().get(6);
@@ -454,10 +462,10 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//If:
-		//    'JARVIS,' 'TRY' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+		//    'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'TRY' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}'
+		//'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'JARVIS,'
@@ -469,11 +477,11 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'('
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//condition=BooleanExpression
+		//condition=Expression
 		public Assignment getConditionAssignment_3() { return cConditionAssignment_3; }
 		
-		//BooleanExpression
-		public RuleCall getConditionBooleanExpressionParserRuleCall_3_0() { return cConditionBooleanExpressionParserRuleCall_3_0; }
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_3_0() { return cConditionExpressionParserRuleCall_3_0; }
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
@@ -569,156 +577,137 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanValue");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cValAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final Keyword cValTRUEKeyword_0_0 = (Keyword)cValAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Action cBooleanValueAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cFALSEKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cValAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cValAlternatives_0 = (Alternatives)cValAssignment.eContents().get(0);
+		private final Keyword cValTRUEKeyword_0_0 = (Keyword)cValAlternatives_0.eContents().get(0);
+		private final Keyword cValFALSEKeyword_0_1 = (Keyword)cValAlternatives_0.eContents().get(1);
 		
 		//BooleanValue:
-		//    val ?= 'TRUE' | {BooleanValue} 'FALSE';
+		//    val=('TRUE' | 'FALSE');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//val ?= 'TRUE' | {BooleanValue} 'FALSE'
-		public Alternatives getAlternatives() { return cAlternatives; }
+		//val=('TRUE' | 'FALSE')
+		public Assignment getValAssignment() { return cValAssignment; }
 		
-		//val ?= 'TRUE'
-		public Assignment getValAssignment_0() { return cValAssignment_0; }
+		//('TRUE' | 'FALSE')
+		public Alternatives getValAlternatives_0() { return cValAlternatives_0; }
 		
 		//'TRUE'
 		public Keyword getValTRUEKeyword_0_0() { return cValTRUEKeyword_0_0; }
 		
-		//{BooleanValue} 'FALSE'
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{BooleanValue}
-		public Action getBooleanValueAction_1_0() { return cBooleanValueAction_1_0; }
-		
 		//'FALSE'
-		public Keyword getFALSEKeyword_1_1() { return cFALSEKeyword_1_1; }
+		public Keyword getValFALSEKeyword_0_1() { return cValFALSEKeyword_0_1; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Expression");
-		private final RuleCall cBooleanExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
+		private final RuleCall cOrExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//// Expressions hierarchy
+		//// Simplified Expressions hierarchy
 		//Expression returns Expression:
-		//    BooleanExpression;
+		//    OrExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//BooleanExpression
-		public RuleCall getBooleanExpressionParserRuleCall() { return cBooleanExpressionParserRuleCall; }
+		//OrExpression
+		public RuleCall getOrExpressionParserRuleCall() { return cOrExpressionParserRuleCall; }
 	}
-	public class BooleanExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanExpression");
-		private final RuleCall cBooleanOrExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//BooleanExpression returns Expression:
-		//    BooleanOrExpression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//BooleanOrExpression
-		public RuleCall getBooleanOrExpressionParserRuleCall() { return cBooleanOrExpressionParserRuleCall; }
-	}
-	public class BooleanOrExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanOrExpression");
+	public class OrExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.OrExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBooleanAndExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cAndExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cBooleanOrExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cOrExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cORKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightBooleanAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//BooleanOrExpression returns Expression:
-		//    BooleanAndExpression ({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*;
+		//OrExpression returns Expression:
+		//    AndExpression ({OrExpression.left=current} 'OR' right=AndExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//BooleanAndExpression ({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*
+		//AndExpression ({OrExpression.left=current} 'OR' right=AndExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//BooleanAndExpression
-		public RuleCall getBooleanAndExpressionParserRuleCall_0() { return cBooleanAndExpressionParserRuleCall_0; }
+		//AndExpression
+		public RuleCall getAndExpressionParserRuleCall_0() { return cAndExpressionParserRuleCall_0; }
 		
-		//({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*
+		//({OrExpression.left=current} 'OR' right=AndExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BooleanOrExpression.left=current}
-		public Action getBooleanOrExpressionLeftAction_1_0() { return cBooleanOrExpressionLeftAction_1_0; }
+		//{OrExpression.left=current}
+		public Action getOrExpressionLeftAction_1_0() { return cOrExpressionLeftAction_1_0; }
 		
 		//'OR'
 		public Keyword getORKeyword_1_1() { return cORKeyword_1_1; }
 		
-		//right=BooleanAndExpression
+		//right=AndExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//BooleanAndExpression
-		public RuleCall getRightBooleanAndExpressionParserRuleCall_1_2_0() { return cRightBooleanAndExpressionParserRuleCall_1_2_0; }
+		//AndExpression
+		public RuleCall getRightAndExpressionParserRuleCall_1_2_0() { return cRightAndExpressionParserRuleCall_1_2_0; }
 	}
-	public class BooleanAndExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanAndExpression");
+	public class AndExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.AndExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBooleanEqualityExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cEqualityExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cBooleanAndExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cAndExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cANDKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightBooleanEqualityExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightEqualityExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//BooleanAndExpression returns Expression:
-		//    BooleanEqualityExpression ({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*;
+		//AndExpression returns Expression:
+		//    EqualityExpression ({AndExpression.left=current} 'AND' right=EqualityExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//BooleanEqualityExpression ({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*
+		//EqualityExpression ({AndExpression.left=current} 'AND' right=EqualityExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//BooleanEqualityExpression
-		public RuleCall getBooleanEqualityExpressionParserRuleCall_0() { return cBooleanEqualityExpressionParserRuleCall_0; }
+		//EqualityExpression
+		public RuleCall getEqualityExpressionParserRuleCall_0() { return cEqualityExpressionParserRuleCall_0; }
 		
-		//({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*
+		//({AndExpression.left=current} 'AND' right=EqualityExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BooleanAndExpression.left=current}
-		public Action getBooleanAndExpressionLeftAction_1_0() { return cBooleanAndExpressionLeftAction_1_0; }
+		//{AndExpression.left=current}
+		public Action getAndExpressionLeftAction_1_0() { return cAndExpressionLeftAction_1_0; }
 		
 		//'AND'
 		public Keyword getANDKeyword_1_1() { return cANDKeyword_1_1; }
 		
-		//right=BooleanEqualityExpression
+		//right=EqualityExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//BooleanEqualityExpression
-		public RuleCall getRightBooleanEqualityExpressionParserRuleCall_1_2_0() { return cRightBooleanEqualityExpressionParserRuleCall_1_2_0; }
+		//EqualityExpression
+		public RuleCall getRightEqualityExpressionParserRuleCall_1_2_0() { return cRightEqualityExpressionParserRuleCall_1_2_0; }
 	}
-	public class BooleanEqualityExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanEqualityExpression");
+	public class EqualityExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.EqualityExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cBooleanComparisonExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cComparisonExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cBooleanEqualityExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cEqualityExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
 		private final Keyword cOpEqualsSignKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightBooleanComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//BooleanEqualityExpression returns Expression:
-		//    BooleanComparisonExpression ({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*;
+		//EqualityExpression returns Expression:
+		//    ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//BooleanComparisonExpression ({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*
+		//ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//BooleanComparisonExpression
-		public RuleCall getBooleanComparisonExpressionParserRuleCall_0() { return cBooleanComparisonExpressionParserRuleCall_0; }
+		//ComparisonExpression
+		public RuleCall getComparisonExpressionParserRuleCall_0() { return cComparisonExpressionParserRuleCall_0; }
 		
-		//({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*
+		//({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{BooleanEqualityExpression.left=current}
-		public Action getBooleanEqualityExpressionLeftAction_1_0() { return cBooleanEqualityExpressionLeftAction_1_0; }
+		//{EqualityExpression.left=current}
+		public Action getEqualityExpressionLeftAction_1_0() { return cEqualityExpressionLeftAction_1_0; }
 		
 		//op=('=' | '!=')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
@@ -732,174 +721,95 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'!='
 		public Keyword getOpExclamationMarkEqualsSignKeyword_1_1_0_1() { return cOpExclamationMarkEqualsSignKeyword_1_1_0_1; }
 		
-		//right=BooleanComparisonExpression
+		//right=ComparisonExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//BooleanComparisonExpression
-		public RuleCall getRightBooleanComparisonExpressionParserRuleCall_1_2_0() { return cRightBooleanComparisonExpressionParserRuleCall_1_2_0; }
+		//ComparisonExpression
+		public RuleCall getRightComparisonExpressionParserRuleCall_1_2_0() { return cRightComparisonExpressionParserRuleCall_1_2_0; }
 	}
-	public class BooleanComparisonExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanComparisonExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIntComparisonExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cNonComparativeBooleanExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//BooleanComparisonExpression returns Expression:
-		//    IntComparisonExpression
-		//    | NonComparativeBooleanExpression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//IntComparisonExpression
-		//| NonComparativeBooleanExpression
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//IntComparisonExpression
-		public RuleCall getIntComparisonExpressionParserRuleCall_0() { return cIntComparisonExpressionParserRuleCall_0; }
-		
-		//NonComparativeBooleanExpression
-		public RuleCall getNonComparativeBooleanExpressionParserRuleCall_1() { return cNonComparativeBooleanExpressionParserRuleCall_1; }
-	}
-	public class IntComparisonExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntComparisonExpression");
+	public class ComparisonExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.ComparisonExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cLeftAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLeftIntExpressionParserRuleCall_0_0 = (RuleCall)cLeftAssignment_0.eContents().get(0);
-		private final Assignment cOpAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cOpAlternatives_1_0 = (Alternatives)cOpAssignment_1.eContents().get(0);
-		private final Keyword cOpLessThanSignKeyword_1_0_0 = (Keyword)cOpAlternatives_1_0.eContents().get(0);
-		private final Keyword cOpGreaterThanSignKeyword_1_0_1 = (Keyword)cOpAlternatives_1_0.eContents().get(1);
-		private final Keyword cOpLessThanSignEqualsSignKeyword_1_0_2 = (Keyword)cOpAlternatives_1_0.eContents().get(2);
-		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_0_3 = (Keyword)cOpAlternatives_1_0.eContents().get(3);
-		private final Assignment cRightAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRightIntExpressionParserRuleCall_2_0 = (RuleCall)cRightAssignment_2.eContents().get(0);
+		private final RuleCall cAdditiveExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cComparisonExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
+		private final Keyword cOpLessThanSignKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
+		private final Keyword cOpGreaterThanSignKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
+		private final Keyword cOpLessThanSignEqualsSignKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
+		private final Keyword cOpGreaterThanSignEqualsSignKeyword_1_1_0_3 = (Keyword)cOpAlternatives_1_1_0.eContents().get(3);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightAdditiveExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//IntComparisonExpression returns Expression:
-		//    left=IntExpression op=('<' | '>' | '<=' | '>=') right=IntExpression;
+		//ComparisonExpression returns Expression:
+		//    AdditiveExpression ({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//left=IntExpression op=('<' | '>' | '<=' | '>=') right=IntExpression
+		//AdditiveExpression ({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//left=IntExpression
-		public Assignment getLeftAssignment_0() { return cLeftAssignment_0; }
+		//AdditiveExpression
+		public RuleCall getAdditiveExpressionParserRuleCall_0() { return cAdditiveExpressionParserRuleCall_0; }
 		
-		//IntExpression
-		public RuleCall getLeftIntExpressionParserRuleCall_0_0() { return cLeftIntExpressionParserRuleCall_0_0; }
+		//({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{ComparisonExpression.left=current}
+		public Action getComparisonExpressionLeftAction_1_0() { return cComparisonExpressionLeftAction_1_0; }
 		
 		//op=('<' | '>' | '<=' | '>=')
-		public Assignment getOpAssignment_1() { return cOpAssignment_1; }
+		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
 		//('<' | '>' | '<=' | '>=')
-		public Alternatives getOpAlternatives_1_0() { return cOpAlternatives_1_0; }
+		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
 		//'<'
-		public Keyword getOpLessThanSignKeyword_1_0_0() { return cOpLessThanSignKeyword_1_0_0; }
+		public Keyword getOpLessThanSignKeyword_1_1_0_0() { return cOpLessThanSignKeyword_1_1_0_0; }
 		
 		//'>'
-		public Keyword getOpGreaterThanSignKeyword_1_0_1() { return cOpGreaterThanSignKeyword_1_0_1; }
+		public Keyword getOpGreaterThanSignKeyword_1_1_0_1() { return cOpGreaterThanSignKeyword_1_1_0_1; }
 		
 		//'<='
-		public Keyword getOpLessThanSignEqualsSignKeyword_1_0_2() { return cOpLessThanSignEqualsSignKeyword_1_0_2; }
+		public Keyword getOpLessThanSignEqualsSignKeyword_1_1_0_2() { return cOpLessThanSignEqualsSignKeyword_1_1_0_2; }
 		
 		//'>='
-		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_0_3() { return cOpGreaterThanSignEqualsSignKeyword_1_0_3; }
+		public Keyword getOpGreaterThanSignEqualsSignKeyword_1_1_0_3() { return cOpGreaterThanSignEqualsSignKeyword_1_1_0_3; }
 		
-		//right=IntExpression
-		public Assignment getRightAssignment_2() { return cRightAssignment_2; }
+		//right=AdditiveExpression
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//IntExpression
-		public RuleCall getRightIntExpressionParserRuleCall_2_0() { return cRightIntExpressionParserRuleCall_2_0; }
+		//AdditiveExpression
+		public RuleCall getRightAdditiveExpressionParserRuleCall_1_2_0() { return cRightAdditiveExpressionParserRuleCall_1_2_0; }
 	}
-	public class NonComparativeBooleanExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.NonComparativeBooleanExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cStringExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFunctionCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableRefParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final RuleCall cBooleanExpressionParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		private final RuleCall cBooleanValueParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		
-		//NonComparativeBooleanExpression returns Expression:
-		//    StringExpression
-		//    | FunctionCall
-		//    | VariableRef
-		//    | '(' BooleanExpression ')'
-		//    | BooleanValue;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//StringExpression
-		//| FunctionCall
-		//| VariableRef
-		//| '(' BooleanExpression ')'
-		//| BooleanValue
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//StringExpression
-		public RuleCall getStringExpressionParserRuleCall_0() { return cStringExpressionParserRuleCall_0; }
-		
-		//FunctionCall
-		public RuleCall getFunctionCallParserRuleCall_1() { return cFunctionCallParserRuleCall_1; }
-		
-		//VariableRef
-		public RuleCall getVariableRefParserRuleCall_2() { return cVariableRefParserRuleCall_2; }
-		
-		//'(' BooleanExpression ')'
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
-		
-		//BooleanExpression
-		public RuleCall getBooleanExpressionParserRuleCall_3_1() { return cBooleanExpressionParserRuleCall_3_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
-		
-		//BooleanValue
-		public RuleCall getBooleanValueParserRuleCall_4() { return cBooleanValueParserRuleCall_4; }
-	}
-	public class IntExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntExpression");
-		private final RuleCall cIntAdditiveExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//IntExpression returns Expression:
-		//    IntAdditiveExpression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//IntAdditiveExpression
-		public RuleCall getIntAdditiveExpressionParserRuleCall() { return cIntAdditiveExpressionParserRuleCall; }
-	}
-	public class IntAdditiveExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntAdditiveExpression");
+	public class AdditiveExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.AdditiveExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIntMultiplicativeExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cMultiplicativeExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cIntAdditiveExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cAdditiveExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
 		private final Keyword cOpPlusSignKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpHyphenMinusKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightIntMultiplicativeExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightMultiplicativeExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//IntAdditiveExpression returns Expression:
-		//    IntMultiplicativeExpression ({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*;
+		//AdditiveExpression returns Expression:
+		//    MultiplicativeExpression ({AdditiveExpression.left=current} op=('+' | '-') right=MultiplicativeExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//IntMultiplicativeExpression ({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*
+		//MultiplicativeExpression ({AdditiveExpression.left=current} op=('+' | '-') right=MultiplicativeExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//IntMultiplicativeExpression
-		public RuleCall getIntMultiplicativeExpressionParserRuleCall_0() { return cIntMultiplicativeExpressionParserRuleCall_0; }
+		//MultiplicativeExpression
+		public RuleCall getMultiplicativeExpressionParserRuleCall_0() { return cMultiplicativeExpressionParserRuleCall_0; }
 		
-		//({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*
+		//({AdditiveExpression.left=current} op=('+' | '-') right=MultiplicativeExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{IntAdditiveExpression.left=current}
-		public Action getIntAdditiveExpressionLeftAction_1_0() { return cIntAdditiveExpressionLeftAction_1_0; }
+		//{AdditiveExpression.left=current}
+		public Action getAdditiveExpressionLeftAction_1_0() { return cAdditiveExpressionLeftAction_1_0; }
 		
 		//op=('+' | '-')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
@@ -913,41 +823,41 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'-'
 		public Keyword getOpHyphenMinusKeyword_1_1_0_1() { return cOpHyphenMinusKeyword_1_1_0_1; }
 		
-		//right=IntMultiplicativeExpression
+		//right=MultiplicativeExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//IntMultiplicativeExpression
-		public RuleCall getRightIntMultiplicativeExpressionParserRuleCall_1_2_0() { return cRightIntMultiplicativeExpressionParserRuleCall_1_2_0; }
+		//MultiplicativeExpression
+		public RuleCall getRightMultiplicativeExpressionParserRuleCall_1_2_0() { return cRightMultiplicativeExpressionParserRuleCall_1_2_0; }
 	}
-	public class IntMultiplicativeExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntMultiplicativeExpression");
+	public class MultiplicativeExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.MultiplicativeExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIntPowerExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cIntMultiplicativeExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cMultiplicativeExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
 		private final Keyword cOpAsteriskKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpSolidusKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Keyword cOpPercentSignKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightIntPowerExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//IntMultiplicativeExpression returns Expression:
-		//    IntPowerExpression ({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*;
+		//MultiplicativeExpression returns Expression:
+		//    PrimaryExpression ({MultiplicativeExpression.left=current} op=('*' | '/' | '%') right=PrimaryExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//IntPowerExpression ({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*
+		//PrimaryExpression ({MultiplicativeExpression.left=current} op=('*' | '/' | '%') right=PrimaryExpression)*
 		public Group getGroup() { return cGroup; }
 		
-		//IntPowerExpression
-		public RuleCall getIntPowerExpressionParserRuleCall_0() { return cIntPowerExpressionParserRuleCall_0; }
+		//PrimaryExpression
+		public RuleCall getPrimaryExpressionParserRuleCall_0() { return cPrimaryExpressionParserRuleCall_0; }
 		
-		//({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*
+		//({MultiplicativeExpression.left=current} op=('*' | '/' | '%') right=PrimaryExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//{IntMultiplicativeExpression.left=current}
-		public Action getIntMultiplicativeExpressionLeftAction_1_0() { return cIntMultiplicativeExpressionLeftAction_1_0; }
+		//{MultiplicativeExpression.left=current}
+		public Action getMultiplicativeExpressionLeftAction_1_0() { return cMultiplicativeExpressionLeftAction_1_0; }
 		
 		//op=('*' | '/' | '%')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
@@ -964,182 +874,68 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'%'
 		public Keyword getOpPercentSignKeyword_1_1_0_2() { return cOpPercentSignKeyword_1_1_0_2; }
 		
-		//right=IntPowerExpression
+		//right=PrimaryExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//IntPowerExpression
-		public RuleCall getRightIntPowerExpressionParserRuleCall_1_2_0() { return cRightIntPowerExpressionParserRuleCall_1_2_0; }
+		//PrimaryExpression
+		public RuleCall getRightPrimaryExpressionParserRuleCall_1_2_0() { return cRightPrimaryExpressionParserRuleCall_1_2_0; }
 	}
-	public class IntPowerExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntPowerExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIntPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cIntPowerExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cCircumflexAccentKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightIntPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
-		
-		//IntPowerExpression returns Expression:
-		//    IntPrimaryExpression ({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//IntPrimaryExpression ({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*
-		public Group getGroup() { return cGroup; }
-		
-		//IntPrimaryExpression
-		public RuleCall getIntPrimaryExpressionParserRuleCall_0() { return cIntPrimaryExpressionParserRuleCall_0; }
-		
-		//({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{IntPowerExpression.left=current}
-		public Action getIntPowerExpressionLeftAction_1_0() { return cIntPowerExpressionLeftAction_1_0; }
-		
-		//'^'
-		public Keyword getCircumflexAccentKeyword_1_1() { return cCircumflexAccentKeyword_1_1; }
-		
-		//right=IntPrimaryExpression
-		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
-		
-		//IntPrimaryExpression
-		public RuleCall getRightIntPrimaryExpressionParserRuleCall_1_2_0() { return cRightIntPrimaryExpressionParserRuleCall_1_2_0; }
-	}
-	public class IntPrimaryExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntPrimaryExpression");
+	public class PrimaryExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.PrimaryExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cIntValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFunctionCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableRefParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final RuleCall cIntExpressionParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final RuleCall cStringValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cBooleanValueParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cFunctionCallParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cVariableRefParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final Group cGroup_5 = (Group)cAlternatives.eContents().get(5);
+		private final Keyword cLeftParenthesisKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final RuleCall cExpressionParserRuleCall_5_1 = (RuleCall)cGroup_5.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
-		//IntPrimaryExpression returns Expression:
+		//PrimaryExpression returns Expression:
 		//    IntValue
+		//    | StringValue
+		//    | BooleanValue
 		//    | FunctionCall
 		//    | VariableRef
-		//    | '(' IntExpression ')';
+		//    | '(' Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//IntValue
+		//| StringValue
+		//| BooleanValue
 		//| FunctionCall
 		//| VariableRef
-		//| '(' IntExpression ')'
+		//| '(' Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//IntValue
 		public RuleCall getIntValueParserRuleCall_0() { return cIntValueParserRuleCall_0; }
 		
-		//FunctionCall
-		public RuleCall getFunctionCallParserRuleCall_1() { return cFunctionCallParserRuleCall_1; }
-		
-		//VariableRef
-		public RuleCall getVariableRefParserRuleCall_2() { return cVariableRefParserRuleCall_2; }
-		
-		//'(' IntExpression ')'
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
-		
-		//IntExpression
-		public RuleCall getIntExpressionParserRuleCall_3_1() { return cIntExpressionParserRuleCall_3_1; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
-	}
-	public class StringExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.StringExpression");
-		private final RuleCall cStringConcatExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//StringExpression returns Expression:
-		//    StringConcatExpression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//StringConcatExpression
-		public RuleCall getStringConcatExpressionParserRuleCall() { return cStringConcatExpressionParserRuleCall; }
-	}
-	public class StringConcatExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.StringConcatExpression");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cStringPrimaryExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cStringConcatExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
-		private final Keyword cPlusSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightStringPrimaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
-		
-		//StringConcatExpression returns Expression:
-		//    StringPrimaryExpression ({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//StringPrimaryExpression ({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*
-		public Group getGroup() { return cGroup; }
-		
-		//StringPrimaryExpression
-		public RuleCall getStringPrimaryExpressionParserRuleCall_0() { return cStringPrimaryExpressionParserRuleCall_0; }
-		
-		//({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//{StringConcatExpression.left=current}
-		public Action getStringConcatExpressionLeftAction_1_0() { return cStringConcatExpressionLeftAction_1_0; }
-		
-		//'+'
-		public Keyword getPlusSignKeyword_1_1() { return cPlusSignKeyword_1_1; }
-		
-		//right=StringPrimaryExpression
-		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
-		
-		//StringPrimaryExpression
-		public RuleCall getRightStringPrimaryExpressionParserRuleCall_1_2_0() { return cRightStringPrimaryExpressionParserRuleCall_1_2_0; }
-	}
-	public class StringPrimaryExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.StringPrimaryExpression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cStringValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFunctionCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cVariableRefParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final RuleCall cStringExpressionParserRuleCall_3_1 = (RuleCall)cGroup_3.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		
-		//StringPrimaryExpression returns Expression:
-		//    StringValue
-		//    | FunctionCall
-		//    | VariableRef
-		//    | '(' StringExpression ')';
-		@Override public ParserRule getRule() { return rule; }
-		
 		//StringValue
-		//| FunctionCall
-		//| VariableRef
-		//| '(' StringExpression ')'
-		public Alternatives getAlternatives() { return cAlternatives; }
+		public RuleCall getStringValueParserRuleCall_1() { return cStringValueParserRuleCall_1; }
 		
-		//StringValue
-		public RuleCall getStringValueParserRuleCall_0() { return cStringValueParserRuleCall_0; }
+		//BooleanValue
+		public RuleCall getBooleanValueParserRuleCall_2() { return cBooleanValueParserRuleCall_2; }
 		
 		//FunctionCall
-		public RuleCall getFunctionCallParserRuleCall_1() { return cFunctionCallParserRuleCall_1; }
+		public RuleCall getFunctionCallParserRuleCall_3() { return cFunctionCallParserRuleCall_3; }
 		
 		//VariableRef
-		public RuleCall getVariableRefParserRuleCall_2() { return cVariableRefParserRuleCall_2; }
+		public RuleCall getVariableRefParserRuleCall_4() { return cVariableRefParserRuleCall_4; }
 		
-		//'(' StringExpression ')'
-		public Group getGroup_3() { return cGroup_3; }
+		//'(' Expression ')'
+		public Group getGroup_5() { return cGroup_5; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
+		public Keyword getLeftParenthesisKeyword_5_0() { return cLeftParenthesisKeyword_5_0; }
 		
-		//StringExpression
-		public RuleCall getStringExpressionParserRuleCall_3_1() { return cStringExpressionParserRuleCall_3_1; }
+		//Expression
+		public RuleCall getExpressionParserRuleCall_5_1() { return cExpressionParserRuleCall_5_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
+		public Keyword getRightParenthesisKeyword_5_2() { return cRightParenthesisKeyword_5_2; }
 	}
 	public class VariableRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.VariableRef");
@@ -1169,26 +965,27 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cRUNKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cFunctionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cFunctionFunctionCrossReference_2_0 = (CrossReference)cFunctionAssignment_2.eContents().get(0);
-		private final RuleCall cFunctionFunctionIDTerminalRuleCall_2_0_1 = (RuleCall)cFunctionFunctionCrossReference_2_0.eContents().get(1);
-		private final Keyword cWITHKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Keyword cLeftParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Assignment cArgsAssignment_5_0 = (Assignment)cGroup_5.eContents().get(0);
-		private final RuleCall cArgsExpressionParserRuleCall_5_0_0 = (RuleCall)cArgsAssignment_5_0.eContents().get(0);
-		private final Group cGroup_5_1 = (Group)cGroup_5.eContents().get(1);
-		private final Keyword cCommaKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
-		private final Assignment cArgsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
-		private final RuleCall cArgsExpressionParserRuleCall_5_1_1_0 = (RuleCall)cArgsAssignment_5_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cPROTOCOLKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cFunctionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cFunctionFunctionCrossReference_3_0 = (CrossReference)cFunctionAssignment_3.eContents().get(0);
+		private final RuleCall cFunctionFunctionIDTerminalRuleCall_3_0_1 = (RuleCall)cFunctionFunctionCrossReference_3_0.eContents().get(1);
+		private final Keyword cWITHKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Assignment cArgsAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
+		private final RuleCall cArgsExpressionParserRuleCall_6_0_0 = (RuleCall)cArgsAssignment_6_0.eContents().get(0);
+		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
+		private final Keyword cCommaKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
+		private final Assignment cArgsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
+		private final RuleCall cArgsExpressionParserRuleCall_6_1_1_0 = (RuleCall)cArgsAssignment_6_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//FunctionCall returns Expression:
-		//    'JARVIS,' 'RUN' function=[Function]
+		//    'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
 		//    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'RUN' function=[Function]
+		//'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
 		//'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')'
 		public Group getGroup() { return cGroup; }
 		
@@ -1198,44 +995,47 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'RUN'
 		public Keyword getRUNKeyword_1() { return cRUNKeyword_1; }
 		
+		//'PROTOCOL'
+		public Keyword getPROTOCOLKeyword_2() { return cPROTOCOLKeyword_2; }
+		
 		//function=[Function]
-		public Assignment getFunctionAssignment_2() { return cFunctionAssignment_2; }
+		public Assignment getFunctionAssignment_3() { return cFunctionAssignment_3; }
 		
 		//[Function]
-		public CrossReference getFunctionFunctionCrossReference_2_0() { return cFunctionFunctionCrossReference_2_0; }
+		public CrossReference getFunctionFunctionCrossReference_3_0() { return cFunctionFunctionCrossReference_3_0; }
 		
 		//ID
-		public RuleCall getFunctionFunctionIDTerminalRuleCall_2_0_1() { return cFunctionFunctionIDTerminalRuleCall_2_0_1; }
+		public RuleCall getFunctionFunctionIDTerminalRuleCall_3_0_1() { return cFunctionFunctionIDTerminalRuleCall_3_0_1; }
 		
 		//'WITH'
-		public Keyword getWITHKeyword_3() { return cWITHKeyword_3; }
+		public Keyword getWITHKeyword_4() { return cWITHKeyword_4; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_4() { return cLeftParenthesisKeyword_4; }
+		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
 		
 		//(args+=Expression (',' args+=Expression)*)?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_6() { return cGroup_6; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_5_0() { return cArgsAssignment_5_0; }
+		public Assignment getArgsAssignment_6_0() { return cArgsAssignment_6_0; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_5_0_0() { return cArgsExpressionParserRuleCall_5_0_0; }
+		public RuleCall getArgsExpressionParserRuleCall_6_0_0() { return cArgsExpressionParserRuleCall_6_0_0; }
 		
 		//(',' args+=Expression)*
-		public Group getGroup_5_1() { return cGroup_5_1; }
+		public Group getGroup_6_1() { return cGroup_6_1; }
 		
 		//','
-		public Keyword getCommaKeyword_5_1_0() { return cCommaKeyword_5_1_0; }
+		public Keyword getCommaKeyword_6_1_0() { return cCommaKeyword_6_1_0; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_5_1_1() { return cArgsAssignment_5_1_1; }
+		public Assignment getArgsAssignment_6_1_1() { return cArgsAssignment_6_1_1; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_5_1_1_0() { return cArgsExpressionParserRuleCall_5_1_1_0; }
+		public RuleCall getArgsExpressionParserRuleCall_6_1_1_0() { return cArgsExpressionParserRuleCall_6_1_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
+		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
 	}
 	
 	
@@ -1255,21 +1055,13 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	private final StringValueElements pStringValue;
 	private final BooleanValueElements pBooleanValue;
 	private final ExpressionElements pExpression;
-	private final BooleanExpressionElements pBooleanExpression;
-	private final BooleanOrExpressionElements pBooleanOrExpression;
-	private final BooleanAndExpressionElements pBooleanAndExpression;
-	private final BooleanEqualityExpressionElements pBooleanEqualityExpression;
-	private final BooleanComparisonExpressionElements pBooleanComparisonExpression;
-	private final IntComparisonExpressionElements pIntComparisonExpression;
-	private final NonComparativeBooleanExpressionElements pNonComparativeBooleanExpression;
-	private final IntExpressionElements pIntExpression;
-	private final IntAdditiveExpressionElements pIntAdditiveExpression;
-	private final IntMultiplicativeExpressionElements pIntMultiplicativeExpression;
-	private final IntPowerExpressionElements pIntPowerExpression;
-	private final IntPrimaryExpressionElements pIntPrimaryExpression;
-	private final StringExpressionElements pStringExpression;
-	private final StringConcatExpressionElements pStringConcatExpression;
-	private final StringPrimaryExpressionElements pStringPrimaryExpression;
+	private final OrExpressionElements pOrExpression;
+	private final AndExpressionElements pAndExpression;
+	private final EqualityExpressionElements pEqualityExpression;
+	private final ComparisonExpressionElements pComparisonExpression;
+	private final AdditiveExpressionElements pAdditiveExpression;
+	private final MultiplicativeExpressionElements pMultiplicativeExpression;
+	private final PrimaryExpressionElements pPrimaryExpression;
 	private final VariableRefElements pVariableRef;
 	private final FunctionCallElements pFunctionCall;
 	
@@ -1298,21 +1090,13 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.pStringValue = new StringValueElements();
 		this.pBooleanValue = new BooleanValueElements();
 		this.pExpression = new ExpressionElements();
-		this.pBooleanExpression = new BooleanExpressionElements();
-		this.pBooleanOrExpression = new BooleanOrExpressionElements();
-		this.pBooleanAndExpression = new BooleanAndExpressionElements();
-		this.pBooleanEqualityExpression = new BooleanEqualityExpressionElements();
-		this.pBooleanComparisonExpression = new BooleanComparisonExpressionElements();
-		this.pIntComparisonExpression = new IntComparisonExpressionElements();
-		this.pNonComparativeBooleanExpression = new NonComparativeBooleanExpressionElements();
-		this.pIntExpression = new IntExpressionElements();
-		this.pIntAdditiveExpression = new IntAdditiveExpressionElements();
-		this.pIntMultiplicativeExpression = new IntMultiplicativeExpressionElements();
-		this.pIntPowerExpression = new IntPowerExpressionElements();
-		this.pIntPrimaryExpression = new IntPrimaryExpressionElements();
-		this.pStringExpression = new StringExpressionElements();
-		this.pStringConcatExpression = new StringConcatExpressionElements();
-		this.pStringPrimaryExpression = new StringPrimaryExpressionElements();
+		this.pOrExpression = new OrExpressionElements();
+		this.pAndExpression = new AndExpressionElements();
+		this.pEqualityExpression = new EqualityExpressionElements();
+		this.pComparisonExpression = new ComparisonExpressionElements();
+		this.pAdditiveExpression = new AdditiveExpressionElements();
+		this.pMultiplicativeExpression = new MultiplicativeExpressionElements();
+		this.pPrimaryExpression = new PrimaryExpressionElements();
 		this.pVariableRef = new VariableRefElements();
 		this.pFunctionCall = new FunctionCallElements();
 	}
@@ -1369,8 +1153,8 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	//Function:
 	//    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
 	//    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
-	//        statements+=Statement*
-	//        'RETURN' return=Expression
+	//    statements+=Statement*
+	//    'RETURN' return=Expression
 	//    '}';
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
@@ -1411,7 +1195,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Assignment:
-	//    'NOW' 'SET' var=ID 'AS' value=Expression;
+	//    'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
 	public AssignmentElements getAssignmentAccess() {
 		return pAssignment;
 	}
@@ -1431,7 +1215,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//While:
-	//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+	//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 	public WhileElements getWhileAccess() {
 		return pWhile;
 	}
@@ -1441,7 +1225,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//If:
-	//    'JARVIS,' 'TRY' '(' condition=BooleanExpression ')' '{' statements+=Statement+ '}';
+	//    'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 	public IfElements getIfAccess() {
 		return pIf;
 	}
@@ -1492,7 +1276,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//BooleanValue:
-	//    val ?= 'TRUE' | {BooleanValue} 'FALSE';
+	//    val=('TRUE' | 'FALSE');
 	public BooleanValueElements getBooleanValueAccess() {
 		return pBooleanValue;
 	}
@@ -1501,9 +1285,9 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getBooleanValueAccess().getRule();
 	}
 	
-	//// Expressions hierarchy
+	//// Simplified Expressions hierarchy
 	//Expression returns Expression:
-	//    BooleanExpression;
+	//    OrExpression;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
@@ -1512,165 +1296,79 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getExpressionAccess().getRule();
 	}
 	
-	//BooleanExpression returns Expression:
-	//    BooleanOrExpression;
-	public BooleanExpressionElements getBooleanExpressionAccess() {
-		return pBooleanExpression;
+	//OrExpression returns Expression:
+	//    AndExpression ({OrExpression.left=current} 'OR' right=AndExpression)*;
+	public OrExpressionElements getOrExpressionAccess() {
+		return pOrExpression;
 	}
 	
-	public ParserRule getBooleanExpressionRule() {
-		return getBooleanExpressionAccess().getRule();
+	public ParserRule getOrExpressionRule() {
+		return getOrExpressionAccess().getRule();
 	}
 	
-	//BooleanOrExpression returns Expression:
-	//    BooleanAndExpression ({BooleanOrExpression.left=current} 'OR' right=BooleanAndExpression)*;
-	public BooleanOrExpressionElements getBooleanOrExpressionAccess() {
-		return pBooleanOrExpression;
+	//AndExpression returns Expression:
+	//    EqualityExpression ({AndExpression.left=current} 'AND' right=EqualityExpression)*;
+	public AndExpressionElements getAndExpressionAccess() {
+		return pAndExpression;
 	}
 	
-	public ParserRule getBooleanOrExpressionRule() {
-		return getBooleanOrExpressionAccess().getRule();
+	public ParserRule getAndExpressionRule() {
+		return getAndExpressionAccess().getRule();
 	}
 	
-	//BooleanAndExpression returns Expression:
-	//    BooleanEqualityExpression ({BooleanAndExpression.left=current} 'AND' right=BooleanEqualityExpression)*;
-	public BooleanAndExpressionElements getBooleanAndExpressionAccess() {
-		return pBooleanAndExpression;
+	//EqualityExpression returns Expression:
+	//    ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
+	public EqualityExpressionElements getEqualityExpressionAccess() {
+		return pEqualityExpression;
 	}
 	
-	public ParserRule getBooleanAndExpressionRule() {
-		return getBooleanAndExpressionAccess().getRule();
+	public ParserRule getEqualityExpressionRule() {
+		return getEqualityExpressionAccess().getRule();
 	}
 	
-	//BooleanEqualityExpression returns Expression:
-	//    BooleanComparisonExpression ({BooleanEqualityExpression.left=current} op=('=' | '!=') right=BooleanComparisonExpression)*;
-	public BooleanEqualityExpressionElements getBooleanEqualityExpressionAccess() {
-		return pBooleanEqualityExpression;
+	//ComparisonExpression returns Expression:
+	//    AdditiveExpression ({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*;
+	public ComparisonExpressionElements getComparisonExpressionAccess() {
+		return pComparisonExpression;
 	}
 	
-	public ParserRule getBooleanEqualityExpressionRule() {
-		return getBooleanEqualityExpressionAccess().getRule();
+	public ParserRule getComparisonExpressionRule() {
+		return getComparisonExpressionAccess().getRule();
 	}
 	
-	//BooleanComparisonExpression returns Expression:
-	//    IntComparisonExpression
-	//    | NonComparativeBooleanExpression;
-	public BooleanComparisonExpressionElements getBooleanComparisonExpressionAccess() {
-		return pBooleanComparisonExpression;
+	//AdditiveExpression returns Expression:
+	//    MultiplicativeExpression ({AdditiveExpression.left=current} op=('+' | '-') right=MultiplicativeExpression)*;
+	public AdditiveExpressionElements getAdditiveExpressionAccess() {
+		return pAdditiveExpression;
 	}
 	
-	public ParserRule getBooleanComparisonExpressionRule() {
-		return getBooleanComparisonExpressionAccess().getRule();
+	public ParserRule getAdditiveExpressionRule() {
+		return getAdditiveExpressionAccess().getRule();
 	}
 	
-	//IntComparisonExpression returns Expression:
-	//    left=IntExpression op=('<' | '>' | '<=' | '>=') right=IntExpression;
-	public IntComparisonExpressionElements getIntComparisonExpressionAccess() {
-		return pIntComparisonExpression;
+	//MultiplicativeExpression returns Expression:
+	//    PrimaryExpression ({MultiplicativeExpression.left=current} op=('*' | '/' | '%') right=PrimaryExpression)*;
+	public MultiplicativeExpressionElements getMultiplicativeExpressionAccess() {
+		return pMultiplicativeExpression;
 	}
 	
-	public ParserRule getIntComparisonExpressionRule() {
-		return getIntComparisonExpressionAccess().getRule();
+	public ParserRule getMultiplicativeExpressionRule() {
+		return getMultiplicativeExpressionAccess().getRule();
 	}
 	
-	//NonComparativeBooleanExpression returns Expression:
-	//    StringExpression
-	//    | FunctionCall
-	//    | VariableRef
-	//    | '(' BooleanExpression ')'
-	//    | BooleanValue;
-	public NonComparativeBooleanExpressionElements getNonComparativeBooleanExpressionAccess() {
-		return pNonComparativeBooleanExpression;
-	}
-	
-	public ParserRule getNonComparativeBooleanExpressionRule() {
-		return getNonComparativeBooleanExpressionAccess().getRule();
-	}
-	
-	//IntExpression returns Expression:
-	//    IntAdditiveExpression;
-	public IntExpressionElements getIntExpressionAccess() {
-		return pIntExpression;
-	}
-	
-	public ParserRule getIntExpressionRule() {
-		return getIntExpressionAccess().getRule();
-	}
-	
-	//IntAdditiveExpression returns Expression:
-	//    IntMultiplicativeExpression ({IntAdditiveExpression.left=current} op=('+' | '-') right=IntMultiplicativeExpression)*;
-	public IntAdditiveExpressionElements getIntAdditiveExpressionAccess() {
-		return pIntAdditiveExpression;
-	}
-	
-	public ParserRule getIntAdditiveExpressionRule() {
-		return getIntAdditiveExpressionAccess().getRule();
-	}
-	
-	//IntMultiplicativeExpression returns Expression:
-	//    IntPowerExpression ({IntMultiplicativeExpression.left=current} op=('*' | '/' | '%') right=IntPowerExpression)*;
-	public IntMultiplicativeExpressionElements getIntMultiplicativeExpressionAccess() {
-		return pIntMultiplicativeExpression;
-	}
-	
-	public ParserRule getIntMultiplicativeExpressionRule() {
-		return getIntMultiplicativeExpressionAccess().getRule();
-	}
-	
-	//IntPowerExpression returns Expression:
-	//    IntPrimaryExpression ({IntPowerExpression.left=current} '^' right=IntPrimaryExpression)*;
-	public IntPowerExpressionElements getIntPowerExpressionAccess() {
-		return pIntPowerExpression;
-	}
-	
-	public ParserRule getIntPowerExpressionRule() {
-		return getIntPowerExpressionAccess().getRule();
-	}
-	
-	//IntPrimaryExpression returns Expression:
+	//PrimaryExpression returns Expression:
 	//    IntValue
+	//    | StringValue
+	//    | BooleanValue
 	//    | FunctionCall
 	//    | VariableRef
-	//    | '(' IntExpression ')';
-	public IntPrimaryExpressionElements getIntPrimaryExpressionAccess() {
-		return pIntPrimaryExpression;
+	//    | '(' Expression ')';
+	public PrimaryExpressionElements getPrimaryExpressionAccess() {
+		return pPrimaryExpression;
 	}
 	
-	public ParserRule getIntPrimaryExpressionRule() {
-		return getIntPrimaryExpressionAccess().getRule();
-	}
-	
-	//StringExpression returns Expression:
-	//    StringConcatExpression;
-	public StringExpressionElements getStringExpressionAccess() {
-		return pStringExpression;
-	}
-	
-	public ParserRule getStringExpressionRule() {
-		return getStringExpressionAccess().getRule();
-	}
-	
-	//StringConcatExpression returns Expression:
-	//    StringPrimaryExpression ({StringConcatExpression.left=current} '+' right=StringPrimaryExpression)*;
-	public StringConcatExpressionElements getStringConcatExpressionAccess() {
-		return pStringConcatExpression;
-	}
-	
-	public ParserRule getStringConcatExpressionRule() {
-		return getStringConcatExpressionAccess().getRule();
-	}
-	
-	//StringPrimaryExpression returns Expression:
-	//    StringValue
-	//    | FunctionCall
-	//    | VariableRef
-	//    | '(' StringExpression ')';
-	public StringPrimaryExpressionElements getStringPrimaryExpressionAccess() {
-		return pStringPrimaryExpression;
-	}
-	
-	public ParserRule getStringPrimaryExpressionRule() {
-		return getStringPrimaryExpressionAccess().getRule();
+	public ParserRule getPrimaryExpressionRule() {
+		return getPrimaryExpressionAccess().getRule();
 	}
 	
 	//VariableRef returns Expression:
@@ -1684,7 +1382,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//FunctionCall returns Expression:
-	//    'JARVIS,' 'RUN' function=[Function]
+	//    'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
 	//    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
 	public FunctionCallElements getFunctionCallAccess() {
 		return pFunctionCall;

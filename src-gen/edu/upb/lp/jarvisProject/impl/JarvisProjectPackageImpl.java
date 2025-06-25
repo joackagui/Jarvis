@@ -3,27 +3,26 @@
  */
 package edu.upb.lp.jarvisProject.impl;
 
+import edu.upb.lp.jarvisProject.AdditiveExpression;
+import edu.upb.lp.jarvisProject.AndExpression;
 import edu.upb.lp.jarvisProject.Assignment;
-import edu.upb.lp.jarvisProject.BooleanAndExpression;
-import edu.upb.lp.jarvisProject.BooleanEqualityExpression;
-import edu.upb.lp.jarvisProject.BooleanOrExpression;
 import edu.upb.lp.jarvisProject.BooleanValue;
+import edu.upb.lp.jarvisProject.ComparisonExpression;
+import edu.upb.lp.jarvisProject.EqualityExpression;
 import edu.upb.lp.jarvisProject.Expression;
 import edu.upb.lp.jarvisProject.Function;
 import edu.upb.lp.jarvisProject.If;
 import edu.upb.lp.jarvisProject.Imm;
 import edu.upb.lp.jarvisProject.Initialization;
-import edu.upb.lp.jarvisProject.IntAdditiveExpression;
-import edu.upb.lp.jarvisProject.IntMultiplicativeExpression;
-import edu.upb.lp.jarvisProject.IntPowerExpression;
 import edu.upb.lp.jarvisProject.IntValue;
 import edu.upb.lp.jarvisProject.Ipp;
 import edu.upb.lp.jarvisProject.JarvisProjectFactory;
 import edu.upb.lp.jarvisProject.JarvisProjectPackage;
+import edu.upb.lp.jarvisProject.MultiplicativeExpression;
+import edu.upb.lp.jarvisProject.OrExpression;
 import edu.upb.lp.jarvisProject.Print;
 import edu.upb.lp.jarvisProject.Program;
 import edu.upb.lp.jarvisProject.Statement;
-import edu.upb.lp.jarvisProject.StringConcatExpression;
 import edu.upb.lp.jarvisProject.StringValue;
 import edu.upb.lp.jarvisProject.TypedParam;
 import edu.upb.lp.jarvisProject.VariableRef;
@@ -154,49 +153,42 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass booleanOrExpressionEClass = null;
+  private EClass orExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass booleanAndExpressionEClass = null;
+  private EClass andExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass booleanEqualityExpressionEClass = null;
+  private EClass equalityExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass intAdditiveExpressionEClass = null;
+  private EClass comparisonExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass intMultiplicativeExpressionEClass = null;
+  private EClass additiveExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass intPowerExpressionEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringConcatExpressionEClass = null;
+  private EClass multiplicativeExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -482,7 +474,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getAssignment_Var()
+  public EAttribute getAssignment_Type()
   {
     return (EAttribute)assignmentEClass.getEStructuralFeatures().get(0);
   }
@@ -493,9 +485,20 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
+  public EAttribute getAssignment_Var()
+  {
+    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getAssignment_Value()
   {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -713,7 +716,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EReference getExpression_Left()
+  public EReference getExpression_Function()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(0);
   }
@@ -724,42 +727,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getExpression_Op()
-  {
-    return (EAttribute)expressionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getExpression_Right()
-  {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getExpression_Function()
-  {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getExpression_Args()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(4);
+    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -768,9 +738,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getBooleanOrExpression()
+  public EClass getOrExpression()
   {
-    return booleanOrExpressionEClass;
+    return orExpressionEClass;
   }
 
   /**
@@ -779,9 +749,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getBooleanAndExpression()
+  public EReference getOrExpression_Left()
   {
-    return booleanAndExpressionEClass;
+    return (EReference)orExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -790,9 +760,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getBooleanEqualityExpression()
+  public EReference getOrExpression_Right()
   {
-    return booleanEqualityExpressionEClass;
+    return (EReference)orExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -801,9 +771,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getIntAdditiveExpression()
+  public EClass getAndExpression()
   {
-    return intAdditiveExpressionEClass;
+    return andExpressionEClass;
   }
 
   /**
@@ -812,9 +782,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getIntMultiplicativeExpression()
+  public EReference getAndExpression_Left()
   {
-    return intMultiplicativeExpressionEClass;
+    return (EReference)andExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -823,9 +793,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getIntPowerExpression()
+  public EReference getAndExpression_Right()
   {
-    return intPowerExpressionEClass;
+    return (EReference)andExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -834,9 +804,174 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EClass getStringConcatExpression()
+  public EClass getEqualityExpression()
   {
-    return stringConcatExpressionEClass;
+    return equalityExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualityExpression_Left()
+  {
+    return (EReference)equalityExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEqualityExpression_Op()
+  {
+    return (EAttribute)equalityExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualityExpression_Right()
+  {
+    return (EReference)equalityExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getComparisonExpression()
+  {
+    return comparisonExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getComparisonExpression_Left()
+  {
+    return (EReference)comparisonExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getComparisonExpression_Op()
+  {
+    return (EAttribute)comparisonExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getComparisonExpression_Right()
+  {
+    return (EReference)comparisonExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAdditiveExpression()
+  {
+    return additiveExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditiveExpression_Left()
+  {
+    return (EReference)additiveExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAdditiveExpression_Op()
+  {
+    return (EAttribute)additiveExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditiveExpression_Right()
+  {
+    return (EReference)additiveExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiplicativeExpression()
+  {
+    return multiplicativeExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicativeExpression_Left()
+  {
+    return (EReference)multiplicativeExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMultiplicativeExpression_Op()
+  {
+    return (EAttribute)multiplicativeExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicativeExpression_Right()
+  {
+    return (EReference)multiplicativeExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -916,6 +1051,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     createEReference(initializationEClass, INITIALIZATION__VALUE);
 
     assignmentEClass = createEClass(ASSIGNMENT);
+    createEAttribute(assignmentEClass, ASSIGNMENT__TYPE);
     createEAttribute(assignmentEClass, ASSIGNMENT__VAR);
     createEReference(assignmentEClass, ASSIGNMENT__VALUE);
 
@@ -946,25 +1082,36 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     createEAttribute(booleanValueEClass, BOOLEAN_VALUE__VAL);
 
     expressionEClass = createEClass(EXPRESSION);
-    createEReference(expressionEClass, EXPRESSION__LEFT);
-    createEAttribute(expressionEClass, EXPRESSION__OP);
-    createEReference(expressionEClass, EXPRESSION__RIGHT);
     createEReference(expressionEClass, EXPRESSION__FUNCTION);
     createEReference(expressionEClass, EXPRESSION__ARGS);
 
-    booleanOrExpressionEClass = createEClass(BOOLEAN_OR_EXPRESSION);
+    orExpressionEClass = createEClass(OR_EXPRESSION);
+    createEReference(orExpressionEClass, OR_EXPRESSION__LEFT);
+    createEReference(orExpressionEClass, OR_EXPRESSION__RIGHT);
 
-    booleanAndExpressionEClass = createEClass(BOOLEAN_AND_EXPRESSION);
+    andExpressionEClass = createEClass(AND_EXPRESSION);
+    createEReference(andExpressionEClass, AND_EXPRESSION__LEFT);
+    createEReference(andExpressionEClass, AND_EXPRESSION__RIGHT);
 
-    booleanEqualityExpressionEClass = createEClass(BOOLEAN_EQUALITY_EXPRESSION);
+    equalityExpressionEClass = createEClass(EQUALITY_EXPRESSION);
+    createEReference(equalityExpressionEClass, EQUALITY_EXPRESSION__LEFT);
+    createEAttribute(equalityExpressionEClass, EQUALITY_EXPRESSION__OP);
+    createEReference(equalityExpressionEClass, EQUALITY_EXPRESSION__RIGHT);
 
-    intAdditiveExpressionEClass = createEClass(INT_ADDITIVE_EXPRESSION);
+    comparisonExpressionEClass = createEClass(COMPARISON_EXPRESSION);
+    createEReference(comparisonExpressionEClass, COMPARISON_EXPRESSION__LEFT);
+    createEAttribute(comparisonExpressionEClass, COMPARISON_EXPRESSION__OP);
+    createEReference(comparisonExpressionEClass, COMPARISON_EXPRESSION__RIGHT);
 
-    intMultiplicativeExpressionEClass = createEClass(INT_MULTIPLICATIVE_EXPRESSION);
+    additiveExpressionEClass = createEClass(ADDITIVE_EXPRESSION);
+    createEReference(additiveExpressionEClass, ADDITIVE_EXPRESSION__LEFT);
+    createEAttribute(additiveExpressionEClass, ADDITIVE_EXPRESSION__OP);
+    createEReference(additiveExpressionEClass, ADDITIVE_EXPRESSION__RIGHT);
 
-    intPowerExpressionEClass = createEClass(INT_POWER_EXPRESSION);
-
-    stringConcatExpressionEClass = createEClass(STRING_CONCAT_EXPRESSION);
+    multiplicativeExpressionEClass = createEClass(MULTIPLICATIVE_EXPRESSION);
+    createEReference(multiplicativeExpressionEClass, MULTIPLICATIVE_EXPRESSION__LEFT);
+    createEAttribute(multiplicativeExpressionEClass, MULTIPLICATIVE_EXPRESSION__OP);
+    createEReference(multiplicativeExpressionEClass, MULTIPLICATIVE_EXPRESSION__RIGHT);
 
     variableRefEClass = createEClass(VARIABLE_REF);
     createEAttribute(variableRefEClass, VARIABLE_REF__VAR);
@@ -1009,13 +1156,12 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     intValueEClass.getESuperTypes().add(this.getExpression());
     stringValueEClass.getESuperTypes().add(this.getExpression());
     booleanValueEClass.getESuperTypes().add(this.getExpression());
-    booleanOrExpressionEClass.getESuperTypes().add(this.getExpression());
-    booleanAndExpressionEClass.getESuperTypes().add(this.getExpression());
-    booleanEqualityExpressionEClass.getESuperTypes().add(this.getExpression());
-    intAdditiveExpressionEClass.getESuperTypes().add(this.getExpression());
-    intMultiplicativeExpressionEClass.getESuperTypes().add(this.getExpression());
-    intPowerExpressionEClass.getESuperTypes().add(this.getExpression());
-    stringConcatExpressionEClass.getESuperTypes().add(this.getExpression());
+    orExpressionEClass.getESuperTypes().add(this.getExpression());
+    andExpressionEClass.getESuperTypes().add(this.getExpression());
+    equalityExpressionEClass.getESuperTypes().add(this.getExpression());
+    comparisonExpressionEClass.getESuperTypes().add(this.getExpression());
+    additiveExpressionEClass.getESuperTypes().add(this.getExpression());
+    multiplicativeExpressionEClass.getESuperTypes().add(this.getExpression());
     variableRefEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
@@ -1043,6 +1189,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     initEReference(getInitialization_Value(), this.getExpression(), null, "value", null, 0, 1, Initialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAssignment_Type(), ecorePackage.getEString(), "type", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAssignment_Var(), ecorePackage.getEString(), "var", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1070,28 +1217,39 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     initEAttribute(getStringValue_Val(), ecorePackage.getEString(), "val", null, 0, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanValue_Val(), ecorePackage.getEBoolean(), "val", null, 0, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBooleanValue_Val(), ecorePackage.getEString(), "val", null, 0, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExpression_Left(), this.getExpression(), null, "left", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Right(), this.getExpression(), null, "right", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Function(), this.getFunction(), null, "function", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExpression_Args(), this.getExpression(), null, "args", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(booleanOrExpressionEClass, BooleanOrExpression.class, "BooleanOrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(orExpressionEClass, OrExpression.class, "OrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrExpression_Left(), this.getExpression(), null, "left", null, 0, 1, OrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOrExpression_Right(), this.getExpression(), null, "right", null, 0, 1, OrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(booleanAndExpressionEClass, BooleanAndExpression.class, "BooleanAndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(andExpressionEClass, AndExpression.class, "AndExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAndExpression_Left(), this.getExpression(), null, "left", null, 0, 1, AndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAndExpression_Right(), this.getExpression(), null, "right", null, 0, 1, AndExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(booleanEqualityExpressionEClass, BooleanEqualityExpression.class, "BooleanEqualityExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(equalityExpressionEClass, EqualityExpression.class, "EqualityExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEqualityExpression_Left(), this.getExpression(), null, "left", null, 0, 1, EqualityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEqualityExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, EqualityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEqualityExpression_Right(), this.getExpression(), null, "right", null, 0, 1, EqualityExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(intAdditiveExpressionEClass, IntAdditiveExpression.class, "IntAdditiveExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(comparisonExpressionEClass, ComparisonExpression.class, "ComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getComparisonExpression_Left(), this.getExpression(), null, "left", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComparisonExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComparisonExpression_Right(), this.getExpression(), null, "right", null, 0, 1, ComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(intMultiplicativeExpressionEClass, IntMultiplicativeExpression.class, "IntMultiplicativeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(additiveExpressionEClass, AdditiveExpression.class, "AdditiveExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdditiveExpression_Left(), this.getExpression(), null, "left", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdditiveExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdditiveExpression_Right(), this.getExpression(), null, "right", null, 0, 1, AdditiveExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(intPowerExpressionEClass, IntPowerExpression.class, "IntPowerExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(stringConcatExpressionEClass, StringConcatExpression.class, "StringConcatExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(multiplicativeExpressionEClass, MultiplicativeExpression.class, "MultiplicativeExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiplicativeExpression_Left(), this.getExpression(), null, "left", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMultiplicativeExpression_Op(), ecorePackage.getEString(), "op", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMultiplicativeExpression_Right(), this.getExpression(), null, "right", null, 0, 1, MultiplicativeExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableRefEClass, VariableRef.class, "VariableRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariableRef_Var(), ecorePackage.getEString(), "var", null, 0, 1, VariableRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -188,59 +188,51 @@ public class JarvisProjectSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.BOOLEAN_OR_EXPRESSION:
+      case JarvisProjectPackage.OR_EXPRESSION:
       {
-        BooleanOrExpression booleanOrExpression = (BooleanOrExpression)theEObject;
-        T result = caseBooleanOrExpression(booleanOrExpression);
-        if (result == null) result = caseExpression(booleanOrExpression);
+        OrExpression orExpression = (OrExpression)theEObject;
+        T result = caseOrExpression(orExpression);
+        if (result == null) result = caseExpression(orExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.BOOLEAN_AND_EXPRESSION:
+      case JarvisProjectPackage.AND_EXPRESSION:
       {
-        BooleanAndExpression booleanAndExpression = (BooleanAndExpression)theEObject;
-        T result = caseBooleanAndExpression(booleanAndExpression);
-        if (result == null) result = caseExpression(booleanAndExpression);
+        AndExpression andExpression = (AndExpression)theEObject;
+        T result = caseAndExpression(andExpression);
+        if (result == null) result = caseExpression(andExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.BOOLEAN_EQUALITY_EXPRESSION:
+      case JarvisProjectPackage.EQUALITY_EXPRESSION:
       {
-        BooleanEqualityExpression booleanEqualityExpression = (BooleanEqualityExpression)theEObject;
-        T result = caseBooleanEqualityExpression(booleanEqualityExpression);
-        if (result == null) result = caseExpression(booleanEqualityExpression);
+        EqualityExpression equalityExpression = (EqualityExpression)theEObject;
+        T result = caseEqualityExpression(equalityExpression);
+        if (result == null) result = caseExpression(equalityExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.INT_ADDITIVE_EXPRESSION:
+      case JarvisProjectPackage.COMPARISON_EXPRESSION:
       {
-        IntAdditiveExpression intAdditiveExpression = (IntAdditiveExpression)theEObject;
-        T result = caseIntAdditiveExpression(intAdditiveExpression);
-        if (result == null) result = caseExpression(intAdditiveExpression);
+        ComparisonExpression comparisonExpression = (ComparisonExpression)theEObject;
+        T result = caseComparisonExpression(comparisonExpression);
+        if (result == null) result = caseExpression(comparisonExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.INT_MULTIPLICATIVE_EXPRESSION:
+      case JarvisProjectPackage.ADDITIVE_EXPRESSION:
       {
-        IntMultiplicativeExpression intMultiplicativeExpression = (IntMultiplicativeExpression)theEObject;
-        T result = caseIntMultiplicativeExpression(intMultiplicativeExpression);
-        if (result == null) result = caseExpression(intMultiplicativeExpression);
+        AdditiveExpression additiveExpression = (AdditiveExpression)theEObject;
+        T result = caseAdditiveExpression(additiveExpression);
+        if (result == null) result = caseExpression(additiveExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case JarvisProjectPackage.INT_POWER_EXPRESSION:
+      case JarvisProjectPackage.MULTIPLICATIVE_EXPRESSION:
       {
-        IntPowerExpression intPowerExpression = (IntPowerExpression)theEObject;
-        T result = caseIntPowerExpression(intPowerExpression);
-        if (result == null) result = caseExpression(intPowerExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case JarvisProjectPackage.STRING_CONCAT_EXPRESSION:
-      {
-        StringConcatExpression stringConcatExpression = (StringConcatExpression)theEObject;
-        T result = caseStringConcatExpression(stringConcatExpression);
-        if (result == null) result = caseExpression(stringConcatExpression);
+        MultiplicativeExpression multiplicativeExpression = (MultiplicativeExpression)theEObject;
+        T result = caseMultiplicativeExpression(multiplicativeExpression);
+        if (result == null) result = caseExpression(multiplicativeExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -497,113 +489,97 @@ public class JarvisProjectSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Or Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Or Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Or Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Or Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBooleanOrExpression(BooleanOrExpression object)
+  public T caseOrExpression(OrExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean And Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>And Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean And Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>And Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBooleanAndExpression(BooleanAndExpression object)
+  public T caseAndExpression(AndExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Equality Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Equality Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Equality Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Equality Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBooleanEqualityExpression(BooleanEqualityExpression object)
+  public T caseEqualityExpression(EqualityExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Additive Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Comparison Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Additive Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Comparison Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIntAdditiveExpression(IntAdditiveExpression object)
+  public T caseComparisonExpression(ComparisonExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Multiplicative Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Multiplicative Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIntMultiplicativeExpression(IntMultiplicativeExpression object)
+  public T caseAdditiveExpression(AdditiveExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Power Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Multiplicative Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Power Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Multiplicative Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIntPowerExpression(IntPowerExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Concat Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Concat Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringConcatExpression(StringConcatExpression object)
+  public T caseMultiplicativeExpression(MultiplicativeExpression object)
   {
     return null;
   }
