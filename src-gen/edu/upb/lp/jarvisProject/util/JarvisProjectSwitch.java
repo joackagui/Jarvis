@@ -87,6 +87,30 @@ public class JarvisProjectSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JarvisProjectPackage.FUNCTION_INT:
+      {
+        FunctionInt functionInt = (FunctionInt)theEObject;
+        T result = caseFunctionInt(functionInt);
+        if (result == null) result = caseFunction(functionInt);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JarvisProjectPackage.FUNCTION_STRING:
+      {
+        FunctionString functionString = (FunctionString)theEObject;
+        T result = caseFunctionString(functionString);
+        if (result == null) result = caseFunction(functionString);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case JarvisProjectPackage.FUNCTION_BOOLEAN:
+      {
+        FunctionBoolean functionBoolean = (FunctionBoolean)theEObject;
+        T result = caseFunctionBoolean(functionBoolean);
+        if (result == null) result = caseFunction(functionBoolean);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JarvisProjectPackage.TYPED_PARAM:
       {
         TypedParam typedParam = (TypedParam)theEObject;
@@ -188,6 +212,14 @@ public class JarvisProjectSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JarvisProjectPackage.FUNCTION_CALL:
+      {
+        FunctionCall functionCall = (FunctionCall)theEObject;
+        T result = caseFunctionCall(functionCall);
+        if (result == null) result = caseExpression(functionCall);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JarvisProjectPackage.OR_EXPRESSION:
       {
         OrExpression orExpression = (OrExpression)theEObject;
@@ -276,6 +308,54 @@ public class JarvisProjectSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunction(Function object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Int</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Int</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionInt(FunctionInt object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function String</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function String</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionString(FunctionString object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Boolean</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Boolean</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionBoolean(FunctionBoolean object)
   {
     return null;
   }
@@ -484,6 +564,22 @@ public class JarvisProjectSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionCall(FunctionCall object)
   {
     return null;
   }

@@ -11,6 +11,10 @@ import edu.upb.lp.jarvisProject.ComparisonExpression;
 import edu.upb.lp.jarvisProject.EqualityExpression;
 import edu.upb.lp.jarvisProject.Expression;
 import edu.upb.lp.jarvisProject.Function;
+import edu.upb.lp.jarvisProject.FunctionBoolean;
+import edu.upb.lp.jarvisProject.FunctionCall;
+import edu.upb.lp.jarvisProject.FunctionInt;
+import edu.upb.lp.jarvisProject.FunctionString;
 import edu.upb.lp.jarvisProject.If;
 import edu.upb.lp.jarvisProject.Imm;
 import edu.upb.lp.jarvisProject.Initialization;
@@ -56,6 +60,27 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   private EClass functionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionIntEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionStringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionBooleanEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -147,6 +172,13 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionCallEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -320,7 +352,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getFunction_Type()
+  public EAttribute getFunction_Name()
   {
     return (EAttribute)functionEClass.getEStructuralFeatures().get(0);
   }
@@ -331,20 +363,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getFunction_Name()
-  {
-    return (EAttribute)functionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getFunction_Params()
   {
-    return (EReference)functionEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -355,7 +376,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
   @Override
   public EReference getFunction_Statements()
   {
-    return (EReference)functionEClass.getEStructuralFeatures().get(3);
+    return (EReference)functionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -366,7 +387,40 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
   @Override
   public EReference getFunction_Return()
   {
-    return (EReference)functionEClass.getEStructuralFeatures().get(4);
+    return (EReference)functionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionInt()
+  {
+    return functionIntEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionString()
+  {
+    return functionStringEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionBoolean()
+  {
+    return functionBooleanEClass;
   }
 
   /**
@@ -474,7 +528,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getAssignment_Type()
+  public EAttribute getAssignment_Var()
   {
     return (EAttribute)assignmentEClass.getEStructuralFeatures().get(0);
   }
@@ -485,20 +539,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EAttribute getAssignment_Var()
-  {
-    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getAssignment_Value()
   {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(2);
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -716,9 +759,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EReference getExpression_Function()
+  public EClass getFunctionCall()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+    return functionCallEClass;
   }
 
   /**
@@ -727,9 +770,20 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
    * @generated
    */
   @Override
-  public EReference getExpression_Args()
+  public EReference getFunctionCall_Function()
   {
-    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCall_Args()
+  {
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1033,11 +1087,16 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     createEReference(programEClass, PROGRAM__EVAL);
 
     functionEClass = createEClass(FUNCTION);
-    createEAttribute(functionEClass, FUNCTION__TYPE);
     createEAttribute(functionEClass, FUNCTION__NAME);
     createEReference(functionEClass, FUNCTION__PARAMS);
     createEReference(functionEClass, FUNCTION__STATEMENTS);
     createEReference(functionEClass, FUNCTION__RETURN);
+
+    functionIntEClass = createEClass(FUNCTION_INT);
+
+    functionStringEClass = createEClass(FUNCTION_STRING);
+
+    functionBooleanEClass = createEClass(FUNCTION_BOOLEAN);
 
     typedParamEClass = createEClass(TYPED_PARAM);
     createEAttribute(typedParamEClass, TYPED_PARAM__TYPE);
@@ -1051,7 +1110,6 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     createEReference(initializationEClass, INITIALIZATION__VALUE);
 
     assignmentEClass = createEClass(ASSIGNMENT);
-    createEAttribute(assignmentEClass, ASSIGNMENT__TYPE);
     createEAttribute(assignmentEClass, ASSIGNMENT__VAR);
     createEReference(assignmentEClass, ASSIGNMENT__VALUE);
 
@@ -1082,8 +1140,10 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     createEAttribute(booleanValueEClass, BOOLEAN_VALUE__VAL);
 
     expressionEClass = createEClass(EXPRESSION);
-    createEReference(expressionEClass, EXPRESSION__FUNCTION);
-    createEReference(expressionEClass, EXPRESSION__ARGS);
+
+    functionCallEClass = createEClass(FUNCTION_CALL);
+    createEReference(functionCallEClass, FUNCTION_CALL__FUNCTION);
+    createEReference(functionCallEClass, FUNCTION_CALL__ARGS);
 
     orExpressionEClass = createEClass(OR_EXPRESSION);
     createEReference(orExpressionEClass, OR_EXPRESSION__LEFT);
@@ -1146,6 +1206,9 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    functionIntEClass.getESuperTypes().add(this.getFunction());
+    functionStringEClass.getESuperTypes().add(this.getFunction());
+    functionBooleanEClass.getESuperTypes().add(this.getFunction());
     initializationEClass.getESuperTypes().add(this.getStatement());
     assignmentEClass.getESuperTypes().add(this.getStatement());
     printEClass.getESuperTypes().add(this.getStatement());
@@ -1156,6 +1219,7 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     intValueEClass.getESuperTypes().add(this.getExpression());
     stringValueEClass.getESuperTypes().add(this.getExpression());
     booleanValueEClass.getESuperTypes().add(this.getExpression());
+    functionCallEClass.getESuperTypes().add(this.getExpression());
     orExpressionEClass.getESuperTypes().add(this.getExpression());
     andExpressionEClass.getESuperTypes().add(this.getExpression());
     equalityExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -1171,11 +1235,16 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     initEReference(getProgram_Eval(), this.getExpression(), null, "eval", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunction_Type(), ecorePackage.getEString(), "type", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunction_Name(), ecorePackage.getEString(), "name", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunction_Params(), this.getTypedParam(), null, "params", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunction_Statements(), this.getStatement(), null, "statements", null, 0, -1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunction_Return(), this.getExpression(), null, "return", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionIntEClass, FunctionInt.class, "FunctionInt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(functionStringEClass, FunctionString.class, "FunctionString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(functionBooleanEClass, FunctionBoolean.class, "FunctionBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typedParamEClass, TypedParam.class, "TypedParam", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTypedParam_Type(), ecorePackage.getEString(), "type", null, 0, 1, TypedParam.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1189,7 +1258,6 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     initEReference(getInitialization_Value(), this.getExpression(), null, "value", null, 0, 1, Initialization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getAssignment_Type(), ecorePackage.getEString(), "type", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAssignment_Var(), ecorePackage.getEString(), "var", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAssignment_Value(), this.getExpression(), null, "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1217,11 +1285,13 @@ public class JarvisProjectPackageImpl extends EPackageImpl implements JarvisProj
     initEAttribute(getStringValue_Val(), ecorePackage.getEString(), "val", null, 0, 1, StringValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanValue_Val(), ecorePackage.getEString(), "val", null, 0, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBooleanValue_Val(), ecorePackage.getEBoolean(), "val", null, 0, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExpression_Function(), this.getFunction(), null, "function", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getExpression_Args(), this.getExpression(), null, "args", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionCall_Function(), this.getFunction(), null, "function", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionCall_Args(), this.getExpression(), null, "args", null, 0, -1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(orExpressionEClass, OrExpression.class, "OrExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOrExpression_Left(), this.getExpression(), null, "left", null, 0, 1, OrExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

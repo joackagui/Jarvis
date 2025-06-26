@@ -67,6 +67,9 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
     {
       case JarvisProjectPackage.PROGRAM: return createProgram();
       case JarvisProjectPackage.FUNCTION: return createFunction();
+      case JarvisProjectPackage.FUNCTION_INT: return createFunctionInt();
+      case JarvisProjectPackage.FUNCTION_STRING: return createFunctionString();
+      case JarvisProjectPackage.FUNCTION_BOOLEAN: return createFunctionBoolean();
       case JarvisProjectPackage.TYPED_PARAM: return createTypedParam();
       case JarvisProjectPackage.STATEMENT: return createStatement();
       case JarvisProjectPackage.INITIALIZATION: return createInitialization();
@@ -80,6 +83,7 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
       case JarvisProjectPackage.STRING_VALUE: return createStringValue();
       case JarvisProjectPackage.BOOLEAN_VALUE: return createBooleanValue();
       case JarvisProjectPackage.EXPRESSION: return createExpression();
+      case JarvisProjectPackage.FUNCTION_CALL: return createFunctionCall();
       case JarvisProjectPackage.OR_EXPRESSION: return createOrExpression();
       case JarvisProjectPackage.AND_EXPRESSION: return createAndExpression();
       case JarvisProjectPackage.EQUALITY_EXPRESSION: return createEqualityExpression();
@@ -114,6 +118,42 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
   {
     FunctionImpl function = new FunctionImpl();
     return function;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionInt createFunctionInt()
+  {
+    FunctionIntImpl functionInt = new FunctionIntImpl();
+    return functionInt;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionString createFunctionString()
+  {
+    FunctionStringImpl functionString = new FunctionStringImpl();
+    return functionString;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionBoolean createFunctionBoolean()
+  {
+    FunctionBooleanImpl functionBoolean = new FunctionBooleanImpl();
+    return functionBoolean;
   }
 
   /**
@@ -270,6 +310,18 @@ public class JarvisProjectFactoryImpl extends EFactoryImpl implements JarvisProj
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionCall createFunctionCall()
+  {
+    FunctionCallImpl functionCall = new FunctionCallImpl();
+    return functionCall;
   }
 
   /**

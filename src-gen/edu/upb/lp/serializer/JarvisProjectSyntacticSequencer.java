@@ -11,6 +11,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -20,14 +21,44 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected JarvisProjectGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Assignment_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_FunctionBoolean_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_FunctionBoolean___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q;
+	protected AbstractElementAlias match_FunctionCall_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_FunctionCall___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q;
+	protected AbstractElementAlias match_FunctionInt_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_FunctionInt___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q;
+	protected AbstractElementAlias match_FunctionString_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_FunctionString___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q;
+	protected AbstractElementAlias match_If_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_Imm_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_Initialization_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_Ipp_JARVISKeyword_0_q;
 	protected AbstractElementAlias match_PrimaryExpression_LeftParenthesisKeyword_5_0_a;
 	protected AbstractElementAlias match_PrimaryExpression_LeftParenthesisKeyword_5_0_p;
+	protected AbstractElementAlias match_Print_JARVISKeyword_0_q;
+	protected AbstractElementAlias match_While_JARVISKeyword_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (JarvisProjectGrammarAccess) access;
+		match_Assignment_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getAssignmentAccess().getJARVISKeyword_0());
+		match_FunctionBoolean_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getFunctionBooleanAccess().getJARVISKeyword_0());
+		match_FunctionBoolean___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFunctionBooleanAccess().getWITHKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getFunctionBooleanAccess().getLeftParenthesisKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getFunctionBooleanAccess().getRightParenthesisKeyword_4_3()));
+		match_FunctionCall_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getFunctionCallAccess().getJARVISKeyword_0());
+		match_FunctionCall___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getWITHKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getLeftParenthesisKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getRightParenthesisKeyword_4_3()));
+		match_FunctionInt_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getFunctionIntAccess().getJARVISKeyword_0());
+		match_FunctionInt___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFunctionIntAccess().getWITHKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getFunctionIntAccess().getLeftParenthesisKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getFunctionIntAccess().getRightParenthesisKeyword_4_3()));
+		match_FunctionString_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getFunctionStringAccess().getJARVISKeyword_0());
+		match_FunctionString___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFunctionStringAccess().getWITHKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getFunctionStringAccess().getLeftParenthesisKeyword_4_1()), new TokenAlias(false, false, grammarAccess.getFunctionStringAccess().getRightParenthesisKeyword_4_3()));
+		match_If_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getIfAccess().getJARVISKeyword_0());
+		match_Imm_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getImmAccess().getJARVISKeyword_0());
+		match_Initialization_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getInitializationAccess().getJARVISKeyword_0());
+		match_Ipp_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getIppAccess().getJARVISKeyword_0());
 		match_PrimaryExpression_LeftParenthesisKeyword_5_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_0());
 		match_PrimaryExpression_LeftParenthesisKeyword_5_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_5_0());
+		match_Print_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getPrintAccess().getJARVISKeyword_0());
+		match_While_JARVISKeyword_0_q = new TokenAlias(false, true, grammarAccess.getWhileAccess().getJARVISKeyword_0());
 	}
 	
 	@Override
@@ -42,10 +73,40 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_PrimaryExpression_LeftParenthesisKeyword_5_0_a.equals(syntax))
+			if (match_Assignment_JARVISKeyword_0_q.equals(syntax))
+				emit_Assignment_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionBoolean_JARVISKeyword_0_q.equals(syntax))
+				emit_FunctionBoolean_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionBoolean___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q.equals(syntax))
+				emit_FunctionBoolean___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionCall_JARVISKeyword_0_q.equals(syntax))
+				emit_FunctionCall_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionCall___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q.equals(syntax))
+				emit_FunctionCall___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionInt_JARVISKeyword_0_q.equals(syntax))
+				emit_FunctionInt_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionInt___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q.equals(syntax))
+				emit_FunctionInt___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionString_JARVISKeyword_0_q.equals(syntax))
+				emit_FunctionString_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionString___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q.equals(syntax))
+				emit_FunctionString___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_If_JARVISKeyword_0_q.equals(syntax))
+				emit_If_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Imm_JARVISKeyword_0_q.equals(syntax))
+				emit_Imm_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Initialization_JARVISKeyword_0_q.equals(syntax))
+				emit_Initialization_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Ipp_JARVISKeyword_0_q.equals(syntax))
+				emit_Ipp_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PrimaryExpression_LeftParenthesisKeyword_5_0_a.equals(syntax))
 				emit_PrimaryExpression_LeftParenthesisKeyword_5_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PrimaryExpression_LeftParenthesisKeyword_5_0_p.equals(syntax))
 				emit_PrimaryExpression_LeftParenthesisKeyword_5_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Print_JARVISKeyword_0_q.equals(syntax))
+				emit_Print_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_While_JARVISKeyword_0_q.equals(syntax))
+				emit_While_JARVISKeyword_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -53,14 +114,200 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'NOW' 'SET' var=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_Assignment_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'CREATE' 'AUTOMATON' name=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionBoolean_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ('WITH' '(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) '{' 'AND' 'SEND' 'BACK' return=Expression
+	 *     name=ID (ambiguity) '{' statements+=Statement
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionBoolean___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) '('* (ambiguity) 'RUN' 'PROTOCOL' function=[Function|ID]
+	 *     (rule start) (ambiguity) 'RUN' 'PROTOCOL' function=[Function|ID]
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionCall_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ('WITH' '(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     function=[Function|ID] (ambiguity) (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionCall___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'CREATE' 'PROTOCOL' name=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionInt_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ('WITH' '(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) '{' 'AND' 'SEND' 'BACK' return=Expression
+	 *     name=ID (ambiguity) '{' statements+=Statement
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionInt___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'CREATE' 'FILE' name=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionString_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ('WITH' '(' ')')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) '{' 'AND' 'SEND' 'BACK' return=Expression
+	 *     name=ID (ambiguity) '{' statements+=Statement
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionString___WITHKeyword_4_0_LeftParenthesisKeyword_4_1_RightParenthesisKeyword_4_3__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'TRY' '(' condition=Expression
+	 
+	 * </pre>
+	 */
+	protected void emit_If_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'DROP' var=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_Imm_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'SET' type=DataType
+	 
+	 * </pre>
+	 */
+	protected void emit_Initialization_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'BUMP' var=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_Ipp_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) 'JARVIS,' 'RUN' 'PROTOCOL' function=[Function|ID]
-	 *     (rule start) (ambiguity) val='FALSE'
-	 *     (rule start) (ambiguity) val='TRUE'
+	 *     (rule start) (ambiguity) 'FALSE' (rule start)
+	 *     (rule start) (ambiguity) 'JARVIS,'? 'RUN' 'PROTOCOL' function=[Function|ID]
 	 *     (rule start) (ambiguity) val=INT
 	 *     (rule start) (ambiguity) val=STRING
+	 *     (rule start) (ambiguity) val?='TRUE'
 	 *     (rule start) (ambiguity) var=ID
 	 *     (rule start) (ambiguity) {AdditiveExpression.left=}
 	 *     (rule start) (ambiguity) {AndExpression.left=}
@@ -91,6 +338,34 @@ public class JarvisProjectSyntacticSequencer extends AbstractSyntacticSequencer 
 	 * </pre>
 	 */
 	protected void emit_PrimaryExpression_LeftParenthesisKeyword_5_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'SHOW' '(' printable=Expression
+	 
+	 * </pre>
+	 */
+	protected void emit_Print_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'JARVIS,'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'LOOP' 'WHILE' '(' condition=Expression
+	 
+	 * </pre>
+	 */
+	protected void emit_While_JARVISKeyword_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

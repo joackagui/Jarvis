@@ -114,22 +114,13 @@ public interface JarvisProjectPackage extends EPackage
   int FUNCTION = 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION__TYPE = 0;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION__NAME = 1;
+  int FUNCTION__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -138,7 +129,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__PARAMS = 2;
+  int FUNCTION__PARAMS = 1;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -147,7 +138,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__STATEMENTS = 3;
+  int FUNCTION__STATEMENTS = 2;
 
   /**
    * The feature id for the '<em><b>Return</b></em>' containment reference.
@@ -156,7 +147,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION__RETURN = 4;
+  int FUNCTION__RETURN = 3;
 
   /**
    * The number of structural features of the '<em>Function</em>' class.
@@ -165,7 +156,172 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_FEATURE_COUNT = 5;
+  int FUNCTION_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.FunctionIntImpl <em>Function Int</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.FunctionIntImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionInt()
+   * @generated
+   */
+  int FUNCTION_INT = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_INT__NAME = FUNCTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_INT__PARAMS = FUNCTION__PARAMS;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_INT__STATEMENTS = FUNCTION__STATEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Return</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_INT__RETURN = FUNCTION__RETURN;
+
+  /**
+   * The number of structural features of the '<em>Function Int</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_INT_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.FunctionStringImpl <em>Function String</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.FunctionStringImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionString()
+   * @generated
+   */
+  int FUNCTION_STRING = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_STRING__NAME = FUNCTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_STRING__PARAMS = FUNCTION__PARAMS;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_STRING__STATEMENTS = FUNCTION__STATEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Return</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_STRING__RETURN = FUNCTION__RETURN;
+
+  /**
+   * The number of structural features of the '<em>Function String</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_STRING_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.FunctionBooleanImpl <em>Function Boolean</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.FunctionBooleanImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionBoolean()
+   * @generated
+   */
+  int FUNCTION_BOOLEAN = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BOOLEAN__NAME = FUNCTION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BOOLEAN__PARAMS = FUNCTION__PARAMS;
+
+  /**
+   * The feature id for the '<em><b>Statements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BOOLEAN__STATEMENTS = FUNCTION__STATEMENTS;
+
+  /**
+   * The feature id for the '<em><b>Return</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BOOLEAN__RETURN = FUNCTION__RETURN;
+
+  /**
+   * The number of structural features of the '<em>Function Boolean</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_BOOLEAN_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.TypedParamImpl <em>Typed Param</em>}' class.
@@ -175,7 +331,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getTypedParam()
    * @generated
    */
-  int TYPED_PARAM = 2;
+  int TYPED_PARAM = 5;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -212,7 +368,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 3;
+  int STATEMENT = 6;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -231,7 +387,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getInitialization()
    * @generated
    */
-  int INITIALIZATION = 4;
+  int INITIALIZATION = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -277,16 +433,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAssignment()
    * @generated
    */
-  int ASSIGNMENT = 5;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ASSIGNMENT__TYPE = STATEMENT_FEATURE_COUNT + 0;
+  int ASSIGNMENT = 8;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
@@ -295,7 +442,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__VAR = STATEMENT_FEATURE_COUNT + 1;
+  int ASSIGNMENT__VAR = STATEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -304,7 +451,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__VALUE = STATEMENT_FEATURE_COUNT + 2;
+  int ASSIGNMENT__VALUE = STATEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Assignment</em>' class.
@@ -313,7 +460,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 3;
+  int ASSIGNMENT_FEATURE_COUNT = STATEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.PrintImpl <em>Print</em>}' class.
@@ -323,7 +470,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getPrint()
    * @generated
    */
-  int PRINT = 6;
+  int PRINT = 9;
 
   /**
    * The feature id for the '<em><b>Printable</b></em>' containment reference.
@@ -351,7 +498,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getWhile()
    * @generated
    */
-  int WHILE = 7;
+  int WHILE = 10;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -388,7 +535,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIf()
    * @generated
    */
-  int IF = 8;
+  int IF = 11;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -425,7 +572,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIpp()
    * @generated
    */
-  int IPP = 9;
+  int IPP = 12;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
@@ -453,7 +600,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getImm()
    * @generated
    */
-  int IMM = 10;
+  int IMM = 13;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
@@ -481,25 +628,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 14;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__FUNCTION = 0;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EXPRESSION__ARGS = 1;
+  int EXPRESSION = 17;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -508,7 +637,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EXPRESSION_FEATURE_COUNT = 2;
+  int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.IntValueImpl <em>Int Value</em>}' class.
@@ -518,25 +647,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getIntValue()
    * @generated
    */
-  int INT_VALUE = 11;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_VALUE__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_VALUE__ARGS = EXPRESSION__ARGS;
+  int INT_VALUE = 14;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -564,25 +675,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getStringValue()
    * @generated
    */
-  int STRING_VALUE = 12;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VALUE__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VALUE__ARGS = EXPRESSION__ARGS;
+  int STRING_VALUE = 15;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -610,25 +703,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getBooleanValue()
    * @generated
    */
-  int BOOLEAN_VALUE = 13;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_VALUE__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_VALUE__ARGS = EXPRESSION__ARGS;
+  int BOOLEAN_VALUE = 16;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -649,14 +724,14 @@ public interface JarvisProjectPackage extends EPackage
   int BOOLEAN_VALUE_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.OrExpressionImpl <em>Or Expression</em>}' class.
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.FunctionCallImpl <em>Function Call</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see edu.upb.lp.jarvisProject.impl.OrExpressionImpl
-   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getOrExpression()
+   * @see edu.upb.lp.jarvisProject.impl.FunctionCallImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionCall()
    * @generated
    */
-  int OR_EXPRESSION = 15;
+  int FUNCTION_CALL = 18;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' reference.
@@ -665,7 +740,7 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OR_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
+  int FUNCTION_CALL__FUNCTION = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
@@ -674,7 +749,26 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OR_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int FUNCTION_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Function Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.jarvisProject.impl.OrExpressionImpl <em>Or Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.jarvisProject.impl.OrExpressionImpl
+   * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getOrExpression()
+   * @generated
+   */
+  int OR_EXPRESSION = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -711,25 +805,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 16;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int AND_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int AND_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -766,25 +842,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 17;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int EQUALITY_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int EQUALITY_EXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -830,25 +888,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getComparisonExpression()
    * @generated
    */
-  int COMPARISON_EXPRESSION = 18;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARISON_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPARISON_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int COMPARISON_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -894,25 +934,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 19;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDITIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int ADDITIVE_EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -958,25 +980,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 20;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATIVE_EXPRESSION__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MULTIPLICATIVE_EXPRESSION__ARGS = EXPRESSION__ARGS;
+  int MULTIPLICATIVE_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1022,25 +1026,7 @@ public interface JarvisProjectPackage extends EPackage
    * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getVariableRef()
    * @generated
    */
-  int VARIABLE_REF = 21;
-
-  /**
-   * The feature id for the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_REF__FUNCTION = EXPRESSION__FUNCTION;
-
-  /**
-   * The feature id for the '<em><b>Args</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VARIABLE_REF__ARGS = EXPRESSION__ARGS;
+  int VARIABLE_REF = 25;
 
   /**
    * The feature id for the '<em><b>Var</b></em>' attribute.
@@ -1115,17 +1101,6 @@ public interface JarvisProjectPackage extends EPackage
   EClass getFunction();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Function#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see edu.upb.lp.jarvisProject.Function#getType()
-   * @see #getFunction()
-   * @generated
-   */
-  EAttribute getFunction_Type();
-
-  /**
    * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Function#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1168,6 +1143,36 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    */
   EReference getFunction_Return();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.FunctionInt <em>Function Int</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Int</em>'.
+   * @see edu.upb.lp.jarvisProject.FunctionInt
+   * @generated
+   */
+  EClass getFunctionInt();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.FunctionString <em>Function String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function String</em>'.
+   * @see edu.upb.lp.jarvisProject.FunctionString
+   * @generated
+   */
+  EClass getFunctionString();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.FunctionBoolean <em>Function Boolean</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Boolean</em>'.
+   * @see edu.upb.lp.jarvisProject.FunctionBoolean
+   * @generated
+   */
+  EClass getFunctionBoolean();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.TypedParam <em>Typed Param</em>}'.
@@ -1263,17 +1268,6 @@ public interface JarvisProjectPackage extends EPackage
    * @generated
    */
   EClass getAssignment();
-
-  /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Assignment#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see edu.upb.lp.jarvisProject.Assignment#getType()
-   * @see #getAssignment()
-   * @generated
-   */
-  EAttribute getAssignment_Type();
 
   /**
    * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.Assignment#getVar <em>Var</em>}'.
@@ -1477,11 +1471,11 @@ public interface JarvisProjectPackage extends EPackage
   EClass getBooleanValue();
 
   /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.BooleanValue#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link edu.upb.lp.jarvisProject.BooleanValue#isVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Val</em>'.
-   * @see edu.upb.lp.jarvisProject.BooleanValue#getVal()
+   * @see edu.upb.lp.jarvisProject.BooleanValue#isVal()
    * @see #getBooleanValue()
    * @generated
    */
@@ -1498,26 +1492,36 @@ public interface JarvisProjectPackage extends EPackage
   EClass getExpression();
 
   /**
-   * Returns the meta object for the reference '{@link edu.upb.lp.jarvisProject.Expression#getFunction <em>Function</em>}'.
+   * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.FunctionCall <em>Function Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Call</em>'.
+   * @see edu.upb.lp.jarvisProject.FunctionCall
+   * @generated
+   */
+  EClass getFunctionCall();
+
+  /**
+   * Returns the meta object for the reference '{@link edu.upb.lp.jarvisProject.FunctionCall#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Function</em>'.
-   * @see edu.upb.lp.jarvisProject.Expression#getFunction()
-   * @see #getExpression()
+   * @see edu.upb.lp.jarvisProject.FunctionCall#getFunction()
+   * @see #getFunctionCall()
    * @generated
    */
-  EReference getExpression_Function();
+  EReference getFunctionCall_Function();
 
   /**
-   * Returns the meta object for the containment reference list '{@link edu.upb.lp.jarvisProject.Expression#getArgs <em>Args</em>}'.
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.jarvisProject.FunctionCall#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Args</em>'.
-   * @see edu.upb.lp.jarvisProject.Expression#getArgs()
-   * @see #getExpression()
+   * @see edu.upb.lp.jarvisProject.FunctionCall#getArgs()
+   * @see #getFunctionCall()
    * @generated
    */
-  EReference getExpression_Args();
+  EReference getFunctionCall_Args();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.jarvisProject.OrExpression <em>Or Expression</em>}'.
@@ -1844,14 +1848,6 @@ public interface JarvisProjectPackage extends EPackage
     EClass FUNCTION = eINSTANCE.getFunction();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNCTION__TYPE = eINSTANCE.getFunction_Type();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1882,6 +1878,36 @@ public interface JarvisProjectPackage extends EPackage
      * @generated
      */
     EReference FUNCTION__RETURN = eINSTANCE.getFunction_Return();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.FunctionIntImpl <em>Function Int</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.FunctionIntImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionInt()
+     * @generated
+     */
+    EClass FUNCTION_INT = eINSTANCE.getFunctionInt();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.FunctionStringImpl <em>Function String</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.FunctionStringImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionString()
+     * @generated
+     */
+    EClass FUNCTION_STRING = eINSTANCE.getFunctionString();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.FunctionBooleanImpl <em>Function Boolean</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.FunctionBooleanImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionBoolean()
+     * @generated
+     */
+    EClass FUNCTION_BOOLEAN = eINSTANCE.getFunctionBoolean();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.TypedParamImpl <em>Typed Param</em>}' class.
@@ -1962,14 +1988,6 @@ public interface JarvisProjectPackage extends EPackage
      * @generated
      */
     EClass ASSIGNMENT = eINSTANCE.getAssignment();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ASSIGNMENT__TYPE = eINSTANCE.getAssignment_Type();
 
     /**
      * The meta object literal for the '<em><b>Var</b></em>' attribute feature.
@@ -2158,12 +2176,22 @@ public interface JarvisProjectPackage extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
+     * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.FunctionCallImpl <em>Function Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.jarvisProject.impl.FunctionCallImpl
+     * @see edu.upb.lp.jarvisProject.impl.JarvisProjectPackageImpl#getFunctionCall()
+     * @generated
+     */
+    EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
+
+    /**
      * The meta object literal for the '<em><b>Function</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPRESSION__FUNCTION = eINSTANCE.getExpression_Function();
+    EReference FUNCTION_CALL__FUNCTION = eINSTANCE.getFunctionCall_Function();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
@@ -2171,7 +2199,7 @@ public interface JarvisProjectPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference EXPRESSION__ARGS = eINSTANCE.getExpression_Args();
+    EReference FUNCTION_CALL__ARGS = eINSTANCE.getFunctionCall_Args();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.jarvisProject.impl.OrExpressionImpl <em>Or Expression</em>}' class.

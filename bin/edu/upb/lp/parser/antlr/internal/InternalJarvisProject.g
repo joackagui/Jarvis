@@ -76,11 +76,39 @@ ruleProgram returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='JARVIS,'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getProgramAccess().getJARVISKeyword_0());
+		}
+		otherlv_1='TIME'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getProgramAccess().getTIMEKeyword_1());
+		}
+		otherlv_2='TO'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getProgramAccess().getTOKeyword_2());
+		}
+		otherlv_3='HAVE'
+		{
+			newLeafNode(otherlv_3, grammarAccess.getProgramAccess().getHAVEKeyword_3());
+		}
+		otherlv_4='SOME'
+		{
+			newLeafNode(otherlv_4, grammarAccess.getProgramAccess().getSOMEKeyword_4());
+		}
+		otherlv_5='FUN'
+		{
+			newLeafNode(otherlv_5, grammarAccess.getProgramAccess().getFUNKeyword_5());
+		}
+		otherlv_6='WITH'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getProgramAccess().getWITHKeyword_6());
+		}
 		(
 			(
-				lv_name_0_0=RULE_ID
+				lv_name_7_0=RULE_ID
 				{
-					newLeafNode(lv_name_0_0, grammarAccess.getProgramAccess().getNameIDTerminalRuleCall_0_0());
+					newLeafNode(lv_name_7_0, grammarAccess.getProgramAccess().getNameIDTerminalRuleCall_7_0());
 				}
 				{
 					if ($current==null) {
@@ -89,7 +117,7 @@ ruleProgram returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_0_0,
+						lv_name_7_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -97,9 +125,9 @@ ruleProgram returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getProgramAccess().getFunctionsFunctionParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getProgramAccess().getFunctionsFunctionParserRuleCall_8_0());
 				}
-				lv_functions_1_0=ruleFunction
+				lv_functions_8_0=ruleFunction
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProgramRule());
@@ -107,22 +135,22 @@ ruleProgram returns [EObject current=null]
 					add(
 						$current,
 						"functions",
-						lv_functions_1_0,
+						lv_functions_8_0,
 						"edu.upb.lp.JarvisProject.Function");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_2='>'
+		otherlv_9='>'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getProgramAccess().getGreaterThanSignKeyword_2());
+			newLeafNode(otherlv_9, grammarAccess.getProgramAccess().getGreaterThanSignKeyword_9());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getProgramAccess().getEvalExpressionParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getProgramAccess().getEvalExpressionParserRuleCall_10_0());
 				}
-				lv_eval_3_0=ruleExpression
+				lv_eval_10_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProgramRule());
@@ -130,7 +158,7 @@ ruleProgram returns [EObject current=null]
 					add(
 						$current,
 						"eval",
-						lv_eval_3_0,
+						lv_eval_10_0,
 						"edu.upb.lp.JarvisProject.Expression");
 					afterParserOrEnumRuleCall();
 				}
@@ -155,16 +183,16 @@ ruleDataType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 	leaveRule();
 }:
 	(
-		kw='INT'
+		kw='NUMBER'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDataTypeAccess().getINTKeyword_0());
+			newLeafNode(kw, grammarAccess.getDataTypeAccess().getNUMBERKeyword_0());
 		}
 		    |
-		kw='STRING'
+		kw='TEXT'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getDataTypeAccess().getSTRINGKeyword_1());
+			newLeafNode(kw, grammarAccess.getDataTypeAccess().getTEXTKeyword_1());
 		}
 		    |
 		kw='BOOLEAN'
@@ -191,162 +219,538 @@ ruleFunction returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='JARVIS,'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getFunctionAccess().getJARVISKeyword_0());
+			newCompositeNode(grammarAccess.getFunctionAccess().getFunctionIntParserRuleCall_0());
 		}
+		this_FunctionInt_0=ruleFunctionInt
+		{
+			$current = $this_FunctionInt_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFunctionAccess().getFunctionStringParserRuleCall_1());
+		}
+		this_FunctionString_1=ruleFunctionString
+		{
+			$current = $this_FunctionString_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFunctionAccess().getFunctionBooleanParserRuleCall_2());
+		}
+		this_FunctionBoolean_2=ruleFunctionBoolean
+		{
+			$current = $this_FunctionBoolean_2.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleFunctionInt
+entryRuleFunctionInt returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionIntRule()); }
+	iv_ruleFunctionInt=ruleFunctionInt
+	{ $current=$iv_ruleFunctionInt.current; }
+	EOF;
+
+// Rule FunctionInt
+ruleFunctionInt returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getFunctionIntAccess().getJARVISKeyword_0());
+			}
+		)?
 		otherlv_1='CREATE'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getFunctionAccess().getCREATEKeyword_1());
+			newLeafNode(otherlv_1, grammarAccess.getFunctionIntAccess().getCREATEKeyword_1());
 		}
 		otherlv_2='PROTOCOL'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getFunctionAccess().getPROTOCOLKeyword_2());
+			newLeafNode(otherlv_2, grammarAccess.getFunctionIntAccess().getPROTOCOLKeyword_2());
 		}
 		(
 			(
+				lv_name_3_0=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getTypeDataTypeParserRuleCall_3_0());
-				}
-				lv_type_3_0=ruleDataType
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
-					}
-					set(
-						$current,
-						"type",
-						lv_type_3_0,
-						"edu.upb.lp.JarvisProject.DataType");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			(
-				lv_name_4_0=RULE_ID
-				{
-					newLeafNode(lv_name_4_0, grammarAccess.getFunctionAccess().getNameIDTerminalRuleCall_4_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getFunctionIntAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getFunctionRule());
+						$current = createModelElement(grammarAccess.getFunctionIntRule());
 					}
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_4_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_5='WITH'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getFunctionAccess().getWITHKeyword_5());
-		}
-		otherlv_6='('
-		{
-			newLeafNode(otherlv_6, grammarAccess.getFunctionAccess().getLeftParenthesisKeyword_6());
-		}
 		(
+			otherlv_4='WITH'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getFunctionIntAccess().getWITHKeyword_4_0());
+			}
+			otherlv_5='('
+			{
+				newLeafNode(otherlv_5, grammarAccess.getFunctionIntAccess().getLeftParenthesisKeyword_4_1());
+			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getFunctionAccess().getParamsTypedParamParserRuleCall_7_0_0());
-					}
-					lv_params_7_0=ruleTypedParam
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getFunctionRule());
-						}
-						add(
-							$current,
-							"params",
-							lv_params_7_0,
-							"edu.upb.lp.JarvisProject.TypedParam");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_8=','
-				{
-					newLeafNode(otherlv_8, grammarAccess.getFunctionAccess().getCommaKeyword_7_1_0());
-				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getFunctionAccess().getParamsTypedParamParserRuleCall_7_1_1_0());
+							newCompositeNode(grammarAccess.getFunctionIntAccess().getParamsTypedParamParserRuleCall_4_2_0_0());
 						}
-						lv_params_9_0=ruleTypedParam
+						lv_params_6_0=ruleTypedParam
 						{
 							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getFunctionRule());
+								$current = createModelElementForParent(grammarAccess.getFunctionIntRule());
 							}
 							add(
 								$current,
 								"params",
-								lv_params_9_0,
+								lv_params_6_0,
 								"edu.upb.lp.JarvisProject.TypedParam");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-			)*
+				(
+					otherlv_7=','
+					{
+						newLeafNode(otherlv_7, grammarAccess.getFunctionIntAccess().getCommaKeyword_4_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getFunctionIntAccess().getParamsTypedParamParserRuleCall_4_2_1_1_0());
+							}
+							lv_params_8_0=ruleTypedParam
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getFunctionIntRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_8_0,
+									"edu.upb.lp.JarvisProject.TypedParam");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_9=')'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getFunctionIntAccess().getRightParenthesisKeyword_4_3());
+			}
 		)?
-		otherlv_10=')'
+		otherlv_10='{'
 		{
-			newLeafNode(otherlv_10, grammarAccess.getFunctionAccess().getRightParenthesisKeyword_8());
-		}
-		otherlv_11='{'
-		{
-			newLeafNode(otherlv_11, grammarAccess.getFunctionAccess().getLeftCurlyBracketKeyword_9());
+			newLeafNode(otherlv_10, grammarAccess.getFunctionIntAccess().getLeftCurlyBracketKeyword_5());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getStatementsStatementParserRuleCall_10_0());
+					newCompositeNode(grammarAccess.getFunctionIntAccess().getStatementsStatementParserRuleCall_6_0());
 				}
-				lv_statements_12_0=ruleStatement
+				lv_statements_11_0=ruleStatement
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
+						$current = createModelElementForParent(grammarAccess.getFunctionIntRule());
 					}
 					add(
 						$current,
 						"statements",
-						lv_statements_12_0,
+						lv_statements_11_0,
 						"edu.upb.lp.JarvisProject.Statement");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_13='RETURN'
+		otherlv_12='AND'
 		{
-			newLeafNode(otherlv_13, grammarAccess.getFunctionAccess().getRETURNKeyword_11());
+			newLeafNode(otherlv_12, grammarAccess.getFunctionIntAccess().getANDKeyword_7());
+		}
+		otherlv_13='SEND'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getFunctionIntAccess().getSENDKeyword_8());
+		}
+		otherlv_14='BACK'
+		{
+			newLeafNode(otherlv_14, grammarAccess.getFunctionIntAccess().getBACKKeyword_9());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFunctionAccess().getReturnExpressionParserRuleCall_12_0());
+					newCompositeNode(grammarAccess.getFunctionIntAccess().getReturnExpressionParserRuleCall_10_0());
 				}
-				lv_return_14_0=ruleExpression
+				lv_return_15_0=ruleExpression
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getFunctionRule());
+						$current = createModelElementForParent(grammarAccess.getFunctionIntRule());
 					}
 					set(
 						$current,
 						"return",
-						lv_return_14_0,
+						lv_return_15_0,
 						"edu.upb.lp.JarvisProject.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_15='}'
+		otherlv_16='}'
 		{
-			newLeafNode(otherlv_15, grammarAccess.getFunctionAccess().getRightCurlyBracketKeyword_13());
+			newLeafNode(otherlv_16, grammarAccess.getFunctionIntAccess().getRightCurlyBracketKeyword_11());
+		}
+	)
+;
+
+// Entry rule entryRuleFunctionString
+entryRuleFunctionString returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionStringRule()); }
+	iv_ruleFunctionString=ruleFunctionString
+	{ $current=$iv_ruleFunctionString.current; }
+	EOF;
+
+// Rule FunctionString
+ruleFunctionString returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getFunctionStringAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='CREATE'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFunctionStringAccess().getCREATEKeyword_1());
+		}
+		otherlv_2='FILE'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFunctionStringAccess().getFILEKeyword_2());
+		}
+		(
+			(
+				lv_name_3_0=RULE_ID
+				{
+					newLeafNode(lv_name_3_0, grammarAccess.getFunctionStringAccess().getNameIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFunctionStringRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_3_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_4='WITH'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getFunctionStringAccess().getWITHKeyword_4_0());
+			}
+			otherlv_5='('
+			{
+				newLeafNode(otherlv_5, grammarAccess.getFunctionStringAccess().getLeftParenthesisKeyword_4_1());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getFunctionStringAccess().getParamsTypedParamParserRuleCall_4_2_0_0());
+						}
+						lv_params_6_0=ruleTypedParam
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getFunctionStringRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_6_0,
+								"edu.upb.lp.JarvisProject.TypedParam");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_7=','
+					{
+						newLeafNode(otherlv_7, grammarAccess.getFunctionStringAccess().getCommaKeyword_4_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getFunctionStringAccess().getParamsTypedParamParserRuleCall_4_2_1_1_0());
+							}
+							lv_params_8_0=ruleTypedParam
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getFunctionStringRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_8_0,
+									"edu.upb.lp.JarvisProject.TypedParam");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_9=')'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getFunctionStringAccess().getRightParenthesisKeyword_4_3());
+			}
+		)?
+		otherlv_10='{'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getFunctionStringAccess().getLeftCurlyBracketKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFunctionStringAccess().getStatementsStatementParserRuleCall_6_0());
+				}
+				lv_statements_11_0=ruleStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionStringRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_11_0,
+						"edu.upb.lp.JarvisProject.Statement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_12='AND'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getFunctionStringAccess().getANDKeyword_7());
+		}
+		otherlv_13='SEND'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getFunctionStringAccess().getSENDKeyword_8());
+		}
+		otherlv_14='BACK'
+		{
+			newLeafNode(otherlv_14, grammarAccess.getFunctionStringAccess().getBACKKeyword_9());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFunctionStringAccess().getReturnExpressionParserRuleCall_10_0());
+				}
+				lv_return_15_0=ruleExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionStringRule());
+					}
+					set(
+						$current,
+						"return",
+						lv_return_15_0,
+						"edu.upb.lp.JarvisProject.Expression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_16='}'
+		{
+			newLeafNode(otherlv_16, grammarAccess.getFunctionStringAccess().getRightCurlyBracketKeyword_11());
+		}
+	)
+;
+
+// Entry rule entryRuleFunctionBoolean
+entryRuleFunctionBoolean returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getFunctionBooleanRule()); }
+	iv_ruleFunctionBoolean=ruleFunctionBoolean
+	{ $current=$iv_ruleFunctionBoolean.current; }
+	EOF;
+
+// Rule FunctionBoolean
+ruleFunctionBoolean returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getFunctionBooleanAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='CREATE'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getFunctionBooleanAccess().getCREATEKeyword_1());
+		}
+		otherlv_2='AUTOMATON'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getFunctionBooleanAccess().getAUTOMATONKeyword_2());
+		}
+		(
+			(
+				lv_name_3_0=RULE_ID
+				{
+					newLeafNode(lv_name_3_0, grammarAccess.getFunctionBooleanAccess().getNameIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFunctionBooleanRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_3_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_4='WITH'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getFunctionBooleanAccess().getWITHKeyword_4_0());
+			}
+			otherlv_5='('
+			{
+				newLeafNode(otherlv_5, grammarAccess.getFunctionBooleanAccess().getLeftParenthesisKeyword_4_1());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getFunctionBooleanAccess().getParamsTypedParamParserRuleCall_4_2_0_0());
+						}
+						lv_params_6_0=ruleTypedParam
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getFunctionBooleanRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_6_0,
+								"edu.upb.lp.JarvisProject.TypedParam");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_7=','
+					{
+						newLeafNode(otherlv_7, grammarAccess.getFunctionBooleanAccess().getCommaKeyword_4_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getFunctionBooleanAccess().getParamsTypedParamParserRuleCall_4_2_1_1_0());
+							}
+							lv_params_8_0=ruleTypedParam
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getFunctionBooleanRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_8_0,
+									"edu.upb.lp.JarvisProject.TypedParam");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_9=')'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getFunctionBooleanAccess().getRightParenthesisKeyword_4_3());
+			}
+		)?
+		otherlv_10='{'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getFunctionBooleanAccess().getLeftCurlyBracketKeyword_5());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFunctionBooleanAccess().getStatementsStatementParserRuleCall_6_0());
+				}
+				lv_statements_11_0=ruleStatement
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionBooleanRule());
+					}
+					add(
+						$current,
+						"statements",
+						lv_statements_11_0,
+						"edu.upb.lp.JarvisProject.Statement");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		otherlv_12='AND'
+		{
+			newLeafNode(otherlv_12, grammarAccess.getFunctionBooleanAccess().getANDKeyword_7());
+		}
+		otherlv_13='SEND'
+		{
+			newLeafNode(otherlv_13, grammarAccess.getFunctionBooleanAccess().getSENDKeyword_8());
+		}
+		otherlv_14='BACK'
+		{
+			newLeafNode(otherlv_14, grammarAccess.getFunctionBooleanAccess().getBACKKeyword_9());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFunctionBooleanAccess().getReturnExpressionParserRuleCall_10_0());
+				}
+				lv_return_15_0=ruleExpression
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionBooleanRule());
+					}
+					set(
+						$current,
+						"return",
+						lv_return_15_0,
+						"edu.upb.lp.JarvisProject.Expression");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		otherlv_16='}'
+		{
+			newLeafNode(otherlv_16, grammarAccess.getFunctionBooleanAccess().getRightCurlyBracketKeyword_11());
 		}
 	)
 ;
@@ -504,16 +908,22 @@ ruleInitialization returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='SET'
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getInitializationAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='SET'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getInitializationAccess().getSETKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getInitializationAccess().getSETKeyword_1());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getInitializationAccess().getTypeDataTypeParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getInitializationAccess().getTypeDataTypeParserRuleCall_2_0());
 				}
-				lv_type_1_0=ruleDataType
+				lv_type_2_0=ruleDataType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getInitializationRule());
@@ -521,7 +931,7 @@ ruleInitialization returns [EObject current=null]
 					set(
 						$current,
 						"type",
-						lv_type_1_0,
+						lv_type_2_0,
 						"edu.upb.lp.JarvisProject.DataType");
 					afterParserOrEnumRuleCall();
 				}
@@ -529,9 +939,9 @@ ruleInitialization returns [EObject current=null]
 		)
 		(
 			(
-				lv_var_2_0=RULE_ID
+				lv_var_3_0=RULE_ID
 				{
-					newLeafNode(lv_var_2_0, grammarAccess.getInitializationAccess().getVarIDTerminalRuleCall_2_0());
+					newLeafNode(lv_var_3_0, grammarAccess.getInitializationAccess().getVarIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -540,21 +950,21 @@ ruleInitialization returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"var",
-						lv_var_2_0,
+						lv_var_3_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-		otherlv_3='AS'
+		otherlv_4='AS'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getInitializationAccess().getASKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getInitializationAccess().getASKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getInitializationAccess().getValueExpressionParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getInitializationAccess().getValueExpressionParserRuleCall_5_0());
 				}
-				lv_value_4_0=ruleExpression
+				lv_value_5_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getInitializationRule());
@@ -562,7 +972,7 @@ ruleInitialization returns [EObject current=null]
 					set(
 						$current,
 						"value",
-						lv_value_4_0,
+						lv_value_5_0,
 						"edu.upb.lp.JarvisProject.Expression");
 					afterParserOrEnumRuleCall();
 				}
@@ -587,33 +997,20 @@ ruleAssignment returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='NOW'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getAssignmentAccess().getNOWKeyword_0());
-		}
-		otherlv_1='SET'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getAssignmentAccess().getSETKeyword_1());
-		}
 		(
-			(
-				{
-					newCompositeNode(grammarAccess.getAssignmentAccess().getTypeDataTypeParserRuleCall_2_0());
-				}
-				lv_type_2_0=ruleDataType
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getAssignmentRule());
-					}
-					set(
-						$current,
-						"type",
-						lv_type_2_0,
-						"edu.upb.lp.JarvisProject.DataType");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getAssignmentAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='NOW'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAssignmentAccess().getNOWKeyword_1());
+		}
+		otherlv_2='SET'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getAssignmentAccess().getSETKeyword_2());
+		}
 		(
 			(
 				lv_var_3_0=RULE_ID
@@ -674,20 +1071,26 @@ rulePrint returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='SHOW'
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getPrintAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='SHOW'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getPrintAccess().getSHOWKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getPrintAccess().getSHOWKeyword_1());
 		}
-		otherlv_1='('
+		otherlv_2='('
 		{
-			newLeafNode(otherlv_1, grammarAccess.getPrintAccess().getLeftParenthesisKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getPrintAccess().getLeftParenthesisKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPrintAccess().getPrintableExpressionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getPrintAccess().getPrintableExpressionParserRuleCall_3_0());
 				}
-				lv_printable_2_0=ruleExpression
+				lv_printable_3_0=ruleExpression
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPrintRule());
@@ -695,15 +1098,15 @@ rulePrint returns [EObject current=null]
 					set(
 						$current,
 						"printable",
-						lv_printable_2_0,
+						lv_printable_3_0,
 						"edu.upb.lp.JarvisProject.Expression");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=')'
+		otherlv_4=')'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getPrintAccess().getRightParenthesisKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getPrintAccess().getRightParenthesisKeyword_4());
 		}
 	)
 ;
@@ -724,10 +1127,12 @@ ruleWhile returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='JARVIS,'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getWhileAccess().getJARVISKeyword_0());
-		}
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getWhileAccess().getJARVISKeyword_0());
+			}
+		)?
 		otherlv_1='LOOP'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getWhileAccess().getLOOPKeyword_1());
@@ -809,10 +1214,12 @@ ruleIf returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='JARVIS,'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getIfAccess().getJARVISKeyword_0());
-		}
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getIfAccess().getJARVISKeyword_0());
+			}
+		)?
 		otherlv_1='TRY'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getIfAccess().getTRYKeyword_1());
@@ -890,15 +1297,21 @@ ruleIpp returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='BUMP'
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getIppAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='BUMP'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getIppAccess().getBUMPKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getIppAccess().getBUMPKeyword_1());
 		}
 		(
 			(
-				lv_var_1_0=RULE_ID
+				lv_var_2_0=RULE_ID
 				{
-					newLeafNode(lv_var_1_0, grammarAccess.getIppAccess().getVarIDTerminalRuleCall_1_0());
+					newLeafNode(lv_var_2_0, grammarAccess.getIppAccess().getVarIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -907,7 +1320,7 @@ ruleIpp returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"var",
-						lv_var_1_0,
+						lv_var_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -931,15 +1344,21 @@ ruleImm returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='DROP'
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getImmAccess().getJARVISKeyword_0());
+			}
+		)?
+		otherlv_1='DROP'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getImmAccess().getDROPKeyword_0());
+			newLeafNode(otherlv_1, grammarAccess.getImmAccess().getDROPKeyword_1());
 		}
 		(
 			(
-				lv_var_1_0=RULE_ID
+				lv_var_2_0=RULE_ID
 				{
-					newLeafNode(lv_var_1_0, grammarAccess.getImmAccess().getVarIDTerminalRuleCall_1_0());
+					newLeafNode(lv_var_2_0, grammarAccess.getImmAccess().getVarIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -948,7 +1367,7 @@ ruleImm returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"var",
-						lv_var_1_0,
+						lv_var_2_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
@@ -1044,28 +1463,31 @@ ruleBooleanValue returns [EObject current=null]
 	(
 		(
 			(
-				lv_val_0_1='TRUE'
+				lv_val_0_0='TRUE'
 				{
-					newLeafNode(lv_val_0_1, grammarAccess.getBooleanValueAccess().getValTRUEKeyword_0_0());
+					newLeafNode(lv_val_0_0, grammarAccess.getBooleanValueAccess().getValTRUEKeyword_0_0());
 				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getBooleanValueRule());
 					}
-					setWithLastConsumed($current, "val", lv_val_0_1, null);
-				}
-				    |
-				lv_val_0_2='FALSE'
-				{
-					newLeafNode(lv_val_0_2, grammarAccess.getBooleanValueAccess().getValFALSEKeyword_0_1());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getBooleanValueRule());
-					}
-					setWithLastConsumed($current, "val", lv_val_0_2, null);
+					setWithLastConsumed($current, "val", lv_val_0_0 != null, "TRUE");
 				}
 			)
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getBooleanValueAccess().getBooleanValueAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_2='FALSE'
+			{
+				newLeafNode(otherlv_2, grammarAccess.getBooleanValueAccess().getFALSEKeyword_1_1());
+			}
 		)
 	)
 ;
@@ -1248,9 +1670,9 @@ ruleEqualityExpression returns [EObject current=null]
 			(
 				(
 					(
-						lv_op_2_1='='
+						lv_op_2_1='=='
 						{
-							newLeafNode(lv_op_2_1, grammarAccess.getEqualityExpressionAccess().getOpEqualsSignKeyword_1_1_0_0());
+							newLeafNode(lv_op_2_1, grammarAccess.getEqualityExpressionAccess().getOpEqualsSignEqualsSignKeyword_1_1_0_0());
 						}
 						{
 							if ($current==null) {
@@ -1716,10 +2138,12 @@ ruleFunctionCall returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='JARVIS,'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getFunctionCallAccess().getJARVISKeyword_0());
-		}
+		(
+			otherlv_0='JARVIS,'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getFunctionCallAccess().getJARVISKeyword_0());
+			}
+		)?
 		otherlv_1='RUN'
 		{
 			newLeafNode(otherlv_1, grammarAccess.getFunctionCallAccess().getRUNKeyword_1());
@@ -1741,45 +2165,22 @@ ruleFunctionCall returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_4='WITH'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getFunctionCallAccess().getWITHKeyword_4());
-		}
-		otherlv_5='('
-		{
-			newLeafNode(otherlv_5, grammarAccess.getFunctionCallAccess().getLeftParenthesisKeyword_5());
-		}
 		(
+			otherlv_4='WITH'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getFunctionCallAccess().getWITHKeyword_4_0());
+			}
+			otherlv_5='('
+			{
+				newLeafNode(otherlv_5, grammarAccess.getFunctionCallAccess().getLeftParenthesisKeyword_4_1());
+			}
 			(
-				(
-					{
-						newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_6_0_0());
-					}
-					lv_args_6_0=ruleExpression
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
-						}
-						add(
-							$current,
-							"args",
-							lv_args_6_0,
-							"edu.upb.lp.JarvisProject.Expression");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			(
-				otherlv_7=','
-				{
-					newLeafNode(otherlv_7, grammarAccess.getFunctionCallAccess().getCommaKeyword_6_1_0());
-				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_6_1_1_0());
+							newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_2_0_0());
 						}
-						lv_args_8_0=ruleExpression
+						lv_args_6_0=ruleExpression
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
@@ -1787,18 +2188,43 @@ ruleFunctionCall returns [EObject current=null]
 							add(
 								$current,
 								"args",
-								lv_args_8_0,
+								lv_args_6_0,
 								"edu.upb.lp.JarvisProject.Expression");
 							afterParserOrEnumRuleCall();
 						}
 					)
 				)
-			)*
+				(
+					otherlv_7=','
+					{
+						newLeafNode(otherlv_7, grammarAccess.getFunctionCallAccess().getCommaKeyword_4_2_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_2_1_1_0());
+							}
+							lv_args_8_0=ruleExpression
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+								}
+								add(
+									$current,
+									"args",
+									lv_args_8_0,
+									"edu.upb.lp.JarvisProject.Expression");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_9=')'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getFunctionCallAccess().getRightParenthesisKeyword_4_3());
+			}
 		)?
-		otherlv_9=')'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getFunctionCallAccess().getRightParenthesisKeyword_7());
-		}
 	)
 ;
 

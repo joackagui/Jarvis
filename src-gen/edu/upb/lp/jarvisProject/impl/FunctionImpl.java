@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.impl.FunctionImpl#getType <em>Type</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.impl.FunctionImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.impl.FunctionImpl#getParams <em>Params</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.impl.FunctionImpl#getStatements <em>Statements</em>}</li>
@@ -44,26 +43,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class FunctionImpl extends MinimalEObjectImpl.Container implements Function
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -133,31 +112,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   protected EClass eStaticClass()
   {
     return JarvisProjectPackage.Literals.FUNCTION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JarvisProjectPackage.FUNCTION__TYPE, oldType, type));
   }
 
   /**
@@ -295,8 +249,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.FUNCTION__TYPE:
-        return getType();
       case JarvisProjectPackage.FUNCTION__NAME:
         return getName();
       case JarvisProjectPackage.FUNCTION__PARAMS:
@@ -320,9 +272,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.FUNCTION__TYPE:
-        setType((String)newValue);
-        return;
       case JarvisProjectPackage.FUNCTION__NAME:
         setName((String)newValue);
         return;
@@ -351,9 +300,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.FUNCTION__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
       case JarvisProjectPackage.FUNCTION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -380,8 +326,6 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.FUNCTION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case JarvisProjectPackage.FUNCTION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case JarvisProjectPackage.FUNCTION__PARAMS:
@@ -405,9 +349,7 @@ public class FunctionImpl extends MinimalEObjectImpl.Container implements Functi
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

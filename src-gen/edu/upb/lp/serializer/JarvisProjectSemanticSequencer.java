@@ -10,8 +10,10 @@ import edu.upb.lp.jarvisProject.Assignment;
 import edu.upb.lp.jarvisProject.BooleanValue;
 import edu.upb.lp.jarvisProject.ComparisonExpression;
 import edu.upb.lp.jarvisProject.EqualityExpression;
-import edu.upb.lp.jarvisProject.Expression;
-import edu.upb.lp.jarvisProject.Function;
+import edu.upb.lp.jarvisProject.FunctionBoolean;
+import edu.upb.lp.jarvisProject.FunctionCall;
+import edu.upb.lp.jarvisProject.FunctionInt;
+import edu.upb.lp.jarvisProject.FunctionString;
 import edu.upb.lp.jarvisProject.If;
 import edu.upb.lp.jarvisProject.Imm;
 import edu.upb.lp.jarvisProject.Initialization;
@@ -70,11 +72,17 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 			case JarvisProjectPackage.EQUALITY_EXPRESSION:
 				sequence_EqualityExpression(context, (EqualityExpression) semanticObject); 
 				return; 
-			case JarvisProjectPackage.EXPRESSION:
-				sequence_FunctionCall(context, (Expression) semanticObject); 
+			case JarvisProjectPackage.FUNCTION_BOOLEAN:
+				sequence_FunctionBoolean(context, (FunctionBoolean) semanticObject); 
 				return; 
-			case JarvisProjectPackage.FUNCTION:
-				sequence_Function(context, (Function) semanticObject); 
+			case JarvisProjectPackage.FUNCTION_CALL:
+				sequence_FunctionCall(context, (FunctionCall) semanticObject); 
+				return; 
+			case JarvisProjectPackage.FUNCTION_INT:
+				sequence_FunctionInt(context, (FunctionInt) semanticObject); 
+				return; 
+			case JarvisProjectPackage.FUNCTION_STRING:
+				sequence_FunctionString(context, (FunctionString) semanticObject); 
 				return; 
 			case JarvisProjectPackage.IF:
 				sequence_If(context, (If) semanticObject); 
@@ -190,20 +198,17 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     Assignment returns Assignment
 	 *
 	 * Constraint:
-	 *     (type=DataType var=ID value=Expression)
+	 *     (var=ID value=Expression)
 	 * </pre>
 	 */
 	protected void sequence_Assignment(ISerializationContext context, Assignment semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__TYPE));
 			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VAR));
 			if (transientValues.isValueTransient(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.ASSIGNMENT__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAssignmentAccess().getTypeDataTypeParserRuleCall_2_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getAssignmentAccess().getVarIDTerminalRuleCall_3_0(), semanticObject.getVar());
 		feeder.accept(grammarAccess.getAssignmentAccess().getValueExpressionParserRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
@@ -230,7 +235,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     PrimaryExpression returns BooleanValue
 	 *
 	 * Constraint:
-	 *     (val='TRUE' | val='FALSE')
+	 *     val?='TRUE'?
 	 * </pre>
 	 */
 	protected void sequence_BooleanValue(ISerializationContext context, BooleanValue semanticObject) {
@@ -284,7 +289,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     PrimaryExpression returns EqualityExpression
 	 *
 	 * Constraint:
-	 *     (left=EqualityExpression_EqualityExpression_1_0 (op='=' | op='!=') right=ComparisonExpression)
+	 *     (left=EqualityExpression_EqualityExpression_1_0 (op='==' | op='!=') right=ComparisonExpression)
 	 * </pre>
 	 */
 	protected void sequence_EqualityExpression(ISerializationContext context, EqualityExpression semanticObject) {
@@ -295,27 +300,14 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Expression returns Expression
-	 *     OrExpression returns Expression
-	 *     OrExpression.OrExpression_1_0 returns Expression
-	 *     AndExpression returns Expression
-	 *     AndExpression.AndExpression_1_0 returns Expression
-	 *     EqualityExpression returns Expression
-	 *     EqualityExpression.EqualityExpression_1_0 returns Expression
-	 *     ComparisonExpression returns Expression
-	 *     ComparisonExpression.ComparisonExpression_1_0 returns Expression
-	 *     AdditiveExpression returns Expression
-	 *     AdditiveExpression.AdditiveExpression_1_0 returns Expression
-	 *     MultiplicativeExpression returns Expression
-	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns Expression
-	 *     PrimaryExpression returns Expression
-	 *     FunctionCall returns Expression
+	 *     Function returns FunctionBoolean
+	 *     FunctionBoolean returns FunctionBoolean
 	 *
 	 * Constraint:
-	 *     (function=[Function|ID] (args+=Expression args+=Expression*)?)
+	 *     (name=ID (params+=TypedParam params+=TypedParam*)? statements+=Statement* return=Expression)
 	 * </pre>
 	 */
-	protected void sequence_FunctionCall(ISerializationContext context, Expression semanticObject) {
+	protected void sequence_FunctionBoolean(ISerializationContext context, FunctionBoolean semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -323,13 +315,57 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Function returns Function
+	 *     Expression returns FunctionCall
+	 *     OrExpression returns FunctionCall
+	 *     OrExpression.OrExpression_1_0 returns FunctionCall
+	 *     AndExpression returns FunctionCall
+	 *     AndExpression.AndExpression_1_0 returns FunctionCall
+	 *     EqualityExpression returns FunctionCall
+	 *     EqualityExpression.EqualityExpression_1_0 returns FunctionCall
+	 *     ComparisonExpression returns FunctionCall
+	 *     ComparisonExpression.ComparisonExpression_1_0 returns FunctionCall
+	 *     AdditiveExpression returns FunctionCall
+	 *     AdditiveExpression.AdditiveExpression_1_0 returns FunctionCall
+	 *     MultiplicativeExpression returns FunctionCall
+	 *     MultiplicativeExpression.MultiplicativeExpression_1_0 returns FunctionCall
+	 *     PrimaryExpression returns FunctionCall
+	 *     FunctionCall returns FunctionCall
 	 *
 	 * Constraint:
-	 *     (type=DataType name=ID (params+=TypedParam params+=TypedParam*)? statements+=Statement* return=Expression)
+	 *     (function=[Function|ID] (args+=Expression args+=Expression*)?)
 	 * </pre>
 	 */
-	protected void sequence_Function(ISerializationContext context, Function semanticObject) {
+	protected void sequence_FunctionCall(ISerializationContext context, FunctionCall semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Function returns FunctionInt
+	 *     FunctionInt returns FunctionInt
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=TypedParam params+=TypedParam*)? statements+=Statement* return=Expression)
+	 * </pre>
+	 */
+	protected void sequence_FunctionInt(ISerializationContext context, FunctionInt semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Function returns FunctionString
+	 *     FunctionString returns FunctionString
+	 *
+	 * Constraint:
+	 *     (name=ID (params+=TypedParam params+=TypedParam*)? statements+=Statement* return=Expression)
+	 * </pre>
+	 */
+	protected void sequence_FunctionString(ISerializationContext context, FunctionString semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -365,7 +401,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.IMM__VAR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImmAccess().getVarIDTerminalRuleCall_1_0(), semanticObject.getVar());
+		feeder.accept(grammarAccess.getImmAccess().getVarIDTerminalRuleCall_2_0(), semanticObject.getVar());
 		feeder.finish();
 	}
 	
@@ -390,9 +426,9 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.INITIALIZATION__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getInitializationAccess().getTypeDataTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getInitializationAccess().getVarIDTerminalRuleCall_2_0(), semanticObject.getVar());
-		feeder.accept(grammarAccess.getInitializationAccess().getValueExpressionParserRuleCall_4_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getInitializationAccess().getTypeDataTypeParserRuleCall_2_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getInitializationAccess().getVarIDTerminalRuleCall_3_0(), semanticObject.getVar());
+		feeder.accept(grammarAccess.getInitializationAccess().getValueExpressionParserRuleCall_5_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -447,7 +483,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.IPP__VAR));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getIppAccess().getVarIDTerminalRuleCall_1_0(), semanticObject.getVar());
+		feeder.accept(grammarAccess.getIppAccess().getVarIDTerminalRuleCall_2_0(), semanticObject.getVar());
 		feeder.finish();
 	}
 	
@@ -531,7 +567,7 @@ public class JarvisProjectSemanticSequencer extends AbstractDelegatingSemanticSe
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JarvisProjectPackage.Literals.PRINT__PRINTABLE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrintAccess().getPrintableExpressionParserRuleCall_2_0(), semanticObject.getPrintable());
+		feeder.accept(grammarAccess.getPrintAccess().getPrintableExpressionParserRuleCall_3_0(), semanticObject.getPrintable());
 		feeder.finish();
 	}
 	

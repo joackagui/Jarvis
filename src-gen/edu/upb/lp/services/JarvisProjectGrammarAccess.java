@@ -27,113 +27,163 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	public class ProgramElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Program");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Assignment cFunctionsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cFunctionsFunctionParserRuleCall_1_0 = (RuleCall)cFunctionsAssignment_1.eContents().get(0);
-		private final Keyword cGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cEvalAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cEvalExpressionParserRuleCall_3_0 = (RuleCall)cEvalAssignment_3.eContents().get(0);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cTIMEKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cTOKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cHAVEKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cSOMEKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cFUNKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cWITHKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cNameIDTerminalRuleCall_7_0 = (RuleCall)cNameAssignment_7.eContents().get(0);
+		private final Assignment cFunctionsAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cFunctionsFunctionParserRuleCall_8_0 = (RuleCall)cFunctionsAssignment_8.eContents().get(0);
+		private final Keyword cGreaterThanSignKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cEvalAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cEvalExpressionParserRuleCall_10_0 = (RuleCall)cEvalAssignment_10.eContents().get(0);
 		
 		//Program:
-		//    name=ID
+		//    'JARVIS,' 'TIME' 'TO' 'HAVE' 'SOME' 'FUN' 'WITH' name=ID
 		//    functions+=Function*
-		//    '>' eval+=Expression*;
+		//    '>' eval+=(Expression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID
+		//'JARVIS,' 'TIME' 'TO' 'HAVE' 'SOME' 'FUN' 'WITH' name=ID
 		//functions+=Function*
-		//'>' eval+=Expression*
+		//'>' eval+=(Expression)*
 		public Group getGroup() { return cGroup; }
 		
+		//'JARVIS,'
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
+		//'TIME'
+		public Keyword getTIMEKeyword_1() { return cTIMEKeyword_1; }
+		
+		//'TO'
+		public Keyword getTOKeyword_2() { return cTOKeyword_2; }
+		
+		//'HAVE'
+		public Keyword getHAVEKeyword_3() { return cHAVEKeyword_3; }
+		
+		//'SOME'
+		public Keyword getSOMEKeyword_4() { return cSOMEKeyword_4; }
+		
+		//'FUN'
+		public Keyword getFUNKeyword_5() { return cFUNKeyword_5; }
+		
+		//'WITH'
+		public Keyword getWITHKeyword_6() { return cWITHKeyword_6; }
+		
 		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_7() { return cNameAssignment_7; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getNameIDTerminalRuleCall_7_0() { return cNameIDTerminalRuleCall_7_0; }
 		
 		//functions+=Function*
-		public Assignment getFunctionsAssignment_1() { return cFunctionsAssignment_1; }
+		public Assignment getFunctionsAssignment_8() { return cFunctionsAssignment_8; }
 		
 		//Function
-		public RuleCall getFunctionsFunctionParserRuleCall_1_0() { return cFunctionsFunctionParserRuleCall_1_0; }
+		public RuleCall getFunctionsFunctionParserRuleCall_8_0() { return cFunctionsFunctionParserRuleCall_8_0; }
 		
 		//'>'
-		public Keyword getGreaterThanSignKeyword_2() { return cGreaterThanSignKeyword_2; }
+		public Keyword getGreaterThanSignKeyword_9() { return cGreaterThanSignKeyword_9; }
 		
-		//eval+=Expression*
-		public Assignment getEvalAssignment_3() { return cEvalAssignment_3; }
+		//eval+=(Expression)*
+		public Assignment getEvalAssignment_10() { return cEvalAssignment_10; }
 		
-		//Expression
-		public RuleCall getEvalExpressionParserRuleCall_3_0() { return cEvalExpressionParserRuleCall_3_0; }
+		//(Expression)
+		public RuleCall getEvalExpressionParserRuleCall_10_0() { return cEvalExpressionParserRuleCall_10_0; }
 	}
 	public class DataTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.DataType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cINTKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cSTRINGKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cNUMBERKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cTEXTKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cBOOLEANKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
 		//DataType:
-		//    'INT' | 'STRING' | 'BOOLEAN';
+		//    'NUMBER' | 'TEXT' | 'BOOLEAN';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'INT' | 'STRING' | 'BOOLEAN'
+		//'NUMBER' | 'TEXT' | 'BOOLEAN'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//'INT'
-		public Keyword getINTKeyword_0() { return cINTKeyword_0; }
+		//'NUMBER'
+		public Keyword getNUMBERKeyword_0() { return cNUMBERKeyword_0; }
 		
-		//'STRING'
-		public Keyword getSTRINGKeyword_1() { return cSTRINGKeyword_1; }
+		//'TEXT'
+		public Keyword getTEXTKeyword_1() { return cTEXTKeyword_1; }
 		
 		//'BOOLEAN'
 		public Keyword getBOOLEANKeyword_2() { return cBOOLEANKeyword_2; }
 	}
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Function");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cFunctionIntParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cFunctionStringParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cFunctionBooleanParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//Function:
+		//    FunctionInt | FunctionString | FunctionBoolean;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//FunctionInt | FunctionString | FunctionBoolean
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//FunctionInt
+		public RuleCall getFunctionIntParserRuleCall_0() { return cFunctionIntParserRuleCall_0; }
+		
+		//FunctionString
+		public RuleCall getFunctionStringParserRuleCall_1() { return cFunctionStringParserRuleCall_1; }
+		
+		//FunctionBoolean
+		public RuleCall getFunctionBooleanParserRuleCall_2() { return cFunctionBooleanParserRuleCall_2; }
+	}
+	public class FunctionIntElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.FunctionInt");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cCREATEKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Keyword cPROTOCOLKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypeDataTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
-		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cNameIDTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
-		private final Keyword cWITHKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final Assignment cParamsAssignment_7_0 = (Assignment)cGroup_7.eContents().get(0);
-		private final RuleCall cParamsTypedParamParserRuleCall_7_0_0 = (RuleCall)cParamsAssignment_7_0.eContents().get(0);
-		private final Group cGroup_7_1 = (Group)cGroup_7.eContents().get(1);
-		private final Keyword cCommaKeyword_7_1_0 = (Keyword)cGroup_7_1.eContents().get(0);
-		private final Assignment cParamsAssignment_7_1_1 = (Assignment)cGroup_7_1.eContents().get(1);
-		private final RuleCall cParamsTypedParamParserRuleCall_7_1_1_0 = (RuleCall)cParamsAssignment_7_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Keyword cLeftCurlyBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
-		private final Assignment cStatementsAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cStatementsStatementParserRuleCall_10_0 = (RuleCall)cStatementsAssignment_10.eContents().get(0);
-		private final Keyword cRETURNKeyword_11 = (Keyword)cGroup.eContents().get(11);
-		private final Assignment cReturnAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cReturnExpressionParserRuleCall_12_0 = (RuleCall)cReturnAssignment_12.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_13 = (Keyword)cGroup.eContents().get(13);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cWITHKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
+		private final Assignment cParamsAssignment_4_2_0 = (Assignment)cGroup_4_2.eContents().get(0);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_0_0 = (RuleCall)cParamsAssignment_4_2_0.eContents().get(0);
+		private final Group cGroup_4_2_1 = (Group)cGroup_4_2.eContents().get(1);
+		private final Keyword cCommaKeyword_4_2_1_0 = (Keyword)cGroup_4_2_1.eContents().get(0);
+		private final Assignment cParamsAssignment_4_2_1_1 = (Assignment)cGroup_4_2_1.eContents().get(1);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_1_1_0 = (RuleCall)cParamsAssignment_4_2_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cStatementsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cStatementsStatementParserRuleCall_6_0 = (RuleCall)cStatementsAssignment_6.eContents().get(0);
+		private final Keyword cANDKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cSENDKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cBACKKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cReturnAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cReturnExpressionParserRuleCall_10_0 = (RuleCall)cReturnAssignment_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
-		//Function:
-		//    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
-		//    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
+		//FunctionInt:
+		//    'JARVIS,'? 'CREATE' 'PROTOCOL' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
 		//    statements+=Statement*
-		//    'RETURN' return=Expression
+		//    'AND' 'SEND' 'BACK' return=Expression
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
-		//'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
+		//'JARVIS,'? 'CREATE' 'PROTOCOL' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
 		//statements+=Statement*
-		//'RETURN' return=Expression
+		//'AND' 'SEND' 'BACK' return=Expression
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
-		//'JARVIS,'
+		//'JARVIS,'?
 		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
 		
 		//'CREATE'
@@ -142,68 +192,305 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//'PROTOCOL'
 		public Keyword getPROTOCOLKeyword_2() { return cPROTOCOLKeyword_2; }
 		
-		//type=DataType
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
-		
-		//DataType
-		public RuleCall getTypeDataTypeParserRuleCall_3_0() { return cTypeDataTypeParserRuleCall_3_0; }
-		
 		//name=ID
-		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_4_0() { return cNameIDTerminalRuleCall_4_0; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		
+		//('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')?
+		public Group getGroup_4() { return cGroup_4; }
 		
 		//'WITH'
-		public Keyword getWITHKeyword_5() { return cWITHKeyword_5; }
+		public Keyword getWITHKeyword_4_0() { return cWITHKeyword_4_0; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
+		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
 		
 		//(params+=TypedParam (',' params+=TypedParam)*)?
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//params+=TypedParam
-		public Assignment getParamsAssignment_7_0() { return cParamsAssignment_7_0; }
+		public Assignment getParamsAssignment_4_2_0() { return cParamsAssignment_4_2_0; }
 		
 		//TypedParam
-		public RuleCall getParamsTypedParamParserRuleCall_7_0_0() { return cParamsTypedParamParserRuleCall_7_0_0; }
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_0_0() { return cParamsTypedParamParserRuleCall_4_2_0_0; }
 		
 		//(',' params+=TypedParam)*
-		public Group getGroup_7_1() { return cGroup_7_1; }
+		public Group getGroup_4_2_1() { return cGroup_4_2_1; }
 		
 		//','
-		public Keyword getCommaKeyword_7_1_0() { return cCommaKeyword_7_1_0; }
+		public Keyword getCommaKeyword_4_2_1_0() { return cCommaKeyword_4_2_1_0; }
 		
 		//params+=TypedParam
-		public Assignment getParamsAssignment_7_1_1() { return cParamsAssignment_7_1_1; }
+		public Assignment getParamsAssignment_4_2_1_1() { return cParamsAssignment_4_2_1_1; }
 		
 		//TypedParam
-		public RuleCall getParamsTypedParamParserRuleCall_7_1_1_0() { return cParamsTypedParamParserRuleCall_7_1_1_0; }
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_1_1_0() { return cParamsTypedParamParserRuleCall_4_2_1_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
+		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_9() { return cLeftCurlyBracketKeyword_9; }
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 		
 		//statements+=Statement*
-		public Assignment getStatementsAssignment_10() { return cStatementsAssignment_10; }
+		public Assignment getStatementsAssignment_6() { return cStatementsAssignment_6; }
 		
 		//Statement
-		public RuleCall getStatementsStatementParserRuleCall_10_0() { return cStatementsStatementParserRuleCall_10_0; }
+		public RuleCall getStatementsStatementParserRuleCall_6_0() { return cStatementsStatementParserRuleCall_6_0; }
 		
-		//'RETURN'
-		public Keyword getRETURNKeyword_11() { return cRETURNKeyword_11; }
+		//'AND'
+		public Keyword getANDKeyword_7() { return cANDKeyword_7; }
+		
+		//'SEND'
+		public Keyword getSENDKeyword_8() { return cSENDKeyword_8; }
+		
+		//'BACK'
+		public Keyword getBACKKeyword_9() { return cBACKKeyword_9; }
 		
 		//return=Expression
-		public Assignment getReturnAssignment_12() { return cReturnAssignment_12; }
+		public Assignment getReturnAssignment_10() { return cReturnAssignment_10; }
 		
 		//Expression
-		public RuleCall getReturnExpressionParserRuleCall_12_0() { return cReturnExpressionParserRuleCall_12_0; }
+		public RuleCall getReturnExpressionParserRuleCall_10_0() { return cReturnExpressionParserRuleCall_10_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_13() { return cRightCurlyBracketKeyword_13; }
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+	}
+	public class FunctionStringElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.FunctionString");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCREATEKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cFILEKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cWITHKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
+		private final Assignment cParamsAssignment_4_2_0 = (Assignment)cGroup_4_2.eContents().get(0);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_0_0 = (RuleCall)cParamsAssignment_4_2_0.eContents().get(0);
+		private final Group cGroup_4_2_1 = (Group)cGroup_4_2.eContents().get(1);
+		private final Keyword cCommaKeyword_4_2_1_0 = (Keyword)cGroup_4_2_1.eContents().get(0);
+		private final Assignment cParamsAssignment_4_2_1_1 = (Assignment)cGroup_4_2_1.eContents().get(1);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_1_1_0 = (RuleCall)cParamsAssignment_4_2_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cStatementsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cStatementsStatementParserRuleCall_6_0 = (RuleCall)cStatementsAssignment_6.eContents().get(0);
+		private final Keyword cANDKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cSENDKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cBACKKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cReturnAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cReturnExpressionParserRuleCall_10_0 = (RuleCall)cReturnAssignment_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		
+		//FunctionString:
+		//    'JARVIS,'? 'CREATE' 'FILE' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+		//    statements+=Statement*
+		//    'AND' 'SEND' 'BACK' return=Expression
+		//    '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'JARVIS,'? 'CREATE' 'FILE' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+		//statements+=Statement*
+		//'AND' 'SEND' 'BACK' return=Expression
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
+		//'CREATE'
+		public Keyword getCREATEKeyword_1() { return cCREATEKeyword_1; }
+		
+		//'FILE'
+		public Keyword getFILEKeyword_2() { return cFILEKeyword_2; }
+		
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		
+		//('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'WITH'
+		public Keyword getWITHKeyword_4_0() { return cWITHKeyword_4_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
+		
+		//(params+=TypedParam (',' params+=TypedParam)*)?
+		public Group getGroup_4_2() { return cGroup_4_2; }
+		
+		//params+=TypedParam
+		public Assignment getParamsAssignment_4_2_0() { return cParamsAssignment_4_2_0; }
+		
+		//TypedParam
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_0_0() { return cParamsTypedParamParserRuleCall_4_2_0_0; }
+		
+		//(',' params+=TypedParam)*
+		public Group getGroup_4_2_1() { return cGroup_4_2_1; }
+		
+		//','
+		public Keyword getCommaKeyword_4_2_1_0() { return cCommaKeyword_4_2_1_0; }
+		
+		//params+=TypedParam
+		public Assignment getParamsAssignment_4_2_1_1() { return cParamsAssignment_4_2_1_1; }
+		
+		//TypedParam
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_1_1_0() { return cParamsTypedParamParserRuleCall_4_2_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		
+		//statements+=Statement*
+		public Assignment getStatementsAssignment_6() { return cStatementsAssignment_6; }
+		
+		//Statement
+		public RuleCall getStatementsStatementParserRuleCall_6_0() { return cStatementsStatementParserRuleCall_6_0; }
+		
+		//'AND'
+		public Keyword getANDKeyword_7() { return cANDKeyword_7; }
+		
+		//'SEND'
+		public Keyword getSENDKeyword_8() { return cSENDKeyword_8; }
+		
+		//'BACK'
+		public Keyword getBACKKeyword_9() { return cBACKKeyword_9; }
+		
+		//return=Expression
+		public Assignment getReturnAssignment_10() { return cReturnAssignment_10; }
+		
+		//Expression
+		public RuleCall getReturnExpressionParserRuleCall_10_0() { return cReturnExpressionParserRuleCall_10_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
+	}
+	public class FunctionBooleanElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.FunctionBoolean");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cCREATEKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cAUTOMATONKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cWITHKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
+		private final Assignment cParamsAssignment_4_2_0 = (Assignment)cGroup_4_2.eContents().get(0);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_0_0 = (RuleCall)cParamsAssignment_4_2_0.eContents().get(0);
+		private final Group cGroup_4_2_1 = (Group)cGroup_4_2.eContents().get(1);
+		private final Keyword cCommaKeyword_4_2_1_0 = (Keyword)cGroup_4_2_1.eContents().get(0);
+		private final Assignment cParamsAssignment_4_2_1_1 = (Assignment)cGroup_4_2_1.eContents().get(1);
+		private final RuleCall cParamsTypedParamParserRuleCall_4_2_1_1_0 = (RuleCall)cParamsAssignment_4_2_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
+		private final Keyword cLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cStatementsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cStatementsStatementParserRuleCall_6_0 = (RuleCall)cStatementsAssignment_6.eContents().get(0);
+		private final Keyword cANDKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Keyword cSENDKeyword_8 = (Keyword)cGroup.eContents().get(8);
+		private final Keyword cBACKKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cReturnAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cReturnExpressionParserRuleCall_10_0 = (RuleCall)cReturnAssignment_10.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_11 = (Keyword)cGroup.eContents().get(11);
+		
+		//FunctionBoolean:
+		//    'JARVIS,'? 'CREATE' 'AUTOMATON' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+		//    statements+=Statement*
+		//    'AND' 'SEND' 'BACK' return=Expression
+		//    '}';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'JARVIS,'? 'CREATE' 'AUTOMATON' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+		//statements+=Statement*
+		//'AND' 'SEND' 'BACK' return=Expression
+		//'}'
+		public Group getGroup() { return cGroup; }
+		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
+		//'CREATE'
+		public Keyword getCREATEKeyword_1() { return cCREATEKeyword_1; }
+		
+		//'AUTOMATON'
+		public Keyword getAUTOMATONKeyword_2() { return cAUTOMATONKeyword_2; }
+		
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		
+		//('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'WITH'
+		public Keyword getWITHKeyword_4_0() { return cWITHKeyword_4_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
+		
+		//(params+=TypedParam (',' params+=TypedParam)*)?
+		public Group getGroup_4_2() { return cGroup_4_2; }
+		
+		//params+=TypedParam
+		public Assignment getParamsAssignment_4_2_0() { return cParamsAssignment_4_2_0; }
+		
+		//TypedParam
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_0_0() { return cParamsTypedParamParserRuleCall_4_2_0_0; }
+		
+		//(',' params+=TypedParam)*
+		public Group getGroup_4_2_1() { return cGroup_4_2_1; }
+		
+		//','
+		public Keyword getCommaKeyword_4_2_1_0() { return cCommaKeyword_4_2_1_0; }
+		
+		//params+=TypedParam
+		public Assignment getParamsAssignment_4_2_1_1() { return cParamsAssignment_4_2_1_1; }
+		
+		//TypedParam
+		public RuleCall getParamsTypedParamParserRuleCall_4_2_1_1_0() { return cParamsTypedParamParserRuleCall_4_2_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
+		
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
+		
+		//statements+=Statement*
+		public Assignment getStatementsAssignment_6() { return cStatementsAssignment_6; }
+		
+		//Statement
+		public RuleCall getStatementsStatementParserRuleCall_6_0() { return cStatementsStatementParserRuleCall_6_0; }
+		
+		//'AND'
+		public Keyword getANDKeyword_7() { return cANDKeyword_7; }
+		
+		//'SEND'
+		public Keyword getSENDKeyword_8() { return cSENDKeyword_8; }
+		
+		//'BACK'
+		public Keyword getBACKKeyword_9() { return cBACKKeyword_9; }
+		
+		//return=Expression
+		public Assignment getReturnAssignment_10() { return cReturnAssignment_10; }
+		
+		//Expression
+		public RuleCall getReturnExpressionParserRuleCall_10_0() { return cReturnExpressionParserRuleCall_10_0; }
+		
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_11() { return cRightCurlyBracketKeyword_11; }
 	}
 	public class TypedParamElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.TypedParam");
@@ -274,50 +561,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	public class InitializationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Initialization");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSETKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeDataTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cVarIDTerminalRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
-		private final Keyword cASKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValueExpressionParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
-		
-		//Initialization:
-		//    'SET' type=DataType var=ID 'AS' value=Expression;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'SET' type=DataType var=ID 'AS' value=Expression
-		public Group getGroup() { return cGroup; }
-		
-		//'SET'
-		public Keyword getSETKeyword_0() { return cSETKeyword_0; }
-		
-		//type=DataType
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
-		
-		//DataType
-		public RuleCall getTypeDataTypeParserRuleCall_1_0() { return cTypeDataTypeParserRuleCall_1_0; }
-		
-		//var=ID
-		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
-		
-		//ID
-		public RuleCall getVarIDTerminalRuleCall_2_0() { return cVarIDTerminalRuleCall_2_0; }
-		
-		//'AS'
-		public Keyword getASKeyword_3() { return cASKeyword_3; }
-		
-		//value=Expression
-		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
-		
-		//Expression
-		public RuleCall getValueExpressionParserRuleCall_4_0() { return cValueExpressionParserRuleCall_4_0; }
-	}
-	public class AssignmentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Assignment");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNOWKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cSETKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTypeDataTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
@@ -327,15 +571,15 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cValueExpressionParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
 		
-		//Assignment:
-		//    'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
+		//Initialization:
+		//    'JARVIS,'? 'SET' type=DataType var=ID 'AS' value=Expression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'NOW' 'SET' type=DataType var=ID 'AS' value=Expression
+		//'JARVIS,'? 'SET' type=DataType var=ID 'AS' value=Expression
 		public Group getGroup() { return cGroup; }
 		
-		//'NOW'
-		public Keyword getNOWKeyword_0() { return cNOWKeyword_0; }
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
 		
 		//'SET'
 		public Keyword getSETKeyword_1() { return cSETKeyword_1; }
@@ -361,36 +605,83 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//Expression
 		public RuleCall getValueExpressionParserRuleCall_5_0() { return cValueExpressionParserRuleCall_5_0; }
 	}
+	public class AssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Assignment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cNOWKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cSETKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cVarAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cVarIDTerminalRuleCall_3_0 = (RuleCall)cVarAssignment_3.eContents().get(0);
+		private final Keyword cASKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValueExpressionParserRuleCall_5_0 = (RuleCall)cValueAssignment_5.eContents().get(0);
+		
+		//Assignment:
+		//    'JARVIS,'? 'NOW' 'SET' var=ID 'AS' value=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'JARVIS,'? 'NOW' 'SET' var=ID 'AS' value=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
+		//'NOW'
+		public Keyword getNOWKeyword_1() { return cNOWKeyword_1; }
+		
+		//'SET'
+		public Keyword getSETKeyword_2() { return cSETKeyword_2; }
+		
+		//var=ID
+		public Assignment getVarAssignment_3() { return cVarAssignment_3; }
+		
+		//ID
+		public RuleCall getVarIDTerminalRuleCall_3_0() { return cVarIDTerminalRuleCall_3_0; }
+		
+		//'AS'
+		public Keyword getASKeyword_4() { return cASKeyword_4; }
+		
+		//value=Expression
+		public Assignment getValueAssignment_5() { return cValueAssignment_5; }
+		
+		//Expression
+		public RuleCall getValueExpressionParserRuleCall_5_0() { return cValueExpressionParserRuleCall_5_0; }
+	}
 	public class PrintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Print");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSHOWKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cPrintableAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPrintableExpressionParserRuleCall_2_0 = (RuleCall)cPrintableAssignment_2.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cSHOWKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cPrintableAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPrintableExpressionParserRuleCall_3_0 = (RuleCall)cPrintableAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Print:
-		//    'SHOW' '(' printable=Expression ')';
+		//    'JARVIS,'? 'SHOW' '(' printable=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'SHOW' '(' printable=Expression ')'
+		//'JARVIS,'? 'SHOW' '(' printable=Expression ')'
 		public Group getGroup() { return cGroup; }
 		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
 		//'SHOW'
-		public Keyword getSHOWKeyword_0() { return cSHOWKeyword_0; }
+		public Keyword getSHOWKeyword_1() { return cSHOWKeyword_1; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
 		//printable=Expression
-		public Assignment getPrintableAssignment_2() { return cPrintableAssignment_2; }
+		public Assignment getPrintableAssignment_3() { return cPrintableAssignment_3; }
 		
 		//Expression
-		public RuleCall getPrintableExpressionParserRuleCall_2_0() { return cPrintableExpressionParserRuleCall_2_0; }
+		public RuleCall getPrintableExpressionParserRuleCall_3_0() { return cPrintableExpressionParserRuleCall_3_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 	public class WhileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.While");
@@ -408,13 +699,13 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//While:
-		//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+		//    'JARVIS,'? 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}'
+		//'JARVIS,'? 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'JARVIS,'
+		//'JARVIS,'?
 		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
 		
 		//'LOOP'
@@ -462,13 +753,13 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//If:
-		//    'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+		//    'JARVIS,'? 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}'
+		//'JARVIS,'? 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}'
 		public Group getGroup() { return cGroup; }
 		
-		//'JARVIS,'
+		//'JARVIS,'?
 		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
 		
 		//'TRY'
@@ -501,55 +792,62 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	public class IppElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Ipp");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBUMPKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cVarAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVarIDTerminalRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cBUMPKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cVarIDTerminalRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
 		
 		//Ipp:
-		//    'BUMP' var=ID;
+		//    'JARVIS,'? 'BUMP' var=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'BUMP' var=ID
+		//'JARVIS,'? 'BUMP' var=ID
 		public Group getGroup() { return cGroup; }
 		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
 		//'BUMP'
-		public Keyword getBUMPKeyword_0() { return cBUMPKeyword_0; }
+		public Keyword getBUMPKeyword_1() { return cBUMPKeyword_1; }
 		
 		//var=ID
-		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
+		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
 		
 		//ID
-		public RuleCall getVarIDTerminalRuleCall_1_0() { return cVarIDTerminalRuleCall_1_0; }
+		public RuleCall getVarIDTerminalRuleCall_2_0() { return cVarIDTerminalRuleCall_2_0; }
 	}
 	public class ImmElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Imm");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDROPKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cVarAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cVarIDTerminalRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
+		private final Keyword cJARVISKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDROPKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cVarAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cVarIDTerminalRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
 		
 		//Imm:
-		//    'DROP' var=ID;
+		//    'JARVIS,'? 'DROP' var=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'DROP' var=ID
+		//'JARVIS,'? 'DROP' var=ID
 		public Group getGroup() { return cGroup; }
 		
+		//'JARVIS,'?
+		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
+		
 		//'DROP'
-		public Keyword getDROPKeyword_0() { return cDROPKeyword_0; }
+		public Keyword getDROPKeyword_1() { return cDROPKeyword_1; }
 		
 		//var=ID
-		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
+		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
 		
 		//ID
-		public RuleCall getVarIDTerminalRuleCall_1_0() { return cVarIDTerminalRuleCall_1_0; }
+		public RuleCall getVarIDTerminalRuleCall_2_0() { return cVarIDTerminalRuleCall_2_0; }
 	}
 	public class IntValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.IntValue");
 		private final Assignment cValAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValINTTerminalRuleCall_0 = (RuleCall)cValAssignment.eContents().get(0);
 		
-		//// Value types
 		//IntValue:
 		//    val=INT;
 		@Override public ParserRule getRule() { return rule; }
@@ -577,32 +875,39 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.BooleanValue");
-		private final Assignment cValAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cValAlternatives_0 = (Alternatives)cValAssignment.eContents().get(0);
-		private final Keyword cValTRUEKeyword_0_0 = (Keyword)cValAlternatives_0.eContents().get(0);
-		private final Keyword cValFALSEKeyword_0_1 = (Keyword)cValAlternatives_0.eContents().get(1);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cValAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cValTRUEKeyword_0_0 = (Keyword)cValAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cBooleanValueAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cFALSEKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//BooleanValue:
-		//    val=('TRUE' | 'FALSE');
+		//    val?='TRUE' | {BooleanValue} 'FALSE';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//val=('TRUE' | 'FALSE')
-		public Assignment getValAssignment() { return cValAssignment; }
+		//val?='TRUE' | {BooleanValue} 'FALSE'
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//('TRUE' | 'FALSE')
-		public Alternatives getValAlternatives_0() { return cValAlternatives_0; }
+		//val?='TRUE'
+		public Assignment getValAssignment_0() { return cValAssignment_0; }
 		
 		//'TRUE'
 		public Keyword getValTRUEKeyword_0_0() { return cValTRUEKeyword_0_0; }
 		
+		//{BooleanValue} 'FALSE'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{BooleanValue}
+		public Action getBooleanValueAction_1_0() { return cBooleanValueAction_1_0; }
+		
 		//'FALSE'
-		public Keyword getValFALSEKeyword_0_1() { return cValFALSEKeyword_0_1; }
+		public Keyword getFALSEKeyword_1_1() { return cFALSEKeyword_1_1; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.JarvisProject.Expression");
 		private final RuleCall cOrExpressionParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//// Simplified Expressions hierarchy
 		//Expression returns Expression:
 		//    OrExpression;
 		@Override public ParserRule getRule() { return rule; }
@@ -688,35 +993,35 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Action cEqualityExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOpAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
-		private final Keyword cOpEqualsSignKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
+		private final Keyword cOpEqualsSignEqualsSignKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpExclamationMarkEqualsSignKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightComparisonExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//EqualityExpression returns Expression:
-		//    ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
+		//    ComparisonExpression ({EqualityExpression.left=current} op=('==' | '!=') right=ComparisonExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*
+		//ComparisonExpression ({EqualityExpression.left=current} op=('==' | '!=') right=ComparisonExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//ComparisonExpression
 		public RuleCall getComparisonExpressionParserRuleCall_0() { return cComparisonExpressionParserRuleCall_0; }
 		
-		//({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*
+		//({EqualityExpression.left=current} op=('==' | '!=') right=ComparisonExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{EqualityExpression.left=current}
 		public Action getEqualityExpressionLeftAction_1_0() { return cEqualityExpressionLeftAction_1_0; }
 		
-		//op=('=' | '!=')
+		//op=('==' | '!=')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//('=' | '!=')
+		//('==' | '!=')
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
-		//'='
-		public Keyword getOpEqualsSignKeyword_1_1_0_0() { return cOpEqualsSignKeyword_1_1_0_0; }
+		//'=='
+		public Keyword getOpEqualsSignEqualsSignKeyword_1_1_0_0() { return cOpEqualsSignEqualsSignKeyword_1_1_0_0; }
 		
 		//'!='
 		public Keyword getOpExclamationMarkEqualsSignKeyword_1_1_0_1() { return cOpExclamationMarkEqualsSignKeyword_1_1_0_1; }
@@ -969,27 +1274,26 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		private final Assignment cFunctionAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cFunctionFunctionCrossReference_3_0 = (CrossReference)cFunctionAssignment_3.eContents().get(0);
 		private final RuleCall cFunctionFunctionIDTerminalRuleCall_3_0_1 = (RuleCall)cFunctionFunctionCrossReference_3_0.eContents().get(1);
-		private final Keyword cWITHKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cLeftParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
-		private final Assignment cArgsAssignment_6_0 = (Assignment)cGroup_6.eContents().get(0);
-		private final RuleCall cArgsExpressionParserRuleCall_6_0_0 = (RuleCall)cArgsAssignment_6_0.eContents().get(0);
-		private final Group cGroup_6_1 = (Group)cGroup_6.eContents().get(1);
-		private final Keyword cCommaKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
-		private final Assignment cArgsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
-		private final RuleCall cArgsExpressionParserRuleCall_6_1_1_0 = (RuleCall)cArgsAssignment_6_1_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cWITHKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
+		private final Assignment cArgsAssignment_4_2_0 = (Assignment)cGroup_4_2.eContents().get(0);
+		private final RuleCall cArgsExpressionParserRuleCall_4_2_0_0 = (RuleCall)cArgsAssignment_4_2_0.eContents().get(0);
+		private final Group cGroup_4_2_1 = (Group)cGroup_4_2.eContents().get(1);
+		private final Keyword cCommaKeyword_4_2_1_0 = (Keyword)cGroup_4_2_1.eContents().get(0);
+		private final Assignment cArgsAssignment_4_2_1_1 = (Assignment)cGroup_4_2_1.eContents().get(1);
+		private final RuleCall cArgsExpressionParserRuleCall_4_2_1_1_0 = (RuleCall)cArgsAssignment_4_2_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_3 = (Keyword)cGroup_4.eContents().get(3);
 		
-		//FunctionCall returns Expression:
-		//    'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
-		//    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
+		//FunctionCall:
+		//    'JARVIS,'? 'RUN' 'PROTOCOL' function=[Function] ('WITH' '(' (args+=Expression (',' args+=Expression)*)? ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
-		//'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')'
+		//'JARVIS,'? 'RUN' 'PROTOCOL' function=[Function] ('WITH' '(' (args+=Expression (',' args+=Expression)*)? ')')?
 		public Group getGroup() { return cGroup; }
 		
-		//'JARVIS,'
+		//'JARVIS,'?
 		public Keyword getJARVISKeyword_0() { return cJARVISKeyword_0; }
 		
 		//'RUN'
@@ -1007,41 +1311,47 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		//ID
 		public RuleCall getFunctionFunctionIDTerminalRuleCall_3_0_1() { return cFunctionFunctionIDTerminalRuleCall_3_0_1; }
 		
+		//('WITH' '(' (args+=Expression (',' args+=Expression)*)? ')')?
+		public Group getGroup_4() { return cGroup_4; }
+		
 		//'WITH'
-		public Keyword getWITHKeyword_4() { return cWITHKeyword_4; }
+		public Keyword getWITHKeyword_4_0() { return cWITHKeyword_4_0; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_5() { return cLeftParenthesisKeyword_5; }
+		public Keyword getLeftParenthesisKeyword_4_1() { return cLeftParenthesisKeyword_4_1; }
 		
 		//(args+=Expression (',' args+=Expression)*)?
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_6_0() { return cArgsAssignment_6_0; }
+		public Assignment getArgsAssignment_4_2_0() { return cArgsAssignment_4_2_0; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_6_0_0() { return cArgsExpressionParserRuleCall_6_0_0; }
+		public RuleCall getArgsExpressionParserRuleCall_4_2_0_0() { return cArgsExpressionParserRuleCall_4_2_0_0; }
 		
 		//(',' args+=Expression)*
-		public Group getGroup_6_1() { return cGroup_6_1; }
+		public Group getGroup_4_2_1() { return cGroup_4_2_1; }
 		
 		//','
-		public Keyword getCommaKeyword_6_1_0() { return cCommaKeyword_6_1_0; }
+		public Keyword getCommaKeyword_4_2_1_0() { return cCommaKeyword_4_2_1_0; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_6_1_1() { return cArgsAssignment_6_1_1; }
+		public Assignment getArgsAssignment_4_2_1_1() { return cArgsAssignment_4_2_1_1; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_6_1_1_0() { return cArgsExpressionParserRuleCall_6_1_1_0; }
+		public RuleCall getArgsExpressionParserRuleCall_4_2_1_1_0() { return cArgsExpressionParserRuleCall_4_2_1_1_0; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_7() { return cRightParenthesisKeyword_7; }
+		public Keyword getRightParenthesisKeyword_4_3() { return cRightParenthesisKeyword_4_3; }
 	}
 	
 	
 	private final ProgramElements pProgram;
 	private final DataTypeElements pDataType;
 	private final FunctionElements pFunction;
+	private final FunctionIntElements pFunctionInt;
+	private final FunctionStringElements pFunctionString;
+	private final FunctionBooleanElements pFunctionBoolean;
 	private final TypedParamElements pTypedParam;
 	private final StatementElements pStatement;
 	private final InitializationElements pInitialization;
@@ -1077,6 +1387,9 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		this.pProgram = new ProgramElements();
 		this.pDataType = new DataTypeElements();
 		this.pFunction = new FunctionElements();
+		this.pFunctionInt = new FunctionIntElements();
+		this.pFunctionString = new FunctionStringElements();
+		this.pFunctionBoolean = new FunctionBooleanElements();
 		this.pTypedParam = new TypedParamElements();
 		this.pStatement = new StatementElements();
 		this.pInitialization = new InitializationElements();
@@ -1129,9 +1442,9 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 
 	
 	//Program:
-	//    name=ID
+	//    'JARVIS,' 'TIME' 'TO' 'HAVE' 'SOME' 'FUN' 'WITH' name=ID
 	//    functions+=Function*
-	//    '>' eval+=Expression*;
+	//    '>' eval+=(Expression)*;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -1141,7 +1454,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//DataType:
-	//    'INT' | 'STRING' | 'BOOLEAN';
+	//    'NUMBER' | 'TEXT' | 'BOOLEAN';
 	public DataTypeElements getDataTypeAccess() {
 		return pDataType;
 	}
@@ -1151,17 +1464,52 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Function:
-	//    'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID
-	//    'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
-	//    statements+=Statement*
-	//    'RETURN' return=Expression
-	//    '}';
+	//    FunctionInt | FunctionString | FunctionBoolean;
 	public FunctionElements getFunctionAccess() {
 		return pFunction;
 	}
 	
 	public ParserRule getFunctionRule() {
 		return getFunctionAccess().getRule();
+	}
+	
+	//FunctionInt:
+	//    'JARVIS,'? 'CREATE' 'PROTOCOL' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+	//    statements+=Statement*
+	//    'AND' 'SEND' 'BACK' return=Expression
+	//    '}';
+	public FunctionIntElements getFunctionIntAccess() {
+		return pFunctionInt;
+	}
+	
+	public ParserRule getFunctionIntRule() {
+		return getFunctionIntAccess().getRule();
+	}
+	
+	//FunctionString:
+	//    'JARVIS,'? 'CREATE' 'FILE' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+	//    statements+=Statement*
+	//    'AND' 'SEND' 'BACK' return=Expression
+	//    '}';
+	public FunctionStringElements getFunctionStringAccess() {
+		return pFunctionString;
+	}
+	
+	public ParserRule getFunctionStringRule() {
+		return getFunctionStringAccess().getRule();
+	}
+	
+	//FunctionBoolean:
+	//    'JARVIS,'? 'CREATE' 'AUTOMATON' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+	//    statements+=Statement*
+	//    'AND' 'SEND' 'BACK' return=Expression
+	//    '}';
+	public FunctionBooleanElements getFunctionBooleanAccess() {
+		return pFunctionBoolean;
+	}
+	
+	public ParserRule getFunctionBooleanRule() {
+		return getFunctionBooleanAccess().getRule();
 	}
 	
 	//TypedParam:
@@ -1185,7 +1533,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Initialization:
-	//    'SET' type=DataType var=ID 'AS' value=Expression;
+	//    'JARVIS,'? 'SET' type=DataType var=ID 'AS' value=Expression;
 	public InitializationElements getInitializationAccess() {
 		return pInitialization;
 	}
@@ -1195,7 +1543,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Assignment:
-	//    'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
+	//    'JARVIS,'? 'NOW' 'SET' var=ID 'AS' value=Expression;
 	public AssignmentElements getAssignmentAccess() {
 		return pAssignment;
 	}
@@ -1205,7 +1553,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Print:
-	//    'SHOW' '(' printable=Expression ')';
+	//    'JARVIS,'? 'SHOW' '(' printable=Expression ')';
 	public PrintElements getPrintAccess() {
 		return pPrint;
 	}
@@ -1215,7 +1563,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//While:
-	//    'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+	//    'JARVIS,'? 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 	public WhileElements getWhileAccess() {
 		return pWhile;
 	}
@@ -1225,7 +1573,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//If:
-	//    'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+	//    'JARVIS,'? 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 	public IfElements getIfAccess() {
 		return pIf;
 	}
@@ -1235,7 +1583,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Ipp:
-	//    'BUMP' var=ID;
+	//    'JARVIS,'? 'BUMP' var=ID;
 	public IppElements getIppAccess() {
 		return pIpp;
 	}
@@ -1245,7 +1593,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//Imm:
-	//    'DROP' var=ID;
+	//    'JARVIS,'? 'DROP' var=ID;
 	public ImmElements getImmAccess() {
 		return pImm;
 	}
@@ -1254,7 +1602,6 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getImmAccess().getRule();
 	}
 	
-	//// Value types
 	//IntValue:
 	//    val=INT;
 	public IntValueElements getIntValueAccess() {
@@ -1276,7 +1623,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//BooleanValue:
-	//    val=('TRUE' | 'FALSE');
+	//    val?='TRUE' | {BooleanValue} 'FALSE';
 	public BooleanValueElements getBooleanValueAccess() {
 		return pBooleanValue;
 	}
@@ -1285,7 +1632,6 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getBooleanValueAccess().getRule();
 	}
 	
-	//// Simplified Expressions hierarchy
 	//Expression returns Expression:
 	//    OrExpression;
 	public ExpressionElements getExpressionAccess() {
@@ -1317,7 +1663,7 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 	}
 	
 	//EqualityExpression returns Expression:
-	//    ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
+	//    ComparisonExpression ({EqualityExpression.left=current} op=('==' | '!=') right=ComparisonExpression)*;
 	public EqualityExpressionElements getEqualityExpressionAccess() {
 		return pEqualityExpression;
 	}
@@ -1381,9 +1727,8 @@ public class JarvisProjectGrammarAccess extends AbstractElementFinder.AbstractGr
 		return getVariableRefAccess().getRule();
 	}
 	
-	//FunctionCall returns Expression:
-	//    'JARVIS,' 'RUN' 'PROTOCOL' function=[Function]
-	//    'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
+	//FunctionCall:
+	//    'JARVIS,'? 'RUN' 'PROTOCOL' function=[Function] ('WITH' '(' (args+=Expression (',' args+=Expression)*)? ')')?;
 	public FunctionCallElements getFunctionCallAccess() {
 		return pFunctionCall;
 	}

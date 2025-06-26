@@ -12,12 +12,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Program/eval"/>
     </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//Function">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Function/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Function/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Function/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Function/statements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Function/return"/>
     </genClasses>
+    <genClasses ecoreClass="JarvisProject.ecore#//FunctionInt"/>
+    <genClasses ecoreClass="JarvisProject.ecore#//FunctionString"/>
+    <genClasses ecoreClass="JarvisProject.ecore#//FunctionBoolean"/>
     <genClasses ecoreClass="JarvisProject.ecore#//TypedParam">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//TypedParam/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//TypedParam/name"/>
@@ -29,7 +31,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Initialization/value"/>
     </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//Assignment">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Assignment/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//Assignment/var"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Assignment/value"/>
     </genClasses>
@@ -59,9 +60,10 @@
     <genClasses ecoreClass="JarvisProject.ecore#//BooleanValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JarvisProject.ecore#//BooleanValue/val"/>
     </genClasses>
-    <genClasses ecoreClass="JarvisProject.ecore#//Expression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/function"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//Expression/args"/>
+    <genClasses ecoreClass="JarvisProject.ecore#//Expression"/>
+    <genClasses ecoreClass="JarvisProject.ecore#//FunctionCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//FunctionCall/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//FunctionCall/args"/>
     </genClasses>
     <genClasses ecoreClass="JarvisProject.ecore#//OrExpression">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JarvisProject.ecore#//OrExpression/left"/>

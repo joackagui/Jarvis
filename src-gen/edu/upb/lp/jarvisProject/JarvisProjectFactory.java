@@ -42,6 +42,33 @@ public interface JarvisProjectFactory extends EFactory
   Function createFunction();
 
   /**
+   * Returns a new object of class '<em>Function Int</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Int</em>'.
+   * @generated
+   */
+  FunctionInt createFunctionInt();
+
+  /**
+   * Returns a new object of class '<em>Function String</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function String</em>'.
+   * @generated
+   */
+  FunctionString createFunctionString();
+
+  /**
+   * Returns a new object of class '<em>Function Boolean</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Boolean</em>'.
+   * @generated
+   */
+  FunctionBoolean createFunctionBoolean();
+
+  /**
    * Returns a new object of class '<em>Typed Param</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -157,6 +184,15 @@ public interface JarvisProjectFactory extends EFactory
    * @generated
    */
   Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Function Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Call</em>'.
+   * @generated
+   */
+  FunctionCall createFunctionCall();
 
   /**
    * Returns a new object of class '<em>Or Expression</em>'.

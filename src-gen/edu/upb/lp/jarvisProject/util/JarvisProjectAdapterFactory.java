@@ -86,6 +86,21 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
         return createFunctionAdapter();
       }
       @Override
+      public Adapter caseFunctionInt(FunctionInt object)
+      {
+        return createFunctionIntAdapter();
+      }
+      @Override
+      public Adapter caseFunctionString(FunctionString object)
+      {
+        return createFunctionStringAdapter();
+      }
+      @Override
+      public Adapter caseFunctionBoolean(FunctionBoolean object)
+      {
+        return createFunctionBooleanAdapter();
+      }
+      @Override
       public Adapter caseTypedParam(TypedParam object)
       {
         return createTypedParamAdapter();
@@ -149,6 +164,11 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
       public Adapter caseExpression(Expression object)
       {
         return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseFunctionCall(FunctionCall object)
+      {
+        return createFunctionCallAdapter();
       }
       @Override
       public Adapter caseOrExpression(OrExpression object)
@@ -233,6 +253,51 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.FunctionInt <em>Function Int</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.jarvisProject.FunctionInt
+   * @generated
+   */
+  public Adapter createFunctionIntAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.FunctionString <em>Function String</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.jarvisProject.FunctionString
+   * @generated
+   */
+  public Adapter createFunctionStringAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.FunctionBoolean <em>Function Boolean</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.jarvisProject.FunctionBoolean
+   * @generated
+   */
+  public Adapter createFunctionBooleanAdapter()
   {
     return null;
   }
@@ -428,6 +493,21 @@ public class JarvisProjectAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.jarvisProject.FunctionCall <em>Function Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.jarvisProject.FunctionCall
+   * @generated
+   */
+  public Adapter createFunctionCallAdapter()
   {
     return null;
   }

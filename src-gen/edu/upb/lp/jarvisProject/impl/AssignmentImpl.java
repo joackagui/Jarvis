@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.impl.AssignmentImpl#getType <em>Type</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.impl.AssignmentImpl#getVar <em>Var</em>}</li>
  *   <li>{@link edu.upb.lp.jarvisProject.impl.AssignmentImpl#getValue <em>Value</em>}</li>
  * </ul>
@@ -32,26 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class AssignmentImpl extends StatementImpl implements Assignment
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -101,31 +80,6 @@ public class AssignmentImpl extends StatementImpl implements Assignment
   protected EClass eStaticClass()
   {
     return JarvisProjectPackage.Literals.ASSIGNMENT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JarvisProjectPackage.ASSIGNMENT__TYPE, oldType, type));
   }
 
   /**
@@ -229,8 +183,6 @@ public class AssignmentImpl extends StatementImpl implements Assignment
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.ASSIGNMENT__TYPE:
-        return getType();
       case JarvisProjectPackage.ASSIGNMENT__VAR:
         return getVar();
       case JarvisProjectPackage.ASSIGNMENT__VALUE:
@@ -249,9 +201,6 @@ public class AssignmentImpl extends StatementImpl implements Assignment
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.ASSIGNMENT__TYPE:
-        setType((String)newValue);
-        return;
       case JarvisProjectPackage.ASSIGNMENT__VAR:
         setVar((String)newValue);
         return;
@@ -272,9 +221,6 @@ public class AssignmentImpl extends StatementImpl implements Assignment
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.ASSIGNMENT__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
       case JarvisProjectPackage.ASSIGNMENT__VAR:
         setVar(VAR_EDEFAULT);
         return;
@@ -295,8 +241,6 @@ public class AssignmentImpl extends StatementImpl implements Assignment
   {
     switch (featureID)
     {
-      case JarvisProjectPackage.ASSIGNMENT__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
       case JarvisProjectPackage.ASSIGNMENT__VAR:
         return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
       case JarvisProjectPackage.ASSIGNMENT__VALUE:
@@ -316,9 +260,7 @@ public class AssignmentImpl extends StatementImpl implements Assignment
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", var: ");
+    result.append(" (var: ");
     result.append(var);
     result.append(')');
     return result.toString();

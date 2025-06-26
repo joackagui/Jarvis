@@ -11,6 +11,10 @@ import edu.upb.lp.jarvisProject.ComparisonExpression;
 import edu.upb.lp.jarvisProject.EqualityExpression;
 import edu.upb.lp.jarvisProject.Expression;
 import edu.upb.lp.jarvisProject.Function;
+import edu.upb.lp.jarvisProject.FunctionBoolean;
+import edu.upb.lp.jarvisProject.FunctionCall;
+import edu.upb.lp.jarvisProject.FunctionInt;
+import edu.upb.lp.jarvisProject.FunctionString;
 import edu.upb.lp.jarvisProject.If;
 import edu.upb.lp.jarvisProject.Imm;
 import edu.upb.lp.jarvisProject.Initialization;
@@ -80,9 +84,10 @@ public class JarvisProjectGenerator extends AbstractGenerator {
       EList<Expression> _eval = program.getEval();
       for(final Expression expr : _eval) {
         _builder.append("\t\t\t");
+        _builder.append("System.out.println(");
         CharSequence _generateExpression = this.generateExpression(expr);
         _builder.append(_generateExpression, "\t\t\t");
-        _builder.append(";");
+        _builder.append(");");
         _builder.newLineIfNotEmpty();
       }
     }
@@ -95,22 +100,16 @@ public class JarvisProjectGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  public CharSequence generateFunction(final Function function) {
+  protected CharSequence _generateFunction(final FunctionInt function) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public static ");
-    String _javaType = this.toJavaType(function.getType());
-    _builder.append(_javaType);
-    _builder.append(" ");
+    _builder.append("public static int ");
     String _name = function.getName();
     _builder.append(_name);
     _builder.append("(");
-    final Function1<TypedParam, String> _function = (TypedParam it) -> {
-      String _javaType_1 = this.toJavaType(it.getType());
-      String _plus = (_javaType_1 + " ");
-      String _name_1 = it.getName();
-      return (_plus + _name_1);
+    final Function1<TypedParam, CharSequence> _function = (TypedParam it) -> {
+      return this.generateTypedParam(it);
     };
-    String _join = IterableExtensions.join(ListExtensions.<TypedParam, String>map(function.getParams(), _function), ", ");
+    String _join = IterableExtensions.join(ListExtensions.<TypedParam, CharSequence>map(function.getParams(), _function), ", ");
     _builder.append(_join);
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
@@ -134,9 +133,85 @@ public class JarvisProjectGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  protected CharSequence _generateFunction(final FunctionString function) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public static String ");
+    String _name = function.getName();
+    _builder.append(_name);
+    _builder.append("(");
+    final Function1<TypedParam, CharSequence> _function = (TypedParam it) -> {
+      return this.generateTypedParam(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<TypedParam, CharSequence>map(function.getParams(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statement> _statements = function.getStatements();
+      for(final Statement stmt : _statements) {
+        _builder.append("\t");
+        CharSequence _generateStatement = this.generateStatement(stmt);
+        _builder.append(_generateStatement, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("return ");
+    CharSequence _generateExpression = this.generateExpression(function.getReturn());
+    _builder.append(_generateExpression, "\t");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+
+  protected CharSequence _generateFunction(final FunctionBoolean function) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("public static boolean ");
+    String _name = function.getName();
+    _builder.append(_name);
+    _builder.append("(");
+    final Function1<TypedParam, CharSequence> _function = (TypedParam it) -> {
+      return this.generateTypedParam(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<TypedParam, CharSequence>map(function.getParams(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(") {");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Statement> _statements = function.getStatements();
+      for(final Statement stmt : _statements) {
+        _builder.append("\t");
+        CharSequence _generateStatement = this.generateStatement(stmt);
+        _builder.append(_generateStatement, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("return ");
+    CharSequence _generateExpression = this.generateExpression(function.getReturn());
+    _builder.append(_generateExpression, "\t");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
+  }
+
+  public CharSequence generateTypedParam(final TypedParam t) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _javaType = this.toJavaType(t.getType());
+    _builder.append(_javaType);
+    _builder.append(" ");
+    String _name = t.getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
   protected CharSequence _generateStatement(final Initialization stmt) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public ");
     String _javaType = this.toJavaType(stmt.getType());
     _builder.append(_javaType);
     _builder.append(" ");
@@ -152,9 +227,6 @@ public class JarvisProjectGenerator extends AbstractGenerator {
 
   protected CharSequence _generateStatement(final Assignment stmt) {
     StringConcatenation _builder = new StringConcatenation();
-    String _javaType = this.toJavaType(stmt.getType());
-    _builder.append(_javaType);
-    _builder.append(" ");
     String _var = stmt.getVar();
     _builder.append(_var);
     _builder.append(" = ");
@@ -175,7 +247,7 @@ public class JarvisProjectGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  protected CharSequence _generateStatement(final While stmt) {
+  protected String _generateStatement(final While stmt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("while (");
     CharSequence _generateExpression = this.generateExpression(stmt.getCondition());
@@ -186,17 +258,17 @@ public class JarvisProjectGenerator extends AbstractGenerator {
       EList<Statement> _statements = stmt.getStatements();
       for(final Statement s : _statements) {
         _builder.append("\t");
-        Object _generateStatement = this.generateStatement(s);
+        CharSequence _generateStatement = this.generateStatement(s);
         _builder.append(_generateStatement, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("}");
     _builder.newLine();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateStatement(final If stmt) {
+  protected String _generateStatement(final If stmt) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("if (");
     CharSequence _generateExpression = this.generateExpression(stmt.getCondition());
@@ -207,14 +279,14 @@ public class JarvisProjectGenerator extends AbstractGenerator {
       EList<Statement> _statements = stmt.getStatements();
       for(final Statement s : _statements) {
         _builder.append("\t");
-        Object _generateStatement = this.generateStatement(s);
+        CharSequence _generateStatement = this.generateStatement(s);
         _builder.append(_generateStatement, "\t");
         _builder.newLineIfNotEmpty();
       }
     }
     _builder.append("}");
     _builder.newLine();
-    return _builder;
+    return _builder.toString();
   }
 
   protected CharSequence _generateStatement(final Ipp stmt) {
@@ -253,8 +325,8 @@ public class JarvisProjectGenerator extends AbstractGenerator {
 
   protected CharSequence _generateExpression(final BooleanValue expr) {
     StringConcatenation _builder = new StringConcatenation();
-    String _val = expr.getVal();
-    _builder.append(_val);
+    boolean _isVal = expr.isVal();
+    _builder.append(_isVal);
     return _builder;
   }
 
@@ -265,109 +337,119 @@ public class JarvisProjectGenerator extends AbstractGenerator {
     return _builder;
   }
 
-  /**
-   * def dispatch generateExpression(FunctionCall expr) '''
-   * «expr.function.name»(«expr.args.map[generateExpression].join(', ')»)
-   * '''
-   */
-  protected CharSequence _generateExpression(final OrExpression expr) {
+  protected String _generateExpression(final FunctionCall expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    String _name = expr.getFunction().getName();
+    _builder.append(_name);
+    _builder.append("(");
+    final Function1<Expression, CharSequence> _function = (Expression it) -> {
+      return this.generateExpression(it);
+    };
+    String _join = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(expr.getArgs(), _function), ", ");
+    _builder.append(_join);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+
+  protected String _generateExpression(final OrExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" || ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateExpression(final AndExpression expr) {
+  protected String _generateExpression(final AndExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" && ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateExpression(final EqualityExpression expr) {
+  protected String _generateExpression(final EqualityExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" ");
     String _op = expr.getOp();
     _builder.append(_op);
     _builder.append(" ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateExpression(final ComparisonExpression expr) {
+  protected String _generateExpression(final ComparisonExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" ");
     String _op = expr.getOp();
     _builder.append(_op);
     _builder.append(" ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateExpression(final AdditiveExpression expr) {
+  protected String _generateExpression(final AdditiveExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" ");
     String _op = expr.getOp();
     _builder.append(_op);
     _builder.append(" ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
-  protected CharSequence _generateExpression(final MultiplicativeExpression expr) {
+  protected String _generateExpression(final MultiplicativeExpression expr) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("(");
-    Object _generateExpression = this.generateExpression(expr.getLeft());
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
     _builder.append(_generateExpression);
     _builder.append(" ");
     String _op = expr.getOp();
     _builder.append(_op);
     _builder.append(" ");
-    Object _generateExpression_1 = this.generateExpression(expr.getRight());
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
     _builder.append(_generateExpression_1);
     _builder.append(")");
     _builder.newLineIfNotEmpty();
-    return _builder;
+    return _builder.toString();
   }
 
   public String toJavaType(final String type) {
     String _switchResult = null;
     if (type != null) {
       switch (type) {
-        case "INT":
+        case "NUMBER":
           _switchResult = "int";
           break;
-        case "STRING":
+        case "TEXT":
           _switchResult = "String";
           break;
         case "BOOLEAN":
@@ -381,6 +463,20 @@ public class JarvisProjectGenerator extends AbstractGenerator {
       _switchResult = "Object";
     }
     return _switchResult;
+  }
+
+  @XbaseGenerated
+  public CharSequence generateFunction(final Function function) {
+    if (function instanceof FunctionBoolean) {
+      return _generateFunction((FunctionBoolean)function);
+    } else if (function instanceof FunctionInt) {
+      return _generateFunction((FunctionInt)function);
+    } else if (function instanceof FunctionString) {
+      return _generateFunction((FunctionString)function);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(function).toString());
+    }
   }
 
   @XbaseGenerated
@@ -417,6 +513,8 @@ public class JarvisProjectGenerator extends AbstractGenerator {
       return _generateExpression((ComparisonExpression)expr);
     } else if (expr instanceof EqualityExpression) {
       return _generateExpression((EqualityExpression)expr);
+    } else if (expr instanceof FunctionCall) {
+      return _generateExpression((FunctionCall)expr);
     } else if (expr instanceof IntValue) {
       return _generateExpression((IntValue)expr);
     } else if (expr instanceof MultiplicativeExpression) {

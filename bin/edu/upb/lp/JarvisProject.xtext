@@ -3,17 +3,32 @@ grammar edu.upb.lp.JarvisProject with org.eclipse.xtext.common.Terminals
 generate jarvisProject "http://www.upb.edu/lp/JarvisProject"
 
 Program:
-	name=ID
+	'JARVIS,' 'TIME' 'TO' 'HAVE' 'SOME' 'FUN' 'WITH' name=ID
 	functions+=Function*
-	'>' eval+=Expression*;
+	'>' eval+=(Expression)*;
 
 DataType:
-	'INT' | 'STRING' | 'BOOLEAN';
+	'NUMBER' | 'TEXT' | 'BOOLEAN';
 
 Function:
-	'JARVIS,' 'CREATE' 'PROTOCOL' type=DataType name=ID 'WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')' '{'
+	FunctionInt | FunctionString | FunctionBoolean;
+
+FunctionInt:
+	'JARVIS,'? 'CREATE' 'PROTOCOL' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
 	statements+=Statement*
-	'RETURN' return=Expression
+	'AND' 'SEND' 'BACK' return=Expression
+	'}';
+
+FunctionString:
+	'JARVIS,'? 'CREATE' 'FILE' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+	statements+=Statement*
+	'AND' 'SEND' 'BACK' return=Expression
+	'}';
+
+FunctionBoolean:
+	'JARVIS,'? 'CREATE' 'AUTOMATON' name=ID ('WITH' '(' (params+=TypedParam (',' params+=TypedParam)*)? ')')? '{'
+	statements+=Statement*
+	'AND' 'SEND' 'BACK' return=Expression
 	'}';
 
 TypedParam:
@@ -23,27 +38,26 @@ Statement:
 	Initialization | Assignment | Print | While | If | Ipp | Imm;
 
 Initialization:
-	'SET' type=DataType var=ID 'AS' value=Expression;
+	'JARVIS,'? 'SET' type=DataType var=ID 'AS' value=Expression;
 
 Assignment:
-	'NOW' 'SET' type=DataType var=ID 'AS' value=Expression;
+	'JARVIS,'? 'NOW' 'SET' var=ID 'AS' value=Expression;
 
 Print:
-	'SHOW' '(' printable=Expression ')';
+	'JARVIS,'? 'SHOW' '(' printable=Expression ')';
 
 While:
-	'JARVIS,' 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+	'JARVIS,'? 'LOOP' 'WHILE' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 
 If:
-	'JARVIS,' 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
+	'JARVIS,'? 'TRY' '(' condition=Expression ')' '{' statements+=Statement+ '}';
 
 Ipp:
-	'BUMP' var=ID;
+	'JARVIS,'? 'BUMP' var=ID;
 
 Imm:
-	'DROP' var=ID;
+	'JARVIS,'? 'DROP' var=ID;
 
-// Value types
 IntValue:
 	val=INT;
 
@@ -51,9 +65,8 @@ StringValue:
 	val=STRING;
 
 BooleanValue:
-	val=('TRUE' | 'FALSE');
+	val?='TRUE' | {BooleanValue} 'FALSE';
 
-// Simplified Expressions hierarchy
 Expression returns Expression:
 	OrExpression;
 
@@ -64,7 +77,7 @@ AndExpression returns Expression:
 	EqualityExpression ({AndExpression.left=current} 'AND' right=EqualityExpression)*;
 
 EqualityExpression returns Expression:
-	ComparisonExpression ({EqualityExpression.left=current} op=('=' | '!=') right=ComparisonExpression)*;
+	ComparisonExpression ({EqualityExpression.left=current} op=('==' | '!=') right=ComparisonExpression)*;
 
 ComparisonExpression returns Expression:
 	AdditiveExpression ({ComparisonExpression.left=current} op=('<' | '>' | '<=' | '>=') right=AdditiveExpression)*;
@@ -86,5 +99,5 @@ PrimaryExpression returns Expression:
 VariableRef returns Expression:
 	{VariableRef} var=ID;
 
-FunctionCall returns Expression:
-	'JARVIS,' 'RUN' 'PROTOCOL' function=[Function] 'WITH' '(' (args+=Expression (',' args+=Expression)*)? ')';
+FunctionCall:
+	'JARVIS,'? 'RUN' 'PROTOCOL' function=[Function] ('WITH' '(' (args+=Expression (',' args+=Expression)*)? ')')?;

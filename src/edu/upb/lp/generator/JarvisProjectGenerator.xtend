@@ -3,29 +3,33 @@
  */
 package edu.upb.lp.generator
 
-import edu.upb.lp.jarvisProject.Function
+import edu.upb.lp.jarvisProject.AdditiveExpression
+import edu.upb.lp.jarvisProject.AndExpression
+import edu.upb.lp.jarvisProject.Assignment
+import edu.upb.lp.jarvisProject.BooleanValue
+import edu.upb.lp.jarvisProject.ComparisonExpression
+import edu.upb.lp.jarvisProject.EqualityExpression
+import edu.upb.lp.jarvisProject.FunctionBoolean
+import edu.upb.lp.jarvisProject.FunctionCall
+import edu.upb.lp.jarvisProject.FunctionInt
+import edu.upb.lp.jarvisProject.FunctionString
+import edu.upb.lp.jarvisProject.If
+import edu.upb.lp.jarvisProject.Imm
+import edu.upb.lp.jarvisProject.Initialization
 import edu.upb.lp.jarvisProject.IntValue
+import edu.upb.lp.jarvisProject.Ipp
+import edu.upb.lp.jarvisProject.MultiplicativeExpression
+import edu.upb.lp.jarvisProject.OrExpression
+import edu.upb.lp.jarvisProject.Print
 import edu.upb.lp.jarvisProject.Program
+import edu.upb.lp.jarvisProject.StringValue
+import edu.upb.lp.jarvisProject.TypedParam
+import edu.upb.lp.jarvisProject.VariableRef
+import edu.upb.lp.jarvisProject.While
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import edu.upb.lp.jarvisProject.Initialization
-import edu.upb.lp.jarvisProject.Assignment
-import edu.upb.lp.jarvisProject.While
-import edu.upb.lp.jarvisProject.Print
-import edu.upb.lp.jarvisProject.If
-import edu.upb.lp.jarvisProject.Ipp
-import edu.upb.lp.jarvisProject.Imm
-import edu.upb.lp.jarvisProject.StringValue
-import edu.upb.lp.jarvisProject.BooleanValue
-import edu.upb.lp.jarvisProject.ComparisonExpression
-import edu.upb.lp.jarvisProject.EqualityExpression
-import edu.upb.lp.jarvisProject.AndExpression
-import edu.upb.lp.jarvisProject.VariableRef
-import edu.upb.lp.jarvisProject.AdditiveExpression
-import edu.upb.lp.jarvisProject.MultiplicativeExpression
-import edu.upb.lp.jarvisProject.OrExpression
 
 /**
  * Generates code from your model files on save.
@@ -40,9 +44,8 @@ class JarvisProjectGenerator extends AbstractGenerator {
 //				.filter(Greeting)
 //				.map[name]
 //				.join(', '))
-	val program = resource.allContents.head as Program
-	fsa.generateFile(program.name + ".java", generateProgram(program))
-	
+		val program = resource.allContents.head as Program
+		fsa.generateFile(program.name + ".java", generateProgram(program))
 	}
 	
 	def generateProgram(Program program) '''
@@ -53,14 +56,14 @@ class JarvisProjectGenerator extends AbstractGenerator {
 	
 			public static void main(String[] args) {
 				«FOR expr : program.eval»
-					«generateExpression(expr)»;
+					System.out.println(«generateExpression(expr)»);
 				«ENDFOR»
 			}
 		}
 	'''
 	
-	def generateFunction(Function function) '''
-		public static «toJavaType(function.type)» «function.name»(«function.params.map[toJavaType(type) + ' ' + name].join(', ')») {
+	def dispatch generateFunction(FunctionInt function) '''
+		public static int «function.name»(«function.params.map[generateTypedParam].join(', ')») {
 			«FOR stmt : function.statements»
 				«generateStatement(stmt)»
 			«ENDFOR»
@@ -68,19 +71,41 @@ class JarvisProjectGenerator extends AbstractGenerator {
 		}
 	'''
 	
+	def dispatch generateFunction(FunctionString function) '''
+		public static String «function.name»(«function.params.map[generateTypedParam].join(', ')») {
+			«FOR stmt : function.statements»
+				«generateStatement(stmt)»
+			«ENDFOR»
+			return «generateExpression(function.^return)»;
+		}
+	'''
+	
+	def dispatch generateFunction(FunctionBoolean function) '''
+		public static boolean «function.name»(«function.params.map[generateTypedParam].join(', ')») {
+			«FOR stmt : function.statements»
+				«generateStatement(stmt)»
+			«ENDFOR»
+			return «generateExpression(function.^return)»;
+		}
+	'''
+	
+	def generateTypedParam (TypedParam t) '''
+		«toJavaType(t.type)» «t.name»
+	'''
+	
 	def dispatch generateStatement(Initialization stmt) '''
-		public «toJavaType(stmt.type)» «stmt.^var» = «generateExpression(stmt.value)»;
+		«toJavaType(stmt.type)» «stmt.^var» = «generateExpression(stmt.value)»;
 	'''
 	
 	def dispatch generateStatement(Assignment stmt) '''
-		«toJavaType(stmt.type)» «stmt.^var» = «generateExpression(stmt.value)»;
+		«stmt.^var» = «generateExpression(stmt.value)»;
 	'''
 	
 	def dispatch generateStatement(Print stmt) '''
 		System.out.println(«generateExpression(stmt.printable)»);
 	'''
 	
-	def dispatch generateStatement(While stmt) '''
+	def dispatch String generateStatement(While stmt) '''
 		while («generateExpression(stmt.condition)») {
 			«FOR s : stmt.statements»
 				«generateStatement(s)»
@@ -88,7 +113,7 @@ class JarvisProjectGenerator extends AbstractGenerator {
 		}
 	'''
 	
-	def dispatch generateStatement(If stmt) '''
+	def dispatch String generateStatement(If stmt) '''
 		if («generateExpression(stmt.condition)») {
 			«FOR s : stmt.statements»
 				«generateStatement(s)»
@@ -112,38 +137,38 @@ class JarvisProjectGenerator extends AbstractGenerator {
 	
 	def dispatch generateExpression(VariableRef expr) '''«expr.^var»'''
 	
-	/*def dispatch generateExpression(FunctionCall expr) '''
+	def dispatch String generateExpression(FunctionCall expr) '''
 		«expr.function.name»(«expr.args.map[generateExpression].join(', ')»)
-	'''*/
+	'''
 	
-	def dispatch generateExpression(OrExpression expr) '''
+	def dispatch String generateExpression(OrExpression expr) '''
 		(«generateExpression(expr.left)» || «generateExpression(expr.right)»)
 	'''
 	
-	def dispatch generateExpression(AndExpression expr) '''
+	def dispatch String generateExpression(AndExpression expr) '''
 		(«generateExpression(expr.left)» && «generateExpression(expr.right)»)
 	'''
 	
-	def dispatch generateExpression(EqualityExpression expr) '''
+	def dispatch String generateExpression(EqualityExpression expr) '''
 		(«generateExpression(expr.left)» «expr.op» «generateExpression(expr.right)»)
 	'''
 	
-	def dispatch generateExpression(ComparisonExpression expr) '''
+	def dispatch String generateExpression(ComparisonExpression expr) '''
 		(«generateExpression(expr.left)» «expr.op» «generateExpression(expr.right)»)
 	'''
 	
-	def dispatch generateExpression(AdditiveExpression expr) '''
+	def dispatch String generateExpression(AdditiveExpression expr) '''
 		(«generateExpression(expr.left)» «expr.op» «generateExpression(expr.right)»)
 	'''
 	
-	def dispatch generateExpression(MultiplicativeExpression expr) '''
+	def dispatch String generateExpression(MultiplicativeExpression expr) '''
 		(«generateExpression(expr.left)» «expr.op» «generateExpression(expr.right)»)
 	'''
 	
 	def toJavaType(String type) {
 		switch type {
-			case 'INT': 'int'
-			case 'STRING': 'String'
+			case 'NUMBER': 'int'
+			case 'TEXT': 'String'
 			case 'BOOLEAN': 'boolean'
 			default: 'Object'
 		}

@@ -3,8 +3,6 @@
  */
 package edu.upb.lp.jarvisProject;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -12,13 +10,6 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Expression</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link edu.upb.lp.jarvisProject.Expression#getFunction <em>Function</em>}</li>
- *   <li>{@link edu.upb.lp.jarvisProject.Expression#getArgs <em>Args</em>}</li>
- * </ul>
  *
  * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression()
  * @model
@@ -26,38 +17,4 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Expression extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Function</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Function</em>' reference.
-   * @see #setFunction(Function)
-   * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression_Function()
-   * @model
-   * @generated
-   */
-  Function getFunction();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.jarvisProject.Expression#getFunction <em>Function</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function</em>' reference.
-   * @see #getFunction()
-   * @generated
-   */
-  void setFunction(Function value);
-
-  /**
-   * Returns the value of the '<em><b>Args</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.jarvisProject.Expression}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Args</em>' containment reference list.
-   * @see edu.upb.lp.jarvisProject.JarvisProjectPackage#getExpression_Args()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Expression> getArgs();
-
 } // Expression
